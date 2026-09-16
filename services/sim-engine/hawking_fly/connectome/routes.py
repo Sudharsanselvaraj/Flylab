@@ -25,8 +25,10 @@ from hawking_fly.connectome.client import ConnectomeClient
 from hawking_fly.connectome.circuits import (
     DESCENDING_NEURON_TYPES,
     LOOM_RECEPTOR_TYPES,
+    RELAY_TYPES,
     _dn_criteria,
     _receptor_criteria,
+    build_malecns_grounded_graph,
 )
 
 if TYPE_CHECKING:
@@ -199,3 +201,62 @@ def run_discovery(
         top_upstream_types=top_upstream_types,
     )
     return routes
+
+
+def discover_malecns_relay_path(
+    client: ConnectomeClient,
+    *,
+    cache_prefix: str = "loom_escape",
+) -> dict[str, object]:
+    """Query + cache the MaleCNS relay layer between LC4/LPLC2 and DNp01.
+
+    Runs the bounded receptor -> relay -> DNp01 graph against the live
+    MaleCNS v1.0 dataset and snapshots every artifact so runtime never
+    re-queries neuPrint. Returns a provenance dict with neuron and edge
+    counts per layer.
+    """
+    graph = build_malecns_grounded_graph(client)
+
+    relay_neurons = graph["relay_neurons"]
+    edges = graph["edges"]
+    edges_r2r = edges[edges["layer"] == "receptor_to_relay"].copy()
+    edges_r2dn = edges[edges["layer"] == "relay_to_dn"].copy()
+
+    save_circuit_cache(
+        f"{cache_prefix}_relay_neurons",
+        relay_neurons[["bodyId", "type", "instance"]],
+        client.config.dataset,
+        extra={"note": "relay population participating in LC4/LPLC2 -> DNp01 path"},
+    )
+    save_circuit_cache(
+        f"{cache_prefix}_receptor_to_relay_edges",
+        edges_r2r,
+        client.config.dataset,
+        extra={"note": "adjacency layer 1 of the grounded premotor graph"},
+    )
+    save_circuit_cache(
+        f"{cache_prefix}_relay_to_dn_edges",
+        edges_r2dn,
+        client.config.dataset,
+        extra={"note": "adjacency layer 2 of the grounded premotor graph"},
+    )
+    save_circuit_cache(
+        f"{cache_prefix}_full_graph",
+        edges,
+        client.config.dataset,
+        extra={"layer_counts": graph["layer_counts"], "method": graph["method"]},
+    )
+
+    neuron_counts = relay_neurons.groupby("type")["bodyId"].nunique().to_dict()
+    return {
+        "dataset": client.config.dataset,
+        "relay_types": list(RELAY_TYPES),
+        "relay_neuron_count": int(len(relay_neurons)),
+        "relay_neuron_counts_by_type": neuron_counts,
+        "layer_counts": graph["layer_counts"],
+        "layer_synapses": graph["layer_synapses"],
+        "node_count": int(
+            len(set(edges["pre"]) | set(edges["post"]))
+        ),
+        "method": graph["method"],
+    }
