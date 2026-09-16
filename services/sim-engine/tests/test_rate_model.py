@@ -24,8 +24,21 @@ def test_from_edge_list_normalizes_incoming():
         dt=0.01,
     )
     w = model.weight.toarray()
-    # column-normalized incoming weights
-    np.testing.assert_allclose(w.sum(axis=0), [0.0, 1.0, 1.0], atol=1e-12)
+    # incoming weights, one row per post node, row-normalized
+    np.testing.assert_allclose(w.sum(axis=1), [0.0, 1.0, 1.0], atol=1e-12)
+    # post 1 receives all of pre 0; post 2 receives pre 0 and pre 1 equally
+    np.testing.assert_allclose(w[1], [1.0, 0.0, 0.0], atol=1e-12)
+    np.testing.assert_allclose(w[2], [0.5, 0.5, 0.0], atol=1e-12)
+
+
+def test_step_maps_pre_input_to_post_row():
+    # 0 -> 1 with weight 1, so input at node 0 must land at output row 1
+    model = RateModel.from_edge_list(
+        pre=[0], post=[1], weights=[1.0], n_nodes=2, dt=0.01, nonlinearity=relu
+    )
+    r = model.step(np.zeros(2), np.array([1.0, 0.0]))
+    assert r[0] == 0.0
+    assert r[1] > 0.0
 
 
 def test_step_stays_bounded_and_finite():
