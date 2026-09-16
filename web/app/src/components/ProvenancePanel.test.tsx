@@ -1,0 +1,38 @@
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { useStore } from "../state/useStore";
+import { ProvenancePanel } from "../components/ProvenancePanel";
+
+const PROVENANCE = {
+  run_id: "20260916-223510",
+  dataset: "MaleCNS v1.0",
+  mapping: "connectome_grounded",
+  topology: "loom-escape relay graph",
+  flags: {
+    dynamics_validated: false,
+    connectome_edges_verified: true,
+    topology_validated: true,
+  },
+  layers: [
+    { label: "MaleCNS connectivity", layer: "MaleCNS connectivity", status: "MEASURED" },
+    { label: "FlyVis visual model", layer: "FlyVis visual model", status: "MEASURED" },
+    { label: "Wheelchair / avatar", layer: "Wheelchair / avatar", status: "PRESENTATION" },
+  ],
+};
+
+describe("ProvenancePanel", () => {
+  it("renders honest flags — dynamics not validated, presentation layer marked", () => {
+    useStore.setState({ provenance: PROVENANCE as never });
+    render(<ProvenancePanel />);
+    expect(screen.getByText(/connectome_edges_verified: yes/)).toBeInTheDocument();
+    expect(screen.getByText(/dynamics_validated: no/)).toBeInTheDocument();
+    expect(screen.getByText("PRESENTATION")).toBeInTheDocument();
+    expect(screen.getByText(/Dynamics NOT validated/)).toBeInTheDocument();
+  });
+
+  it("shows an empty state when no experiment is loaded", () => {
+    useStore.setState({ provenance: null });
+    render(<ProvenancePanel />);
+    expect(screen.getByText("Select a run to view provenance")).toBeInTheDocument();
+  });
+});

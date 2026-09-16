@@ -19,6 +19,8 @@ dependencies = [
     "python-dotenv",
     "pydantic>=2",
     "neuprint-python",
+    "fastapi",
+    "uvicorn",
 ]
 
 [project.optional-dependencies]
