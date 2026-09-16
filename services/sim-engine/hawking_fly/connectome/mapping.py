@@ -22,6 +22,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+import xarray as xr
 
 #: Proxy flyvis cell types per MaleCNS receptor type. Documented in
 #: `docs/circuit/*.md`; REVISIT before treating any of these as biological fact.
@@ -176,42 +177,45 @@ def aggregate_drive(
 ) -> np.ndarray:
     """Aggregate flyvis activity into per-receptor drive over time.
 
-    `flyvis_responses` is a flyvis response xarray Dataset with dims
-    (network_id, sample, frame, neuron) and a `cell_type` (neuron) coordinate.
-    Returns drive array of shape (frame, n_receptors) where each receptor's
-    drive is the sample-mean activity of its mapped flyvis cell types.
+    `flyvis_responses` is a flyvis response xarray Dataset (or response
+    DataArray) with dims (network_id, sample, frame, neuron) and a `cell_type`
+    (neuron) coordinate. Returns drive array of shape
+    (n_samples, frame, n_receptors); samples are averaged over network only,
+    NEVER over samples — flash alternation (ON/OFF) cancels under a sample mean,
+    destroying the stimulus signal for the downstream gate.
 
     Bilateral assumption (recorded, spec §8): flyvis simulates a single optic
     lobe; the same drive signal is applied to both MaleCNS left/right receptor
     bodyIds because every row in the plan references the same single-eye signal.
     """
     cell_types = list(np.asarray(flyvis_responses.cell_type.values))
-    responses = np.asarray(flyvis_responses["responses"].values)  # (net, sample, frame, neuron)
-    sample_mean = responses.mean(axis=(0, 1))  # (frame, neuron)  -- handle sample==1
-    # NOTE: axis convention — responses may be (network_id, sample, frame, neuron).
+    if isinstance(flyvis_responses, xr.Dataset):
+        responses = np.asarray(flyvis_responses["responses"].values)  # (net, sample, frame, neuron)
+    else:
+        responses = np.asarray(flyvis_responses.values)
     if responses.ndim != 4:
         raise ValueError(f"expected 4D responses, got shape {responses.shape}")
+    per_net = responses.mean(axis=0)  # (sample, frame, neuron)
 
     by_type: dict[str, np.ndarray] = {}
     for i, ct in enumerate(cell_types):
-        by_type[ct] = sample_mean[..., i]
+        by_type[ct] = per_net[..., i]
 
-    n = len(plan)
-    frames = sample_mean.shape[0]
-    drive = np.zeros((frames, n), dtype=np.float64)
-    for j, p in enumerate(plan):
+    per_receptor: list[np.ndarray] = []
+    for p in plan:
         if not p.flyvis_cell_types:
-            continue  # un-driven receptor stays zero
-        drive[:, j] = _summed_proxy(by_type, p.flyvis_cell_types)
-    return drive
+            per_receptor.append(np.zeros(per_net.shape[:-1], dtype=np.float64))
+        else:
+            per_receptor.append(_summed_proxy(by_type, p.flyvis_cell_types))
+    return np.stack(per_receptor, axis=-1)  # (sample, frame, n_receptors)
 
 
 def _summed_proxy(by_type: dict[str, np.ndarray], cells: tuple[str, ...]) -> np.ndarray:
     present = [by_type[c] for c in cells if c in by_type]
     if not present:
-        return np.zeros(next(iter(by_type.values())).shape[0])
-    stacked = np.stack(present, axis=0)  # (n_cells, frame)
-    return stacked.mean(axis=0)
+        return np.zeros(next(iter(by_type.values())).shape[:-1])
+    stacked = np.stack(present, axis=-1)  # (sample, frame, n_cells)
+    return stacked.mean(axis=-1)
 
 
 def mapping_provenance(plan: list[ReceptorDrivePlan]) -> dict[str, Any]:
