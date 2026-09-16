@@ -1,0 +1,233 @@
+{
+  "study": "malecns_premotor_decoding",
+  "title": "Malecns Premotor Decoding",
+  "run_dir": "20260916-214652",
+  "mapping_verified": false,
+  "mapping_summary": {
+    "label": "MaleCNS-grounded premotor representation",
+    "connectome_edges_verified": true,
+    "cell_identity_verified": true,
+    "flyvis_to_malecns_mapping_verified": false,
+    "dynamics_validated": false,
+    "channel_source": "relay_neurons.json (bodyId) + relay_<stim>.npz (trace)",
+    "n_relay_channels": 21,
+    "n_silent_excluded": 31,
+    "n_type_channels": 5,
+    "channels": [
+      "PVLP010",
+      "PVLP151",
+      "SAD073",
+      "PVLP122",
+      "PVLP151",
+      "PVLP151",
+      "PVLP122",
+      "PVLP122",
+      "PVLP122",
+      "PVLP151",
+      "SAD064",
+      "SAD073",
+      "SAD064",
+      "SAD064",
+      "SAD073",
+      "SAD064",
+      "SAD064",
+      "PVLP122",
+      "PVLP122",
+      "SAD064",
+      "PVLP010"
+    ]
+  },
+  "model_choice": {},
+  "data": {
+    "n_trajectories": 8,
+    "trajectory_ids": [
+      "flash/0",
+      "flash/1",
+      "flash/2",
+      "flash/3",
+      "loom/0",
+      "loom/1",
+      "moving_edge/0",
+      "moving_edge/1"
+    ],
+    "frame_counts": {
+      "flash": 600,
+      "loom": 700,
+      "moving_edge": 465
+    },
+    "n_features": {
+      "profile": 9,
+      "channel": 21
+    }
+  },
+  "regression": {
+    "profile": {
+      "r2": 0.9801643347631964,
+      "rmse": 0.1680997708685707,
+      "pearson": 0.9941766041793281
+    },
+    "channel": {
+      "r2": 0.8103079370445855,
+      "rmse": 0.5198383508102092,
+      "pearson": 0.936569108909822
+    }
+  },
+  "classification": {
+    "loo": {
+      "profile": {
+        "roc_auc": 1.0,
+        "accuracy_median": 1.0
+      },
+      "channel": {
+        "roc_auc": 1.0,
+        "accuracy_median": 1.0
+      }
+    },
+    "label_rule": "truth norm above leave-one-out train median"
+  },
+  "generalization_leave_stimulus_out": {
+    "flash": {
+      "test_ids": [
+        "flash/0",
+        "flash/1",
+        "flash/2",
+        "flash/3"
+      ],
+      "per_representation": {
+        "profile": {
+          "r2": 0.9958731265671686,
+          "rmse": 0.06416896239767556,
+          "pearson": 0.9998099028017188
+        },
+        "channel": {
+          "r2": 0.8886597780277168,
+          "rmse": 0.3333039675671118,
+          "pearson": 0.9999905906763511
+        }
+      }
+    },
+    "loom": {
+      "test_ids": [
+        "loom/0",
+        "loom/1"
+      ],
+      "per_representation": {
+        "profile": {
+          "r2": 0.9927779923350415,
+          "rmse": 0.11968983966668312,
+          "pearson": 1.0
+        },
+        "channel": {
+          "r2": 0.7209273003646968,
+          "rmse": 0.7440240765338917,
+          "pearson": 1.0
+        }
+      }
+    }
+  },
+  "baselines": {
+    "n_shuffles": 200,
+    "profile": {
+      "shuffled_labels": {
+        "r2": {
+          "mean": -4.3200724434932525,
+          "std": 4.521976652445524
+        },
+        "roc_auc": {
+          "mean": 0.5109375,
+          "std": 0.2395012314034105
+        },
+        "true_percentile": {
+          "r2": 100.0,
+          "roc_auc": 100.0
+        }
+      },
+      "channel_swap": {
+        "r2": {
+          "mean": 0.9801643347631966,
+          "std": 2.220446049250313e-16
+        },
+        "roc_auc": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "true_percentile": {
+          "r2": 100.0,
+          "roc_auc": 100.0
+        },
+        "note": "per-trajectory upstream-channel permutation; informative null for connectivity specificity"
+      },
+      "column_permutation": {
+        "r2": {
+          "mean": 0.9801643347631943,
+          "std": 1.6458845714622002e-15
+        },
+        "note": "linear-estimator invariant; degeneracy check only, NOT a null with discrimination power"
+      }
+    },
+    "channel": {
+      "shuffled_labels": {
+        "r2": {
+          "mean": -0.14571465956061544,
+          "std": 0.5137904085738978
+        },
+        "roc_auc": {
+          "mean": 0.2659375,
+          "std": 0.2826353036047514
+        },
+        "true_percentile": {
+          "r2": 98.5,
+          "roc_auc": 100.0
+        }
+      },
+      "channel_swap": {
+        "r2": {
+          "mean": 0.30428902962335624,
+          "std": 0.11475345026621012
+        },
+        "roc_auc": {
+          "mean": 0.9721875,
+          "std": 0.05544475713491764
+        },
+        "true_percentile": {
+          "r2": 100.0,
+          "roc_auc": 100.0
+        },
+        "note": "per-trajectory upstream-channel permutation; informative null for connectivity specificity"
+      },
+      "column_permutation": {
+        "r2": {
+          "mean": 0.8103079370445857,
+          "std": 2.065134201172189e-16
+        },
+        "note": "linear-estimator invariant; degeneracy check only, NOT a null with discrimination power"
+      }
+    }
+  },
+  "connectivity_specificity": {
+    "channel_rep": {
+      "true_r2": 0.8103079370445855,
+      "channel_swap_null_r2": 0.30428902962335624,
+      "delta": 0.5060189074212292,
+      "meaningful": true
+    },
+    "note": "meaningful=True requires the true channel decode to clearly exceed the channel-swap null; degeneracy = identity carries no channel info."
+  },
+  "leakage": {
+    "checks": [
+      "trajectory ids unique",
+      "splits operate on whole trajectories (no shared frames across train/test)",
+      "each test trajectory's features computed from its own visible trace only"
+    ],
+    "result": "trajectory-level splits; pass"
+  },
+  "diagnostics": {
+    "pearson(profile_norm_feature, truth_norm)": 0.9993022247202322,
+    "note": "near-1 on this diagnostic means the target is almost a deterministic function of the total upstream magnitude, i.e. the decode may be magnitude bookkeeping rather than channel-specific reading."
+  },
+  "caveats": [
+    "n=8 trajectories total; LOO and pooled-AUC figures are high-variance",
+    "proxy mapping is unverified (mapping.verified=False, spec \u00a78)",
+    "generalization test set sizes are tiny (2-4 trajectories)"
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "study": "malecns_premotor_decoding_type_agg",
+  "title": "Malecns Premotor Decoding Type Agg",
+  "run_dir": "20260916-214652",
+  "mapping_verified": false,
+  "mapping_summary": {
+    "label": "MaleCNS-grounded premotor representation",
+    "connectome_edges_verified": true,
+    "cell_identity_verified": true,
+    "flyvis_to_malecns_mapping_verified": false,
+    "dynamics_validated": false,
+    "channel_source": "relay_neurons.json (bodyId) + relay_<stim>.npz (trace)",
+    "n_relay_channels": 21,
+    "n_silent_excluded": 31,
+    "n_type_channels": 5,
+    "channels": [
+      "PVLP010",
+      "PVLP151",
+      "SAD073",
+      "PVLP122",
+      "SAD064"
+    ]
+  },
+  "model_choice": {},
+  "data": {
+    "n_trajectories": 8,
+    "trajectory_ids": [
+      "flash/0",
+      "flash/1",
+      "flash/2",
+      "flash/3",
+      "loom/0",
+      "loom/1",
+      "moving_edge/0",
+      "moving_edge/1"
+    ],
+    "frame_counts": {
+      "flash": 600,
+      "loom": 700,
+      "moving_edge": 465
+    },
+    "n_features": {
+      "profile": 9,
+      "channel": 5
+    }
+  },
+  "regression": {
+    "profile": {
+      "r2": 0.9804865810409213,
+      "rmse": 0.16672872187461432,
+      "pearson": 0.9942639669855085
+    },
+    "channel": {
+      "r2": 0.47391521189639807,
+      "rmse": 0.8657083541210977,
+      "pearson": 0.9105288314695014
+    }
+  },
+  "classification": {
+    "loo": {
+      "profile": {
+        "roc_auc": 1.0,
+        "accuracy_median": 1.0
+      },
+      "channel": {
+        "roc_auc": 1.0,
+        "accuracy_median": 1.0
+      }
+    },
+    "label_rule": "truth norm above leave-one-out train median"
+  },
+  "generalization_leave_stimulus_out": {
+    "flash": {
+      "test_ids": [
+        "flash/0",
+        "flash/1",
+        "flash/2",
+        "flash/3"
+      ],
+      "per_representation": {
+        "profile": {
+          "r2": 0.995866530249444,
+          "rmse": 0.06422022515938813,
+          "pearson": 0.9998151937456211
+        },
+        "channel": {
+          "r2": 0.5107227682340432,
+          "rmse": 0.6987019339027241,
+          "pearson": 0.9999983929607915
+        }
+      }
+    },
+    "loom": {
+      "test_ids": [
+        "loom/0",
+        "loom/1"
+      ],
+      "per_representation": {
+        "profile": {
+          "r2": 0.9929213797384123,
+          "rmse": 0.11849570798957368,
+          "pearson": 1.0
+        },
+        "channel": {
+          "r2": 0.3627772376453786,
+          "rmse": 1.124278623205837,
+          "pearson": 1.0
+        }
+      }
+    }
+  },
+  "baselines": {
+    "n_shuffles": 200,
+    "profile": {
+      "shuffled_labels": {
+        "r2": {
+          "mean": -5.371031516549547,
+          "std": 5.846193898475874
+        },
+        "roc_auc": {
+          "mean": 0.4928125,
+          "std": 0.26992312997175694
+        },
+        "true_percentile": {
+          "r2": 100.0,
+          "roc_auc": 100.0
+        }
+      },
+      "channel_swap": {
+        "r2": {
+          "mean": 0.9804865810409212,
+          "std": 1.1102230246251565e-16
+        },
+        "roc_auc": {
+          "mean": 1.0,
+          "std": 0.0
+        },
+        "true_percentile": {
+          "r2": 100.0,
+          "roc_auc": 100.0
+        },
+        "note": "per-trajectory upstream-channel permutation; informative null for connectivity specificity"
+      },
+      "column_permutation": {
+        "r2": {
+          "mean": 0.980486581040921,
+          "std": 1.8056745910854465e-15
+        },
+        "note": "linear-estimator invariant; degeneracy check only, NOT a null with discrimination power"
+      }
+    },
+    "channel": {
+      "shuffled_labels": {
+        "r2": {
+          "mean": -0.06925014238170403,
+          "std": 0.24643189800228066
+        },
+        "roc_auc": {
+          "mean": 0.19875,
+          "std": 0.2595639372100832
+        },
+        "true_percentile": {
+          "r2": 98.5,
+          "roc_auc": 100.0
+        }
+      },
+      "channel_swap": {
+        "r2": {
+          "mean": -0.1952561095216752,
+          "std": 0.1205014507592928
+        },
+        "roc_auc": {
+          "mean": 0.2296875,
+          "std": 0.20558011478192634
+        },
+        "true_percentile": {
+          "r2": 100.0,
+          "roc_auc": 100.0
+        },
+        "note": "per-trajectory upstream-channel permutation; informative null for connectivity specificity"
+      },
+      "column_permutation": {
+        "r2": {
+          "mean": 0.473915211896398,
+          "std": 5.551115123125783e-17
+        },
+        "note": "linear-estimator invariant; degeneracy check only, NOT a null with discrimination power"
+      }
+    }
+  },
+  "connectivity_specificity": {
+    "channel_rep": {
+      "true_r2": 0.47391521189639807,
+      "channel_swap_null_r2": -0.1952561095216752,
+      "delta": 0.6691713214180732,
+      "meaningful": true
+    },
+    "note": "meaningful=True requires the true channel decode to clearly exceed the channel-swap null; degeneracy = identity carries no channel info."
+  },
+  "leakage": {
+    "checks": [
+      "trajectory ids unique",
+      "splits operate on whole trajectories (no shared frames across train/test)",
+      "each test trajectory's features computed from its own visible trace only"
+    ],
+    "result": "trajectory-level splits; pass"
+  },
+  "diagnostics": {
+    "pearson(profile_norm_feature, truth_norm)": 0.9993758663052738,
+    "note": "near-1 on this diagnostic means the target is almost a deterministic function of the total upstream magnitude, i.e. the decode may be magnitude bookkeeping rather than channel-specific reading."
+  },
+  "caveats": [
+    "n=8 trajectories total; LOO and pooled-AUC figures are high-variance",
+    "proxy mapping is unverified (mapping.verified=False, spec \u00a78)",
+    "generalization test set sizes are tiny (2-4 trajectories)"
+  ]
+}

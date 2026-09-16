@@ -1,0 +1,5356 @@
+{
+  "receptor_drive_mapping": [
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 11498,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 12032,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 12349,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 12384,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 12824,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 13132,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 13726,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 13764,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 14030,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 14102,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 14465,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 14888,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 15018,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 15804,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 16128,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 16138,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 16628,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 16809,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 16917,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17054,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17059,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17266,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17270,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17340,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17364,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17478,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17544,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17548,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17551,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17608,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17653,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17668,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17774,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17775,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17860,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17880,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17926,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 17987,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 17990,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 18127,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 18189,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 18396,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 18432,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 18478,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 18672,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 18900,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 18929,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 18936,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19034,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19146,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19229,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19249,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19260,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19420,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19543,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19549,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19550,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19589,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19608,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19634,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19787,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19794,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19830,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19842,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 19911,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 19954,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20016,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20047,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20103,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20162,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20182,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20240,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20269,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20282,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20329,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20334,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20399,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20440,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20471,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20535,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20542,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20572,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20584,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20588,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20673,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20694,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20749,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 20799,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20808,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20859,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20917,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20967,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 20976,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21045,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21151,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21165,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21225,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21287,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21299,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21313,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21318,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21336,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21361,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21562,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21703,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21721,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21769,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 21804,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21808,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21862,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 21899,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22034,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22194,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 22218,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 22253,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 22261,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22328,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 22557,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 22677,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22772,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22847,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22922,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22966,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 22975,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 23098,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 23202,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 23226,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23247,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23349,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 23392,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23497,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23550,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23590,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23665,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 23792,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23878,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 23919,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 23929,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24118,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24187,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24268,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24308,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 24338,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24401,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 24523,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24568,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24605,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24800,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 24840,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25027,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25136,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25209,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25253,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25267,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25286,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25316,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25497,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25511,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25524,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25572,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25575,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 25584,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25636,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 25854,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 26112,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 26147,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 26393,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 26416,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 26528,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 26730,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 26915,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27023,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27355,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27399,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27471,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27566,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 27624,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27716,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 27750,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 27796,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 27829,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 28003,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 28011,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 28044,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 28188,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 28741,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 28871,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 28945,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 28980,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29014,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29183,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29216,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29287,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29319,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29391,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 29417,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 29469,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 29514,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 29563,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29598,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29702,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29753,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29815,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29873,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29955,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 29986,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 30041,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 30087,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 30207,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 30480,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 30512,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 30803,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 30893,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 30895,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 30938,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 31105,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 31257,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 31262,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 31301,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 31308,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 31429,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 31563,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 31964,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 31988,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 32223,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 32237,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 32507,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 32597,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 32737,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 33137,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33185,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33303,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33396,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33406,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33439,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33694,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 33965,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 34051,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 34110,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 34372,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 34407,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 34655,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 34681,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 34845,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 35262,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 35294,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 35616,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 35632,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 35680,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 35838,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 35889,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 37431,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 37587,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 37613,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 37925,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 38065,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 38542,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 39620,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 40811,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 40841,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 41097,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 50287,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 55627,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 77614,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 81112,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 95241,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 100103,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 100485,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 107513,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 111787,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 111903,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 112292,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 129687,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 134521,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 511914,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 512366,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 512705,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 514508,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 514670,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 514956,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 515476,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 515900,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 515971,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 516909,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 517078,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 517079,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 517752,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 517819,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 518016,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 518439,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 518544,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 518730,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 518731,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 518983,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 519650,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 519931,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 520449,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 520764,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 521115,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 524366,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 524899,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 525844,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 526286,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 527408,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "R",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 530029,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 531014,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 532254,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 533129,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 533895,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LC4",
+      "body_id": 535341,
+      "flyvis_cell_types": [
+        "Tm5a",
+        "Tm5b",
+        "Tm5c",
+        "Tm9",
+        "Tm16",
+        "TmY10"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LC4 is a medulla-recipient lobula columnar neuron. flyvis does not simulate LC4; medulla->lobula Tm/TmY columnar cells are used as a proxied feed. Modeling approximation, NOT a verified correspondence."
+    },
+    {
+      "receptor_type": "LPLC2",
+      "body_id": 536444,
+      "flyvis_cell_types": [
+        "T4a",
+        "T4b",
+        "T4c",
+        "T4d",
+        "T5a",
+        "T5b",
+        "T5c",
+        "T5d"
+      ],
+      "correspondence": "proxy",
+      "verified": false,
+      "side": "L",
+      "note": "LPLC2 is a lobula-plate tangential/columnar loom cell. flyvis does not simulate LPLC2; direction-selective T4/T5 columns are used as a proxied LP feed. Modeling approximation, NOT a verified correspondence."
+    }
+  ],
+  "summary": {
+    "n_receptors": 311,
+    "n_driven": 311,
+    "n_proxy_unverified": 311,
+    "note": "flyvis (65 optic-lobe cell types) contains NO LC4/LPLC2; the drive above is a documented proxy and is NOT a verified cell-type correspondence (spec \u00a78)."
+  }
+}

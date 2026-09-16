@@ -1,0 +1,307 @@
+{
+  "run_dir": "20260916-214652",
+  "non_triviality": {
+    "n_relay_channels": 52,
+    "n_driven_channels": 21,
+    "silent_fraction": 0.596,
+    "per_stimulus": {
+      "flash": {
+        "finite": true,
+        "mean_abs": 0.114899,
+        "driven_std_per_channel": [
+          0.144049,
+          0.03547,
+          0.146257,
+          0.106819,
+          0.023631,
+          0.033363,
+          0.145906,
+          0.128011,
+          0.144607,
+          0.027726,
+          0.146257,
+          0.033357,
+          0.131111,
+          0.146257,
+          0.146257,
+          0.141997,
+          0.13089,
+          0.124794,
+          0.090068,
+          0.139507,
+          0.14426
+        ],
+        "n_zero_std_driven": 0,
+        "temporal_structure": {
+          "n_time_bins_nonzero": 600,
+          "max_frame_var": 0.019028
+        }
+      },
+      "loom": {
+        "finite": true,
+        "mean_abs": 0.118151,
+        "driven_std_per_channel": [
+          0.158811,
+          0.041048,
+          0.161191,
+          0.118715,
+          0.027661,
+          0.038627,
+          0.160814,
+          0.141529,
+          0.159413,
+          0.032096,
+          0.161191,
+          0.03862,
+          0.144869,
+          0.161191,
+          0.161191,
+          0.1566,
+          0.14463,
+          0.138064,
+          0.100707,
+          0.153916,
+          0.159039
+        ],
+        "n_zero_std_driven": 0,
+        "temporal_structure": {
+          "n_time_bins_nonzero": 700,
+          "max_frame_var": 0.022604
+        }
+      },
+      "moving_edge": {
+        "finite": true,
+        "mean_abs": 0.108768,
+        "driven_std_per_channel": [
+          0.167886,
+          0.041051,
+          0.170438,
+          0.124866,
+          0.025188,
+          0.038095,
+          0.170034,
+          0.149348,
+          0.168531,
+          0.030212,
+          0.170438,
+          0.038087,
+          0.152931,
+          0.170438,
+          0.170438,
+          0.165514,
+          0.152675,
+          0.145631,
+          0.105527,
+          0.162636,
+          0.16813
+        ],
+        "n_zero_std_driven": 0,
+        "temporal_structure": {
+          "n_time_bins_nonzero": 465,
+          "max_frame_var": 0.019436
+        }
+      }
+    },
+    "pass": true
+  },
+  "stimulus_sensitivity": {
+    "profiles": {
+      "flash": [
+        0.37688985927761764,
+        0.08169840066873592,
+        0.38280433203215625,
+        0.2769638469885755,
+        0.048718654960299784,
+        0.07567575481110221,
+        0.38186598894841844,
+        0.3338931987923198,
+        0.37838465131771326,
+        0.05930829795441956,
+        0.3828043320321563,
+        0.07565881919314132,
+        0.34220950098583663,
+        0.38280433203215636,
+        0.38280433203215625,
+        0.3713917342761945,
+        0.3416160093038729,
+        0.32526182233823103,
+        0.23180788610212205,
+        0.3647195432712084,
+        0.3774554804475685
+      ],
+      "loom": [
+        0.3880988005822748,
+        0.08287507374672412,
+        0.39424330990784473,
+        0.28428628172235415,
+        0.049471979480336825,
+        0.07680108334443868,
+        0.3932684710561166,
+        0.34342983476151956,
+        0.3896517308283576,
+        0.06033773925803492,
+        0.3942433099078447,
+        0.07678401068363605,
+        0.3520695899016728,
+        0.39424330990784473,
+        0.39424330990784473,
+        0.3823868323737023,
+        0.3514530150477814,
+        0.33446275091216804,
+        0.23737403201100588,
+        0.3754551342234892,
+        0.3886864209328523
+      ],
+      "moving_edge": [
+        0.3561899460223642,
+        0.07826228608328104,
+        0.36179170283265755,
+        0.26154732222533295,
+        0.04943504417591694,
+        0.07301232057883013,
+        0.3609029727669579,
+        0.3154666481580606,
+        0.3576057039162782,
+        0.05878879531885299,
+        0.36179170283265755,
+        0.07299754549316144,
+        0.3233432424687269,
+        0.36179170283265755,
+        0.36179170283265755,
+        0.3509825234085849,
+        0.3227811304751022,
+        0.30729163850960234,
+        0.21877889265958372,
+        0.3446631111882688,
+        0.35672566110168163
+      ]
+    },
+    "magnitudes": {
+      "flash": 1.42694544,
+      "loom": 1.4684281,
+      "moving_edge": 1.34887103
+    },
+    "pairwise": {
+      "flash_vs_loom_profile_mse": 8.229e-05,
+      "flash_vs_loom_profile_pearson": 0.999998,
+      "flash_vs_loom_profile_cosine": 0.999998,
+      "flash_vs_moving_edge_profile_mse": 0.00029151,
+      "flash_vs_moving_edge_profile_pearson": 0.999991,
+      "flash_vs_moving_edge_profile_cosine": 0.999993,
+      "loom_vs_moving_edge_profile_mse": 0.00068303,
+      "loom_vs_moving_edge_profile_pearson": 0.999997,
+      "loom_vs_moving_edge_profile_cosine": 0.999987
+    },
+    "max_profile_cosine": 0.999998,
+    "min_rel_mse": 4.111e-05,
+    "shape_discriminative": false,
+    "magnitude_differentiated": true,
+    "resolved": false,
+    "note": "resolved=shape-level discrimination (channel-specific profile distinguishes stimuli); magnitude_differentiated=the total premotor magnitude varies between stimuli even when profile shape does not."
+  },
+  "input_binding": {
+    "per_stimulus": {
+      "flash": {
+        "n_highly_correlated_channels": 0,
+        "corr_min": 0.267607,
+        "corr_median": 0.423787,
+        "corr_max": 0.426147
+      },
+      "loom": {
+        "n_highly_correlated_channels": 0,
+        "corr_min": 0.287424,
+        "corr_median": 0.377765,
+        "corr_max": 0.380973
+      },
+      "moving_edge": {
+        "n_highly_correlated_channels": 0,
+        "corr_min": 0.600814,
+        "corr_median": 0.639053,
+        "corr_max": 0.639975
+      }
+    },
+    "n_pure_copy_stimuli": 0,
+    "pass": true
+  },
+  "ablation": {
+    "ablations": {
+      "AN08B098": {
+        "n_relay_neurons": 10,
+        "n_edges_cut": 36,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.132001,
+        "relative_change": -0.02285
+      },
+      "AN12B001": {
+        "n_relay_neurons": 2,
+        "n_edges_cut": 11,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.132914,
+        "relative_change": -0.029923
+      },
+      "IN00A062": {
+        "n_relay_neurons": 3,
+        "n_edges_cut": 7,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.130915,
+        "relative_change": -0.014439
+      },
+      "JO-B1_a": {
+        "n_relay_neurons": 14,
+        "n_edges_cut": 14,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.13279,
+        "relative_change": -0.028968
+      },
+      "PVLP010": {
+        "n_relay_neurons": 2,
+        "n_edges_cut": 13,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.134282,
+        "relative_change": -0.040529
+      },
+      "PVLP122": {
+        "n_relay_neurons": 6,
+        "n_edges_cut": 56,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.138457,
+        "relative_change": -0.072874
+      },
+      "PVLP151": {
+        "n_relay_neurons": 4,
+        "n_edges_cut": 23,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.133487,
+        "relative_change": -0.034369
+      },
+      "SAD064": {
+        "n_relay_neurons": 6,
+        "n_edges_cut": 28,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.138323,
+        "relative_change": -0.071839
+      },
+      "SAD073": {
+        "n_relay_neurons": 4,
+        "n_edges_cut": 38,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.137911,
+        "relative_change": -0.068649
+      },
+      "SAD091": {
+        "n_relay_neurons": 1,
+        "n_edges_cut": 5,
+        "dn_abs_full": 0.129052,
+        "dn_abs_ablated": 0.131615,
+        "relative_change": -0.019864
+      }
+    }
+  },
+  "verdict": {
+    "non_trivial": true,
+    "stimulus_sensitive_shape": false,
+    "stimulus_sensitive_magnitude": true,
+    "input_bound_not_copy": true,
+    "relay_contributes": true
+  }
+}
