@@ -160,6 +160,7 @@ def run_experiment(config: dict[str, Any]) -> Path:
             "graph_mode": graph_mode,
             "model_choice": conn_out.get("model_choice", {}),
             "graph_summary": conn_out.get("graph_summary", {}),
+            "mapping_mode": conn_out.get("mapping_mode"),
             "mapping_summary": conn_out.get("mapping", {}).get("summary", {}),
         }
 
@@ -195,6 +196,78 @@ def _write_plots(stimuli_responses: dict[str, Any], plot_dir: Path) -> None:
     plt.close(fig)
 
 
+def _build_drive_plan(
+    receptor_neurons: Any,
+    cell_types: set[str],
+    config: dict[str, Any],
+) -> tuple[list[Any], str]:
+    """Build the receptor drive plan (connectome_grounded by default).
+
+    Config: ``sim.connectome.mapping`` in {"connectome_grounded",
+    "legacy_proxy", "none"}. The grounded mode reads the cached MaleCNS
+    upstream-partner evidence (``loom_escape_receptor_upstream_<type>``) and
+    weights flyvis classes by real synapse counts; if the evidence cache is
+    missing it falls back to the legacy proxy with a recorded note.
+    """
+    from hawking_fly.connectome.cache import load_cached_circuit
+    from hawking_fly.connectome.mapping import (
+        FLYVIS_RECEPTOR_PROXY,
+        build_connectome_grounded_drive_plan,
+        build_receptor_drive_plan,
+    )
+
+    mode = (
+        config.get("sim", {})
+        .get("connectome", {})
+        .get("mapping", "connectome_grounded")
+    )
+    if mode == "connectome_grounded":
+        evidence: dict[str, Any] = {}
+        missing: list[str] = []
+        for rtype in {"LC4", "LPLC2"}:
+            table, _ = load_cached_circuit(f"loom_escape_receptor_upstream_{rtype.lower()}")
+            if table is None:
+                missing.append(rtype)
+            else:
+                evidence[rtype] = table
+        if missing:
+            note = (
+                f"upstream evidence cache missing for {missing} — fell back to "
+                "legacy proxy (see connectome/mapping.py). Run "
+                "discover_receptor_upstream_evidence to re-ground."
+            )
+            return build_receptor_drive_plan(
+                receptor_neurons, available_cell_types=cell_types
+            ), note
+        plan = build_connectome_grounded_drive_plan(
+            receptor_neurons, evidence, available_cell_types=cell_types
+        )
+        return plan, "connectome_grounded (MaleCNS v1.0 synapse-weighted)"
+    if mode == "legacy_proxy":
+        return build_receptor_drive_plan(
+            receptor_neurons, available_cell_types=cell_types
+        ), "legacy_proxy (hand-picked coupons, verified=False)"
+    if mode == "none":
+        from hawking_fly.connectome.mapping import ReceptorDrivePlan
+
+        plan = []
+        for row in receptor_neurons.itertuples(index=False):
+            plan.append(
+                ReceptorDrivePlan(
+                    receptor_type=str(row.type),
+                    body_id=int(row.bodyId),
+                    flyvis_cell_types=(),
+                    correspondence="none",
+                    verified=False,
+                    note="mapping mode 'none'",
+                )
+            )
+        return plan, "mode=none: no flyvis drive applied"
+    raise ValueError(
+        f"unknown mapping mode {mode!r}; choose connectome_grounded|legacy_proxy|none"
+    )
+
+
 def run_connectome_propagation(
     stimuli_responses: dict[str, Any],
     config: dict[str, Any],
@@ -203,13 +276,14 @@ def run_connectome_propagation(
     """Carry flyvis responses through the MaleCNS circuit to DNp01.
 
     Called only when config['with_connectome'] is true. Uses the cached direct
-    adjacency (LC4/LPLC2 → DNp01) and the explicit proxy receptor mapping
-    (connectome/mapping.py, verified=False).
+    adjacency (LC4/LPLC2 → DNp01) and the explicit receptor mapping
+    (connectome/mapping.py), connectome-grounded by default.
     """
     import numpy as np
 
     from hawking_fly.connectome.cache import load_cached_circuit
     from hawking_fly.connectome.mapping import (
+        build_connectome_grounded_drive_plan,
         build_receptor_drive_plan,
         aggregate_drive,
         mapping_provenance,
@@ -255,7 +329,9 @@ def run_connectome_propagation(
         )
     )
 
-    plan = build_receptor_drive_plan(receptor_neurons, available_cell_types=cell_types)
+    plan, mapping_note = _build_drive_plan(
+        receptor_neurons, cell_types, config
+    )
     receptor_ids = [p.body_id for p in plan]
     node_ids = sorted(set(edges["pre"]) | set(edges["post"]))
     node_index = {n: i for i, n in enumerate(node_ids)}
@@ -272,7 +348,10 @@ def run_connectome_propagation(
     )
 
     # 5. Propagate each stimulus; store DNp01 traces + receptor drive (per sample).
-    out: dict[str, Any] = {"mapping": mapping_provenance(plan)}
+    out: dict[str, Any] = {
+        "mapping": mapping_provenance(plan),
+        "mapping_mode": mapping_note,
+    }
     out["model_choice"] = {
         "nonlinearity": nonlinearity_name,
         "note": (
@@ -377,7 +456,6 @@ def run_malecns_premotor_propagation(
     """
     from hawking_fly.connectome.cache import load_cached_circuit
     from hawking_fly.connectome.mapping import (
-        build_receptor_drive_plan,
         aggregate_drive,
         mapping_provenance,
     )
@@ -431,7 +509,7 @@ def run_malecns_premotor_propagation(
         pre, post, w, n_nodes=n, node_ids=node_ids, nonlinearity=nonlinearity
     )
 
-    # 5. Build flyvis drive plan (same proxy as direct graph).
+    # 5. Build the receptor drive plan (connectome-grounded, synapse-weighted).
     sample_resp = next(
         (r for (r, _) in stimuli_responses.values() if r is not None), None
     )
@@ -442,10 +520,13 @@ def run_malecns_premotor_propagation(
             sample_resp.cell_type.values if "cell_type" in sample_resp.coords else []
         )
     )
-    plan = build_receptor_drive_plan(receptor_neurons, available_cell_types=cell_types)
+    plan, mapping_note = _build_drive_plan(receptor_neurons, cell_types, config)
 
     # 6. Propagate each stimulus; extract relay + DNp01 traces.
-    out: dict[str, Any] = {"mapping": mapping_provenance(plan)}
+    out: dict[str, Any] = {
+        "mapping": mapping_provenance(plan),
+        "mapping_mode": mapping_note,
+    }
     out["model_choice"] = {"nonlinearity": nonlinearity_name}
     out["graph_summary"] = {
         "n_nodes": n,

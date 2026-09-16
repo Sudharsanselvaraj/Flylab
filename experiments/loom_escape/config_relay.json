@@ -9,7 +9,8 @@
     "await_token": false,
     "connectome": {
       "graph": "relay",
-      "nonlinearity": "relu"
+      "nonlinearity": "relu",
+      "mapping": "connectome_grounded"
     },
     "notes": "MaleCNS-grounded premotor experiment: 3-layer graph (LC4/LPLC2 -> relay -> DNp01). Same stimuli as Phase 0A."
   },
