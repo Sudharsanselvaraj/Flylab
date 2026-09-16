@@ -147,12 +147,19 @@ def run_experiment(config: dict[str, Any]) -> Path:
 
     # 5. Connectome propagation leg (if configured).
     if config.get("sim", {}).get("with_connectome", False):
-        logger.info("Running MaleCNS connectome propagation leg.")
-        conn_out = run_connectome_propagation(stimuli_responses, config, run_dir)
+        graph_mode = config.get("sim", {}).get("connectome", {}).get("graph", "direct")
+        if graph_mode == "relay":
+            logger.info("Running MaleCNS-grounded premotor propagation (3-layer graph).")
+            conn_out = run_malecns_premotor_propagation(stimuli_responses, config, run_dir)
+        else:
+            logger.info("Running MaleCNS connectome propagation leg (direct graph).")
+            conn_out = run_connectome_propagation(stimuli_responses, config, run_dir)
         metrics["connectome"] = conn_out.get("dnp01_metrics", {})
         metrics["connectome_provenance"] = {
             "edge_cache": conn_out.get("edge_cache"),
+            "graph_mode": graph_mode,
             "model_choice": conn_out.get("model_choice", {}),
+            "graph_summary": conn_out.get("graph_summary", {}),
             "mapping_summary": conn_out.get("mapping", {}).get("summary", {}),
         }
 
@@ -353,6 +360,208 @@ def run_connectome_propagation(
     plt.close(fig)
 
     logger.info("Connectome propagation complete -> %s", prop_dir)
+    return out
+
+
+def run_malecns_premotor_propagation(
+    stimuli_responses: dict[str, Any],
+    config: dict[str, Any],
+    run_dir: Path,
+) -> dict[str, Any]:
+    """Propagate through the full MaleCNS-grounded premotor graph.
+
+    Loads the cached 3-layer graph (LC4/LPLC2 -> relay layer -> DNp01),
+    runs the rate model over all nodes, and extracts per-relay-neuron activity
+    traces as the MaleCNS-grounded premotor representation, alongside DNp01
+    traces for the decoder ground truth.
+    """
+    from hawking_fly.connectome.cache import load_cached_circuit
+    from hawking_fly.connectome.mapping import (
+        build_receptor_drive_plan,
+        aggregate_drive,
+        mapping_provenance,
+    )
+    from hawking_fly.connectome.circuits import RELAY_TYPES
+    from hawking_fly.propagation.rate_model import RateModel, relu, saturating
+
+    _NL = {"relu": relu, "saturating": saturating}
+    nonlinearity_name = (
+        config.get("sim", {}).get("connectome", {}).get("nonlinearity", "relu")
+    )
+    nonlinearity = _NL.get(nonlinearity_name, relu)
+
+    # 1. Load cached 3-layer graph + relay neuron table.
+    full_graph, graph_info = load_cached_circuit("loom_escape_full_graph")
+    if full_graph is None:
+        raise RuntimeError(
+            "Full graph cache missing — run discover_malecns_relay_path first"
+        )
+    relay_neurons, _ = load_cached_circuit("loom_escape_relay_neurons")
+    if relay_neurons is None:
+        raise RuntimeError("relay_neurons cache missing — run discover_malecns_relay_path first")
+    receptor_neurons, _ = load_cached_circuit("loom_escape_receptor_neurons")
+    if receptor_neurons is None:
+        raise RuntimeError("receptor_neurons cache missing — run run_discovery first")
+
+    # 2. Build node list: all unique bodyIds from the full graph.
+    node_ids = sorted(set(full_graph["pre"]) | set(full_graph["post"]))
+    node_index = {n: i for i, n in enumerate(node_ids)}
+    n = len(node_ids)
+
+    # 3. Identify node populations by role.
+    receptor_ids = set(receptor_neurons["bodyId"])
+    relay_ids = set(relay_neurons["bodyId"])
+    dn_ids = set(full_graph["post"]) - relay_ids - receptor_ids
+
+    receptor_idx = [node_index[bid] for bid in sorted(receptor_ids & set(node_index))]
+    relay_df = relay_neurons[relay_neurons["bodyId"].isin(node_index)].copy()
+    relay_idx = [node_index[bid] for bid in relay_df["bodyId"].tolist()]
+    dn_idx = [node_index[bid] for bid in sorted(dn_ids)]
+
+    # Driven relay subset: those that actually receive LC4/LPLC2 input.
+    r2r_edges = full_graph[full_graph["layer"] == "receptor_to_relay"]
+    driven_relay_ids = set(r2r_edges["post"])
+    driven_mask = [i for i, bid in enumerate(relay_df["bodyId"]) if bid in driven_relay_ids]
+
+    # 4. Build rate model on the full graph.
+    pre = full_graph["pre"].to_numpy()
+    post = full_graph["post"].to_numpy()
+    w = full_graph["syn_count"].to_numpy().astype(np.float64)
+    model = RateModel.from_edge_list(
+        pre, post, w, n_nodes=n, node_ids=node_ids, nonlinearity=nonlinearity
+    )
+
+    # 5. Build flyvis drive plan (same proxy as direct graph).
+    sample_resp = next(
+        (r for (r, _) in stimuli_responses.values() if r is not None), None
+    )
+    if sample_resp is None:
+        raise RuntimeError("no flyvis responses available")
+    cell_types: set[str] = set(
+        np.asarray(
+            sample_resp.cell_type.values if "cell_type" in sample_resp.coords else []
+        )
+    )
+    plan = build_receptor_drive_plan(receptor_neurons, available_cell_types=cell_types)
+
+    # 6. Propagate each stimulus; extract relay + DNp01 traces.
+    out: dict[str, Any] = {"mapping": mapping_provenance(plan)}
+    out["model_choice"] = {"nonlinearity": nonlinearity_name}
+    out["graph_summary"] = {
+        "n_nodes": n,
+        "n_receptor_nodes": len(receptor_idx),
+        "n_relay_nodes": len(relay_idx),
+        "n_driven_relay_nodes": len(driven_mask),
+        "n_dn_nodes": len(dn_idx),
+        "edge_cache": graph_info.path.name if graph_info else None,
+        "layer_synapses": full_graph.groupby("layer")["syn_count"].sum().to_dict(),
+    }
+
+    prop_dir = run_dir / "connectome"
+    prop_dir.mkdir(exist_ok=True)
+
+    relay_traces: dict[str, np.ndarray] = {}
+    dn_traces: dict[str, np.ndarray] = {}
+    for name, (resp_ds, _coords) in stimuli_responses.items():
+        if resp_ds is None:
+            continue
+        drive = aggregate_drive(resp_ds, plan)  # (samples, frames, n_receptors)
+        n_samples, frames, _ = drive.shape
+        relay_trace = np.zeros((n_samples, frames, len(relay_idx)), dtype=np.float64)
+        dn_trace = np.zeros((n_samples, frames, len(dn_idx)), dtype=np.float64)
+        for s in range(n_samples):
+            r = np.zeros(n, dtype=np.float64)
+            for t in range(frames):
+                ext = np.zeros(n, dtype=np.float64)
+                for k, idx in enumerate(receptor_idx):
+                    ext[idx] = drive[s, t, k]
+                r = model.step(r, ext)
+                relay_trace[s, t] = r[relay_idx]
+                dn_trace[s, t] = r[dn_idx]
+        relay_traces[name] = relay_trace
+        dn_traces[name] = dn_trace
+        np.savez(prop_dir / f"relay_{name}.npz", trace=relay_trace)
+        np.savez(prop_dir / f"dnp01_{name}.npz", trace=dn_trace)
+        np.savez(prop_dir / f"receptor_drive_{name}.npz", drive=drive)
+
+    # 7. Save relay neuron metadata.
+    relay_meta = relay_df[["bodyId", "type", "instance"]].reset_index(drop=True)
+    relay_meta["node_index"] = relay_idx
+    relay_meta["has_receptor_input"] = [bid in driven_relay_ids for bid in relay_meta["bodyId"]]
+    relay_meta.to_json(prop_dir / "relay_neurons.json", orient="records", indent=2)
+
+    # 8. Compute metrics.
+    metrics: dict[str, Any] = {}
+    for stim_name, tr in dn_traces.items():
+        tr = np.asarray(tr)
+        metrics[f"dnp01_{stim_name}"] = {
+            "shape": list(tr.shape),
+            "mean_abs_norm": float(np.mean(np.abs(tr).mean(axis=0))),
+            "finite": bool(np.all(np.isfinite(tr))),
+        }
+    for stim_name, tr in relay_traces.items():
+        tr = np.asarray(tr)
+        driven = tr[:, :, driven_mask] if driven_mask else tr[:, :, :0]
+        metrics[f"relay_{stim_name}"] = {
+            "shape": list(tr.shape),
+            "driven_shape": list(driven.shape),
+            "driven_mean_abs_norm": float(np.mean(np.abs(driven).mean(axis=0))) if driven_mask else 0.0,
+            "silent_fraction": round(1.0 - (len(driven_mask) / len(relay_idx)), 3) if relay_idx else 1.0,
+            "finite": bool(np.all(np.isfinite(tr))),
+        }
+
+    # Pairwise abs-trace MSE.
+    pairwise: dict[str, float] = {}
+    all_means: dict[str, np.ndarray] = {}
+    for k, tr in {**dn_traces, **{f"relay_{k}": v for k, v in relay_traces.items()}}.items():
+        all_means[k] = np.abs(np.asarray(tr)).mean(axis=0).ravel()
+    keys = list(all_means)
+    for i, a in enumerate(keys):
+        for b in keys[i + 1:]:
+            ta, tb = all_means[a], all_means[b]
+            min_len = min(len(ta), len(tb))
+            pairwise[f"{a}_vs_{b}_mse"] = round(
+                float(np.mean((ta[:min_len] - tb[:min_len]) ** 2)), 8
+            )
+    metrics["pairwise_abs_trace_mse"] = pairwise
+
+    out["dnp01_metrics"] = metrics
+    out["edge_cache"] = graph_info.path.name if graph_info else None
+    (prop_dir / "mapping.json").write_text(json.dumps(out["mapping"], indent=2, default=str))
+    (prop_dir / "dnp01_metrics.json").write_text(json.dumps(metrics, indent=2, default=str))
+
+    # 9. Propagation plot: relay neurons + DNp01 traces per stimulus.
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    ax_relay, ax_dn = axes
+    for name, tr in relay_traces.items():
+        tr_driven = np.asarray(tr)[:, :, driven_mask] if driven_mask else np.asarray(tr)[:, :, :0]
+        mean_tr = tr_driven.mean(axis=0)
+        for ch in range(mean_tr.shape[1]):
+            lbl = f"{name} ch{ch}" if ch < 3 else None
+            ax_relay.plot(mean_tr[:, ch], label=lbl, alpha=0.6)
+    ax_relay.set_title("Driven relay neuron traces (MaleCNS-grounded premotor)")
+    ax_relay.set_xlabel("frame")
+    ax_relay.set_ylabel("rate (a.u.)")
+    ax_relay.legend(fontsize=6, ncol=2)
+
+    for name, tr in dn_traces.items():
+        mean_tr = np.asarray(tr).mean(axis=0)
+        ax_dn.plot(mean_tr[:, 0], label=f"{name} (DNp01_R)", alpha=0.8)
+        if mean_tr.shape[1] > 1:
+            ax_dn.plot(mean_tr[:, 1], label=f"{name} (DNp01_L)", alpha=0.5, linestyle="--")
+    ax_dn.set_title("DNp01 traces (MaleCNS-grounded premotor)")
+    ax_dn.set_xlabel("frame")
+    ax_dn.set_ylabel("rate (a.u.)")
+    ax_dn.legend(fontsize=8)
+    fig.tight_layout()
+    fig.savefig(prop_dir / "premotor_traces.png", dpi=110)
+    plt.close(fig)
+
+    logger.info("MaleCNS premotor propagation complete -> %s", prop_dir)
     return out
 
 
