@@ -46,7 +46,7 @@ export interface ProvenanceFlags {
 export interface ExperimentProvenance {
   run_id: string;
   dataset: string;
-  mapping: string;
+  mapping: { mode: string; summary: string; note: string } | string;
   topology: string;
   flags: ProvenanceFlags;
   layers: ProvenanceLayer[];

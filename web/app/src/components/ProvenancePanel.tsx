@@ -6,13 +6,14 @@ export function ProvenancePanel() {
   if (!provenance) return <EmptyState />;
 
   const { layers, flags, dataset, mapping, topology } = provenance;
+  const mappingLabel = typeof mapping === "string" ? mapping : mapping.mode;
 
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-4 space-y-3">
       <h3 className="text-sm font-medium text-slate-700">Provenance &amp; Honesty</h3>
       <div className="flex flex-wrap gap-2 text-xs">
         <Pill label="dataset" value={dataset} />
-        <Pill label="mapping" value={mapping} />
+        <Pill label="mapping" value={mappingLabel} />
         <Pill label="topology" value={topology} />
       </div>
       <div className="grid grid-cols-3 gap-2 text-xs">

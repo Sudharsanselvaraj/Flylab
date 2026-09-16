@@ -20,6 +20,15 @@ const PROVENANCE = {
   ],
 };
 
+const PROVENANCE_OBJECT_MAPPING = {
+  ...PROVENANCE,
+  mapping: {
+    mode: "connectome_grounded",
+    summary: "synapse-weighted upstream evidence",
+    note: "mapper note",
+  },
+};
+
 describe("ProvenancePanel", () => {
   it("renders honest flags — dynamics not validated, presentation layer marked", () => {
     useStore.setState({ provenance: PROVENANCE as never });
@@ -28,6 +37,12 @@ describe("ProvenancePanel", () => {
     expect(screen.getByText(/dynamics_validated: no/)).toBeInTheDocument();
     expect(screen.getByText("PRESENTATION")).toBeInTheDocument();
     expect(screen.getByText(/Dynamics NOT validated/)).toBeInTheDocument();
+  });
+
+  it("handles the backend mapping object shape without crashing", () => {
+    useStore.setState({ provenance: PROVENANCE_OBJECT_MAPPING as never });
+    render(<ProvenancePanel />);
+    expect(screen.getByText((t) => t.includes("connectome_grounded"))).toBeInTheDocument();
   });
 
   it("shows an empty state when no experiment is loaded", () => {
