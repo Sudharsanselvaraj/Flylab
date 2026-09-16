@@ -75,7 +75,12 @@ class RateModel:
         normalize: bool = True,
         **kwargs: object,
     ) -> "RateModel":
-        """Build from edge lists (pre, post, weight), optionally row-normalizing."""
+        """Build from edge lists (pre, post, weight), optionally row-normalizing.
+
+        The weight matrix is oriented ``weight[post, pre]`` so that ``weight @ x``
+        has one row per *post*-synaptic node — this is what ``step``/``simulate``
+        expect (see class docstring).
+        """
         pre = np.asarray(pre)
         post = np.asarray(post)
         w = np.asarray(weights, dtype=np.float64)
@@ -87,14 +92,14 @@ class RateModel:
             raise ValueError(
                 f"n_nodes={n_nodes} but node_ids resolves to {len(ids)} nodes"
             )
-        rows = np.array([index[int(p)] for p in pre])
-        cols = np.array([index[int(p)] for p in post])
+        rows = np.array([index[int(p)] for p in post])  # post -> row
+        cols = np.array([index[int(p)] for p in pre])  # pre -> column
         mat = sparse.coo_matrix((w, (rows, cols)), shape=(n_nodes, n_nodes))
         if normalize:
-            # Incoming normalization: divide each column by its sum (avoid div-by-zero).
-            in_degree = np.asarray(mat.sum(axis=0)).ravel()
+            # Incoming normalization: divide each post row by its total incoming.
+            in_degree = np.asarray(mat.sum(axis=1)).ravel()
             in_degree[in_degree == 0] = 1.0
-            mat = mat @ sparse.diags(1.0 / in_degree)
+            mat = sparse.diags(1.0 / in_degree) @ mat
         return cls(mat.tocsr(), node_ids=ids, **kwargs)
 
     def _input(self, drive: npt.NDArray[np.float64]) -> npt.NDArray[np.float64]:
