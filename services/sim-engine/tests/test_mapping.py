@@ -24,7 +24,9 @@ def test_build_plan_flags_proxy():
             {"bodyId": 11498, "type": "LPLC2", "instance": "LPLC2_L"},
         ]
     )
-    plan = build_receptor_drive_plan(df, available_cell_types={"T4a", "T4b", "T5a"})
+    plan = build_receptor_drive_plan(
+        df, available_cell_types={"T4a", "T4b", "T5a", "T5b", "Tm9"}
+    )
     types = {p.receptor_type for p in plan}
     assert "LC4" in types
     assert "LPLC2" in types
