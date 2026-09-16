@@ -39,7 +39,12 @@ class PairedDataset:
 
     @property
     def mapping_verified(self) -> bool:
-        return bool(self.metadata.get("perc", {}).get("verified", False))
+        perc = self.metadata.get("perc", {})
+        # connectome-grounded mode records flyvis_to_malecns_mapping_verified;
+        # the legacy paired dataset keeps the plain `verified` key.
+        if "flyvis_to_malecns_mapping_verified" in perc:
+            return bool(perc["flyvis_to_malecns_mapping_verified"])
+        return bool(perc.get("verified", False))
 
 
 def load_paired_dataset(

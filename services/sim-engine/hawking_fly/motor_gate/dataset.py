@@ -154,8 +154,6 @@ def build_verified_premotor_dataset(
     relay_meta = json.loads(relay_meta_path.read_text())
     driven_mask = np.array([m["has_receptor_input"] for m in relay_meta], dtype=bool)
     channel_mask = np.ones(len(relay_meta), dtype=bool) if include_silent_relay else driven_mask
-
-    # Type -> index mapping for aggregation (collect driven relay cells per type).
     type_index: dict[str, int] = {}
     for i, m in enumerate(relay_meta):
         if channel_mask[i]:
@@ -193,6 +191,26 @@ def build_verified_premotor_dataset(
     inner_channels = list(type_index) if type_aggregated else [
         m["type"] for i, m in enumerate(relay_meta) if channel_mask[i]
     ]
+    mapping_file = conn_dir / "mapping.json"
+    mapping_summary = (
+        json.loads(mapping_file.read_text()).get("summary", {})
+        if mapping_file.is_file()
+        else {}
+    )
+    n_grounded = int(mapping_summary.get("n_connectome_grounded", 0))
+    n_receptors = int(mapping_summary.get("n_receptors", 0))
+    mapping_grounded = n_grounded == n_receptors and n_receptors > 0
+    mapping_note = (
+        "flyvis->MaleCNS drive = MaleCNS v1.0-typed presynaptic partners "
+        "weighted by synapse count (connectome-grounded). verified=True means "
+        "the classes synapse onto the receptor in MaleCNS v1.0, NOT that flyvis "
+        "responses equal MaleCNS recordings."
+        if mapping_grounded
+        else (
+            "legacy proxy or partially-unmapped flyvis drive; see "
+            "connectome/mapping.json."
+        )
+    )
     manifest = {
         "definition": {
             "visible": (
@@ -208,7 +226,8 @@ def build_verified_premotor_dataset(
             "label": "MaleCNS-grounded premotor representation",
             "connectome_edges_verified": True,
             "cell_identity_verified": True,
-            "flyvis_to_malecns_mapping_verified": False,
+            "flyvis_to_malecns_mapping_verified": mapping_grounded,
+            "mapping_verification_note": mapping_note,
             "dynamics_validated": False,
             "channel_source": "relay_neurons.json (bodyId) + relay_<stim>.npz (trace)",
             "n_relay_channels": int(np.sum(channel_mask)),

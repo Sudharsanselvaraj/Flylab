@@ -160,16 +160,21 @@ def run_study(
     also_leave_out_flash: bool = True,
     dataset_filename: str = "motor_gate_paired_v0.npz",
     study_name: str = "proxy_motor_decoding",
+    allow_grounded_mapping: bool = False,
 ) -> dict[str, Any]:
     """Run the study and write JSON + PNG results; returns the results dict."""
     run_dir = Path(run_dir)
     ds = load_paired_dataset(run_dir, filename=dataset_filename)
-    if ds.mapping_verified:
-        raise ValueError(
-            "study requires mapping.verified=False; refusing to label this as "
-            "validated motor-signal decoding"
-        )
     _assert_no_leakage(ds)
+    if ds.mapping_verified and not allow_grounded_mapping:
+        raise ValueError(
+            "This dataset carries a connectome-grounded flyvis->MaleCNS mapping "
+            "(flyvis_to_malecns_mapping_verified=True). The decoder will not label "
+            "it as validated motor-signal decoding. To run an internal review/comparison "
+            "study ONLY (results still marked unverified-for-biology), pass "
+            "allow_grounded_mapping=True. This is the spec-guard checkpoint; it "
+            "requires explicit reviewer acknowledgment before issuance of results."
+        )
     out_dir = Path(out_dir) if out_dir is not None else run_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -340,7 +345,14 @@ def run_study(
         "diagnostics": diagnostics,
         "caveats": [
             "n=8 trajectories total; LOO and pooled-AUC figures are high-variance",
-            "proxy mapping is unverified (mapping.verified=False, spec §8)",
+            (
+                "connectome-grounded mapping: flyvis classes are MaleCNS v1.0 "
+                "presynaptic partners weighted by synapse count; verified=True "
+                "means the classes synapse onto the receptors in MaleCNS v1.0, "
+                "NOT that flyvis responses equal MaleCNS recordings."
+                if ds.mapping_verified
+                else "proxy mapping is unverified (mapping.verified=False, spec §8)"
+            ),
             "generalization test set sizes are tiny (2-4 trajectories)",
         ],
     }
@@ -406,6 +418,15 @@ def main() -> int:
         "--dataset", type=str, default="motor_gate_paired_v0.npz"
     )
     parser.add_argument("--study-name", type=str, default="proxy_motor_decoding")
+    parser.add_argument(
+        "--allow-grounded-mapping",
+        action="store_true",
+        help=(
+            "reviewer opt-in to run the study on a connectome-grounded "
+            "flyvis->MaleCNS dataset (results still NOT labeled as validated "
+            "biological decoding)"
+        ),
+    )
     args = parser.parse_args()
     run_study(
         run_dir=args.run_dir,
@@ -416,6 +437,7 @@ def main() -> int:
         leave_out=args.leave_out,
         dataset_filename=args.dataset,
         study_name=args.study_name,
+        allow_grounded_mapping=args.allow_grounded_mapping,
     )
     return 0
 
