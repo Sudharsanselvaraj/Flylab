@@ -1,0 +1,62 @@
+{
+  "definition": {
+    "visible": "upstream proxy receptor drive (aggregate_drive, per sample)",
+    "ground_truth": "DNp01 activity from the MaleCNS rate-model leg",
+    "alignment": "same integration run, matched per sample and frame"
+  },
+  "perc": {
+    "label": "documented proxy, NOT a verified cell-type correspondence",
+    "source": "connectome/mapping.py FLYVIS_RECEPTOR_PROXY",
+    "verified": false
+  },
+  "model_choice": {
+    "nonlinearity": "relu",
+    "note": "saturating makes every stimulus saturate at the same DNp01 ceiling; relu keeps the readout proportional to weighted input (spec \u00a78 label)."
+  },
+  "stimuli": {
+    "flash": {
+      "visible_shape": [
+        4,
+        600,
+        311
+      ],
+      "truth_shape": [
+        4,
+        600,
+        2
+      ],
+      "n_samples": 4
+    },
+    "loom": {
+      "visible_shape": [
+        2,
+        700,
+        311
+      ],
+      "truth_shape": [
+        2,
+        700,
+        2
+      ],
+      "n_samples": 2
+    },
+    "moving_edge": {
+      "visible_shape": [
+        2,
+        465,
+        311
+      ],
+      "truth_shape": [
+        2,
+        465,
+        2
+      ],
+      "n_samples": 2
+    }
+  },
+  "provenance": {
+    "run_dir": "20260916-210539",
+    "mapping_created": null,
+    "built": "2026-09-16T15:38:39.340308+00:00"
+  }
+}
