@@ -12,8 +12,6 @@ from hawking_fly.motor_gate.dataset import (
 
 
 def _fake_run(run_dir: Path) -> None:
-    import pandas as pd
-
     conn = run_dir / "connectome"
     conn.mkdir(parents=True)
     rng = np.random.default_rng(0)
