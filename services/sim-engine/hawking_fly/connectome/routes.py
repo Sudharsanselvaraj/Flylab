@@ -29,6 +29,7 @@ from hawking_fly.connectome.circuits import (
     _dn_criteria,
     _receptor_criteria,
     build_malecns_grounded_graph,
+    query_receptor_upstream_evidence,
 )
 
 if TYPE_CHECKING:
@@ -259,4 +260,46 @@ def discover_malecns_relay_path(
             len(set(edges["pre"]) | set(edges["post"]))
         ),
         "method": graph["method"],
+    }
+
+
+def discover_receptor_upstream_evidence(
+    client: ConnectomeClient,
+    *,
+    cache_prefix: str = "loom_escape",
+) -> dict[str, object]:
+    """Query + cache the MaleCNS-typed upstream partners of each receptor.
+
+    Pulls live MaleCNS v1.0 adjacency for LC4 and LPLC2 together with the
+    pre-synaptic neuron table, aggregates per pre *type*, and snapshots one
+    evidence table per receptor so `mapping.build_connectome_grounded_*` can
+    construct the flyvis -> receptor drive from actual synaptic structure
+    (never re-querying the connectome at runtime).
+    """
+    evidence = query_receptor_upstream_evidence(client)
+    counts: dict[str, dict[str, object]] = {}
+    for rtype, table in evidence["upstream_by_type"].items():
+        save_circuit_cache(
+            f"{cache_prefix}_receptor_upstream_{rtype.lower()}",
+            table,
+            client.config.dataset,
+            extra={
+                "note": (
+                    "MaleCNS v1.0 typed presynaptic partners of this receptor "
+                    "(pre_type / n_pre_neurons / total_syn), flyvis-overlapping "
+                    "subset selectable at mapping time."
+                )
+            },
+        )
+        counts[rtype] = {
+            "n_upstream_types": int(table["pre_type"].nunique()),
+            "n_self_synapses": int(table.loc[table["is_self"], "total_syn"].sum()),
+            "total_synapses": int(table["total_syn"].sum()),
+        }
+    return {
+        "dataset": client.config.dataset,
+        "receptor_types": list(evidence["receptor_types"]),
+        "flyvis_cell_types": evidence["flyvis_cell_types"],
+        "per_type": counts,
+        "method": evidence["method"],
     }

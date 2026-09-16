@@ -21,6 +21,25 @@ if TYPE_CHECKING:
 LOOM_RECEPTOR_TYPES = ("LC4", "LPLC2")
 DESCENDING_NEURON_TYPES = ("DNp01",)
 
+#: The 65 cell types simulated by the pretrained flyvis optic-lobe model
+#: (`flow/0000/000`). Used to select, among the *actual* MaleCNS-typed
+#: upstream partners of a receptor, the subset that flyvis can drive.
+FLYVIS_CELL_TYPES = frozenset(
+    {
+        "Am", "C2", "C3", "CT1(Lo1)", "CT1(M10)",
+        "L1", "L2", "L3", "L4", "L5", "Lawf1", "Lawf2",
+        "Mi1", "Mi10", "Mi11", "Mi12", "Mi13", "Mi14", "Mi15",
+        "Mi2", "Mi3", "Mi4", "Mi9",
+        "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8",
+        "T1", "T2", "T2a", "T3",
+        "T4a", "T4b", "T4c", "T4d", "T5a", "T5b", "T5c", "T5d",
+        "Tm1", "Tm16", "Tm2", "Tm20", "Tm28", "Tm3", "Tm30",
+        "Tm4", "Tm5Y", "Tm5a", "Tm5b", "Tm5c", "Tm9",
+        "TmY10", "TmY13", "TmY14", "TmY15", "TmY18", "TmY3",
+        "TmY4", "TmY5a", "TmY9",
+    }
+)
+
 #: Relay types discovered in the MaleCNS v1.0 relay scan (see
 #: `data/connectome/loom_escape_relay_routes`). These are MaleCNS neuron types
 #: that both receive LC4/LPLC2 input and project to DNp01.
@@ -204,3 +223,56 @@ def build_malecns_grounded_graph(
         "all adjacencies pulled live from MaleCNS v1.0"
     )
     return data
+
+
+def query_receptor_upstream_evidence(
+    client: ConnectomeClient,
+    *,
+    receptor_types: tuple[str, ...] = LOOM_RECEPTOR_TYPES,
+) -> dict[str, object]:
+    """Query the *actual* MaleCNS-typed inputs to each looming receptor.
+
+    For every receptor type (LC4 / LPLC2) this pulls the full set of
+    presynaptic partners from MaleCNS v1.0 plus their synapse counts, then
+    aggregates per pre-synaptic *type*. The result is the evidence table used
+    to ground the flyvis -> receptor mapping: it answers 'which flyvis cell
+    classes actually synapse onto LC4/LPLC2, and with what weight?' instead of
+    assuming a proxy.
+
+    Receptor type itself (self-synapses) is retained in the *full* upstream
+    table but flagged; coverage fractions computed by `mapping.build_*`
+    exclude self-feedback so it measures input *from other neurons*.
+    """
+    from neuprint import NeuronCriteria
+
+    per_type: dict[str, pd.DataFrame] = {}
+    for rtype in receptor_types:
+        crit = NeuronCriteria(type=rtype)
+        _, _ = client.fetch_neurons(crit)
+        pres, edges = client.fetch_adjacencies(None, crit)
+        pre_neurons, _ = client.fetch_neurons(NeuronCriteria(bodyId=pres["bodyId"].tolist()))
+        merged = edges.merge(
+            pre_neurons[["bodyId", "type"]],
+            left_on="bodyId_pre",
+            right_on="bodyId",
+            how="left",
+            suffixes=("", "_pre"),
+        )
+        merged["is_self"] = merged["type"].eq(rtype)
+        agg = (
+            merged.groupby("type", dropna=False)
+            .agg(n_pre_neurons=("bodyId_pre", "nunique"), total_syn=("weight", "sum"), is_self=("is_self", "any"))
+            .reset_index()
+            .rename(columns={"type": "pre_type"})
+        )
+        per_type[rtype] = agg
+    return {
+        "dataset": client.config.dataset,
+        "receptor_types": receptor_types,
+        "flyvis_cell_types": sorted(FLYVIS_CELL_TYPES),
+        "upstream_by_type": per_type,
+        "method": (
+            "live MaleCNS v1.0 adjacency: all presynaptic partners of each "
+            "receptor type, aggregated by pre-synaptic type with total synapse weight"
+        ),
+    }
