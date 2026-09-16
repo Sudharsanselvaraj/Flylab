@@ -146,12 +146,13 @@ def run_experiment(config: dict[str, Any]) -> Path:
     metrics["provenance"] = provenance
 
     # 5. Connectome propagation leg (if configured).
-    if config.get("with_connectome", False):
+    if config.get("sim", {}).get("with_connectome", False):
         logger.info("Running MaleCNS connectome propagation leg.")
         conn_out = run_connectome_propagation(stimuli_responses, config, run_dir)
         metrics["connectome"] = conn_out.get("dnp01_metrics", {})
         metrics["connectome_provenance"] = {
             "edge_cache": conn_out.get("edge_cache"),
+            "model_choice": conn_out.get("model_choice", {}),
             "mapping_summary": conn_out.get("mapping", {}).get("summary", {}),
         }
 
@@ -205,11 +206,18 @@ def run_connectome_propagation(
         build_receptor_drive_plan,
         aggregate_drive,
         mapping_provenance,
-        receptor_drive_plan_frame,
     )
-    from hawking_fly.connectome.routes import dominant_routes
-    from hawking_fly.connectome.client import ConnectomeClient
-    from hawking_fly.propagation.rate_model import RateModel
+    from hawking_fly.propagation.rate_model import RateModel, relu, saturating
+
+    # Recorded modeling choice (spec §8): the default `saturating` nonlinearity
+    # drives every stimulus to the same equilibrium at DNp01 (pairwise MSE ~ 0),
+    # which is not informative for the Phase 0B/0C gate. `relu` keeps the readout
+    # proportional to the real weighted input so stimulus differences survive.
+    _NL = {"relu": relu, "saturating": saturating}
+    nonlinearity_name = (
+        config.get("sim", {}).get("connectome", {}).get("nonlinearity", "relu")
+    )
+    nonlinearity = _NL.get(nonlinearity_name, relu)
 
     # 1. Load the cached direct adjacency.
     edges, info = load_cached_circuit("loom_escape_direct_lc4_lplc2_to_dnp01")
@@ -249,51 +257,66 @@ def run_connectome_propagation(
     dnp01_idx = [node_index[bid] for bid in sorted(set(edges["post"]))]
 
     # 4. Build the rate model once.
-    pre = edges["pre"].map(node_index).to_numpy()
-    post = edges["post"].map(node_index).to_numpy()
+    pre = edges["pre"].to_numpy()
+    post = edges["post"].to_numpy()
     w = edges["syn_count"].to_numpy().astype(np.float64)
-    model = RateModel.from_edge_list(pre, post, w, n_nodes=n, node_ids=node_ids)
+    model = RateModel.from_edge_list(
+        pre, post, w, n_nodes=n, node_ids=node_ids, nonlinearity=nonlinearity
+    )
 
-    # 5. Propagate each stimulus; store DNp01 traces + receptor drive.
+    # 5. Propagate each stimulus; store DNp01 traces + receptor drive (per sample).
     out: dict[str, Any] = {"mapping": mapping_provenance(plan)}
+    out["model_choice"] = {
+        "nonlinearity": nonlinearity_name,
+        "note": (
+            "saturating makes every stimulus saturate at the same DNp01 ceiling; "
+            "relu keeps the readout proportional to weighted input (spec §8 label)."
+        ),
+    }
     dn_traces: dict[str, list[Any]] = {}
     drive_frames: dict[str, list[Any]] = {}
     for name, (resp_ds, _coords) in stimuli_responses.items():
         if resp_ds is None:
             continue
-        drive = aggregate_drive(resp_ds, plan)  # (frames, n_receptors)
+        drive = aggregate_drive(resp_ds, plan)  # (samples, frames, n_receptors)
         drive_frames[name] = [drive]
-        frames = drive.shape[0]
-        r = np.zeros(n, dtype=np.float64)
-        dn_trace = np.zeros((frames, len(dnp01_idx)), dtype=np.float64)
-        for t in range(frames):
-            ext = np.zeros(n, dtype=np.float64)
-            for k, idx in enumerate(receptor_idx):
-                ext[idx] = drive[t, k]
-            r = model.step(r, ext)
-            dn_trace[t] = r[dnp01_idx]
+        n_samples, frames, _ = drive.shape
+        dn_trace = np.zeros((n_samples, frames, len(dnp01_idx)), dtype=np.float64)
+        for s in range(n_samples):
+            r = np.zeros(n, dtype=np.float64)
+            for t in range(frames):
+                ext = np.zeros(n, dtype=np.float64)
+                for k, idx in enumerate(receptor_idx):
+                    ext[idx] = drive[s, t, k]
+                r = model.step(r, ext)
+                dn_trace[s, t] = r[dnp01_idx]
         dn_traces[name] = [dn_trace]
 
-    # 6. Compute DNp01 sanity metrics.
+    # 6. Compute DNp01 sanity metrics (per-sample + mean-abs across samples).
     dnp01_metrics: dict[str, Any] = {}
-    traces_ns = {k: v[0] for k, v in dn_traces.items()}
+    traces_ns: dict[str, np.ndarray] = {k: v[0] for k, v in dn_traces.items()}
+    mean_abs: dict[str, np.ndarray] = {}
     for stim_name, tr in traces_ns.items():
+        tr = np.asarray(tr)
         dnp01_metrics[stim_name] = {
             "shape": list(tr.shape),
+            "n_samples": int(tr.shape[0]),
             "peak_rate": float(np.max(tr)),
-            "norm": float(np.linalg.norm(tr)),
+            "mean_peak_rate": float(np.mean(np.max(tr, axis=1))),
+            "mean_abs_norm": float(np.linalg.norm(np.abs(tr).mean(axis=0))),
             "finite": bool(np.all(np.isfinite(tr))),
         }
+        mean_abs[stim_name] = np.abs(tr).mean(axis=0)  # (frame, n_dnp01)
     pairwise_dnp01: dict[str, float] = {}
-    names = list(traces_ns)
+    names = list(mean_abs)
     for i, a in enumerate(names):
         for b in names[i + 1 :]:
-            ta, tb = traces_ns[a], traces_ns[b]
+            ta, tb = mean_abs[a], mean_abs[b]
             min_len = min(len(ta), len(tb))
             pairwise_dnp01[f"{a}_vs_{b}_mse"] = round(
                 float(np.mean((ta[:min_len] - tb[:min_len]) ** 2)), 8
             )
-    dnp01_metrics["pairwise_trace_mse"] = pairwise_dnp01
+    dnp01_metrics["pairwise_abs_trace_mse"] = pairwise_dnp01
     out["dnp01_metrics"] = dnp01_metrics
     out["edge_cache"] = info.path.name if info else None
 
@@ -317,9 +340,10 @@ def run_connectome_propagation(
 
     fig, ax = plt.subplots(figsize=(8, 4))
     for name, tr in traces_ns.items():
-        ax.plot(tr[:, 0], label=f"{name} (DNp01_R)", alpha=0.8)
-        if tr.shape[1] > 1:
-            ax.plot(tr[:, 1], label=f"{name} (DNp01_L)", alpha=0.5, linestyle="--")
+        mean_tr = np.asarray(tr).mean(axis=0)  # mean over samples
+        ax.plot(mean_tr[:, 0], label=f"{name} (DNp01_R)", alpha=0.8)
+        if mean_tr.shape[1] > 1:
+            ax.plot(mean_tr[:, 1], label=f"{name} (DNp01_L)", alpha=0.5, linestyle="--")
     ax.set_xlabel("frame")
     ax.set_ylabel("rate (a.u.)")
     ax.set_title("DNp01 responses (MaleCNS v1.0, proxy drive from flyvis)")
