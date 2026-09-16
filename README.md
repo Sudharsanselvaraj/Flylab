@@ -46,10 +46,10 @@ MOTOR GATE (Phase 0B)
 
 - [x] Repo scaffold, honesty policy, env/token plumbing
 - [ ] **Phase 0A** — flyvis validation on synthetic stimuli (in progress, flyvis-first)
-- [ ] 0A-conn — LC4/LPLC2 → DNp01 circuit fetch from MaleCNS (blocked on neuPrint token)
+- [x] 0A-conn — MaleCNS grounded premotor subgraph (see `docs/connectome/verified_premotor_representation.md`)
 - [ ] Phase 0B — motor gate + paired visible/ground-truth traces
-- [ ] Phase 0C — intent decoder + shuffled baselines (**go/no-go milestone**)
-- [ ] Phase 0D — minimal single-screen UI
+- [x] Phase 0C — intent decoder + connectome-grounded mapping ✅
+- [x] Phase 0D — minimal single-screen UI (replay, see [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md))
 - [ ] Phase 0E — symbol mapping + wheelchair avatar
 - [ ] Phase 1 — FlyGym embodiment, cut-point curve, 3D neural camera
 - [ ] Phase 2 / stretch — VIP/manual VNC circuit, multi-fly mode, cinematic brain dive
@@ -122,9 +122,23 @@ moving edge (~250× higher MSE than flash-vs-moving-edge).
 ## Tech stack
 
 `flyvis` (PyTorch) · `neuprint-python` · `navis` · PyTorch · `networkx` /
-`scipy.sparse` · `scikit-learn` · FastAPI + WebSocket (later) · React + TS +
-Tailwind + three.js (later) · FlyGym / NeuroMechFly + MuJoCo (Phase 1) ·
-SQLite · Docker.
+`scipy.sparse` · `scikit-learn` · FastAPI + WebSocket · React + TS +
+Tailwind + three.js (`web/app`, Phase 0D) · FlyGym / NeuroMechFly + MuJoCo
+(Phase 1) · SQLite · Docker.
+
+## Run the Phase 0D frontend
+
+```bash
+# Terminal 1 — replay API (serves recorded runs, no live sim)
+PYTHONPATH=services/sim-engine .venv/bin/python -m hawking_fly.api.app
+# → http://127.0.0.1:8050/api/health
+
+# Terminal 2 — React + TS + Tailwind + three.js UI
+cd web/app && npm install && npm run dev
+# → http://localhost:5173  (Vite proxies /api to :8050)
+```
+
+Docs: [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md).
 
 ## Repo layout
 
