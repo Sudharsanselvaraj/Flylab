@@ -1,0 +1,43 @@
+{
+  "flash": {
+    "shape": [
+      4,
+      600,
+      2
+    ],
+    "n_samples": 4,
+    "peak_rate": 0.3790548734017867,
+    "mean_peak_rate": 0.29675716954647247,
+    "mean_abs_norm": 7.6290811794304,
+    "finite": true
+  },
+  "moving_edge": {
+    "shape": [
+      2,
+      465,
+      2
+    ],
+    "n_samples": 2,
+    "peak_rate": 0.41691054965430563,
+    "mean_peak_rate": 0.31598589227849244,
+    "mean_abs_norm": 6.393058701389736,
+    "finite": true
+  },
+  "loom": {
+    "shape": [
+      2,
+      700,
+      2
+    ],
+    "n_samples": 2,
+    "peak_rate": 0.39358453712691266,
+    "mean_peak_rate": 0.30460400126150516,
+    "mean_abs_norm": 8.385021486290398,
+    "finite": true
+  },
+  "pairwise_abs_trace_mse": {
+    "flash_vs_moving_edge_mse": 9e-07,
+    "flash_vs_loom_mse": 7.27e-06,
+    "moving_edge_vs_loom_mse": 1.042e-05
+  }
+}

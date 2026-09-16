@@ -1,0 +1,76 @@
+{
+  "sim": {
+    "experiment": "loom_escape",
+    "output_root": "experiments",
+    "use_pretrained": true,
+    "download_pretrained": false,
+    "with_connectome": true,
+    "await_token": false
+  },
+  "stimuli": [
+    {
+      "name": "flash",
+      "cfg": {
+        "dynamic_range": [
+          0,
+          1
+        ],
+        "t_stim": 1.0,
+        "t_pre": 1.0,
+        "dt": 0.005,
+        "radius": [
+          -1,
+          6
+        ],
+        "alternations": [
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "moving_edge",
+      "cfg": {
+        "widths": [
+          2
+        ],
+        "offsets": [
+          -5,
+          6
+        ],
+        "intensities": [
+          0,
+          1
+        ],
+        "speeds": [
+          13
+        ],
+        "angles": [
+          0
+        ],
+        "t_pre": 1.0,
+        "t_post": 1.0,
+        "dt": 0.005
+      }
+    },
+    {
+      "name": "loom",
+      "cfg": {
+        "intensities": [
+          1.0,
+          0.0
+        ],
+        "baseline": 0.5,
+        "t_pre": 1.0,
+        "t_stim": 1.0,
+        "t_hold": 0.5,
+        "t_post": 1.0,
+        "dt": 0.005,
+        "start_radius": 0,
+        "end_radius": 15,
+        "batch_size": 1
+      }
+    }
+  ]
+}
