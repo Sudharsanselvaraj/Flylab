@@ -1,6 +1,7 @@
 import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Text, Line } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
+import { makeTextSprite } from "./textSprite";
 import { useStore } from "../../state/useStore";
 import type * as THREE from "three";
 
@@ -113,18 +114,14 @@ function NeuronSphere({ node, highlighted }: { node: NodeDef; highlighted: boole
         <sphereGeometry args={[radius, 24, 24]} />
         <meshStandardMaterial color={color} roughness={0.4} metalness={0.1} />
       </mesh>
-      <Text
-        position={[0, 0.4, 0]}
-        fontSize={0.18}
-        color="#334155"
-        anchorX="center"
-        anchorY="bottom"
-        font={undefined}
-      >
-        {node.id}
-      </Text>
+      <NeuronLabel text={node.id} />
     </group>
   );
+}
+
+function NeuronLabel({ text }: { text: string }) {
+  const sprite = useMemo(() => makeTextSprite(text), [text]);
+  return <primitive object={sprite} position={[0, 0.5, 0]} />;
 }
 
 function EdgeLine({ from, to }: { from: NodeDef; to: NodeDef }) {
@@ -132,5 +129,10 @@ function EdgeLine({ from, to }: { from: NodeDef; to: NodeDef }) {
     [from.x, from.y, from.z],
     [to.x, to.y, to.z],
   ];
-  return <Line points={points} color="#cbd5e1" lineWidth={1} opacity={0.5} transparent />;
+  return <line>
+    <bufferGeometry>
+      <bufferAttribute attach="attributes-position" args={[new Float32Array(points.flat()), 3]} />
+    </bufferGeometry>
+    <lineBasicMaterial color="#cbd5e1" transparent opacity={0.5} />
+  </line>;
 }

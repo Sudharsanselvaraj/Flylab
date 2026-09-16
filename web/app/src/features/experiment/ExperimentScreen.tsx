@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { RunSelector } from "../../components/RunSelector";
 import { StimulusControls } from "../../components/StimulusControls";
 import { MotorGatePanel } from "../../components/MotorGatePanel";
@@ -8,13 +8,18 @@ import { ProvenancePanel } from "../../components/ProvenancePanel";
 import { ExperimentTimeline } from "../../components/ExperimentTimeline";
 import { SelectableNeuronPanel } from "../../components/SelectableNeuronPanel";
 import { ChannelFilterPanel } from "../../components/ChannelFilterPanel";
+import { ErrorBoundary } from "../../components/ErrorBoundary";
 import { useStore } from "../../state/useStore";
 
 const NeuralSubgraph = lazy(() => import("../three/NeuralSubgraph"));
 const FlyPlaceholder = lazy(() => import("../../presentation/FlyPlaceholder"));
 
 export function ExperimentScreen() {
-  const { mode } = useStore();
+  const { mode, runs, fetchRuns } = useStore();
+
+  useEffect(() => {
+    if (runs.length === 0) void fetchRuns();
+  }, [runs.length, fetchRuns]);
 
   if (mode === "idle") return <LoadingView />;
   if (mode === "selecting") return <SelectView />;
@@ -22,10 +27,18 @@ export function ExperimentScreen() {
   return <DashboardView />;
 }
 
+function Missing3DView({ what }: { what: string }) {
+  return (
+    <div className="bg-white rounded-lg border border-slate-200 p-4 text-sm text-slate-500">
+      {what} unavailable (WebGL not supported or 3D failed to load) — rest of the app is fine.
+    </div>
+  );
+}
+
 function LoadingView() {
   return (
     <div className="flex-1 flex items-center justify-center text-slate-400">
-      Connecting to backend…
+      Connecting to backend… (make sure the FastAPI replay server is running on :8050)
     </div>
   );
 }
@@ -66,18 +79,22 @@ function DashboardView() {
         <div className="col-span-6 space-y-4">
           <NeuralActivityPanel />
           <ExperimentTimeline />
-          <Suspense fallback={<div className="h-80 rounded-lg border border-slate-100 bg-slate-50 animate-pulse" />}>
-            <NeuralSubgraph />
-          </Suspense>
+          <ErrorBoundary fallback={() => <Missing3DView what="premotor subgraph" />}>
+            <Suspense fallback={<div className="h-80 rounded-lg border border-slate-100 bg-slate-50 animate-pulse" />}>
+              <NeuralSubgraph />
+            </Suspense>
+          </ErrorBoundary>
         </div>
 
         {/* Right column: decoder + provenance + fly */}
         <div className="col-span-3 space-y-4">
           <DecoderPanel />
           <ProvenancePanel />
-          <Suspense fallback={<div className="h-64 rounded-lg border border-slate-100 bg-slate-50 animate-pulse" />}>
-            <FlyPlaceholder />
-          </Suspense>
+          <ErrorBoundary fallback={() => <Missing3DView what="fly presentation" />}>
+            <Suspense fallback={<div className="h-64 rounded-lg border border-slate-100 bg-slate-50 animate-pulse" />}>
+              <FlyPlaceholder />
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </div>
     </div>

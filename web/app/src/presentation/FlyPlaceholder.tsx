@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { useStore } from "../state/useStore";
+import { makeTextSprite } from "../features/three/textSprite";
 import type * as THREE from "three";
 
 export default function FlyPlaceholder() {
@@ -71,6 +72,7 @@ function Wing({ position, side }: { position: [number, number, number]; side: st
 }
 
 function WheelchairModel() {
+  const label = useMemo(() => makeTextSprite("PRESENTATION ONLY"), []);
   return (
     <group position={[0, -0.1, 0]}>
       <mesh position={[0, 0, 0]}>
@@ -85,9 +87,7 @@ function WheelchairModel() {
         <cylinderGeometry args={[0.08, 0.08, 0.04, 16]} />
         <meshStandardMaterial color="#1e293b" />
       </mesh>
-      <Text position={[0, 0.2, 0]} fontSize={0.1} color="#64748b" anchorX="center">
-        PRESENTATION ONLY
-      </Text>
+      <primitive object={label} position={[0, 0.25, 0]} />
     </group>
   );
 }
@@ -102,10 +102,10 @@ function Ground() {
 }
 
 function StimulusLabel({ stimulus }: { stimulus: string | null }) {
-  if (!stimulus) return null;
-  return (
-    <Text position={[0, 1.2, 0]} fontSize={0.15} color="#94a3b8" anchorX="center">
-      {stimulus.replace("_", " ")}
-    </Text>
+  const sprite = useMemo(
+    () => (stimulus ? makeTextSprite(`${stimulus.replace("_", " ")} · not validated`) : null),
+    [stimulus],
   );
+  if (!sprite) return null;
+  return <primitive object={sprite} position={[0, 1.2, 0]} />;
 }

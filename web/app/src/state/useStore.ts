@@ -62,7 +62,7 @@ export const useStore = create<AppState>((set, get) => ({
       fetch(`${API_BASE}/experiments/${runId}/provenance`).then((r) => (r.ok ? r.json() : null)),
       fetch(`${API_BASE}/experiments/${runId}/decoder`).then((r) => (r.ok ? r.json() : null)),
     ]);
-    set({ provenance, decoder, currentStimulus: runData.stimuli[0] ?? null });
+    set({ provenance, decoder, currentStimulus: runData.stimuli[0] ?? null, mode: "running" });
     if (runData.stimuli[0]) await get().selectStimulus(runData.stimuli[0]);
   },
 
