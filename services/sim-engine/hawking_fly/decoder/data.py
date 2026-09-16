@@ -17,6 +17,7 @@ import numpy as np
 
 PAIRED_FILENAME = "motor_gate_paired_v0.npz"
 MANIFEST_FILENAME = "manifest.json"
+TYPE_AGG_FILENAME = "motor_gate_verified_v0_type_agg.npz"
 
 
 @dataclass
@@ -41,13 +42,17 @@ class PairedDataset:
         return bool(self.metadata.get("perc", {}).get("verified", False))
 
 
-def load_paired_dataset(run_dir: str | Path) -> PairedDataset:
+def load_paired_dataset(
+    run_dir: str | Path, filename: str = PAIRED_FILENAME
+) -> PairedDataset:
     """Load the paired motor-gate dataset from an integration run directory."""
     run_dir = Path(run_dir)
-    npz_path = run_dir / PAIRED_FILENAME
+    npz_path = run_dir / filename
     if not npz_path.is_file():
         raise FileNotFoundError(f"paired dataset not found: {npz_path}")
     manifest_path = run_dir / MANIFEST_FILENAME
+    if filename == TYPE_AGG_FILENAME:
+        manifest_path = run_dir / "manifest_type_agg.json"
     metadata: dict[str, Any] = {}
     if manifest_path.is_file():
         metadata = json.loads(manifest_path.read_text())

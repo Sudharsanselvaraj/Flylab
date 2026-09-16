@@ -1,11 +1,16 @@
-"""Proxy motor-signal decoding study (Phase 0C, experimental).
+"""Decoding study for motor-signal representations (Phase 0C, experimental).
 
 Wraps the paired dataset into a trajectory-level decoder study: ridge baselines
 predict the per-trajectory DNp01 response norm from two representations of the
-upstream proxy drive —
+upstream activity —
 
 * ``profile``   — channel-agnostic magnitude profile (coarse time bins + norm)
 * ``channel``   — per-channel mean magnitude (preserves channel identity)
+
+It is source-agnostic: the default source is the proxy receptor drive
+(``mapping.verified=False``), and the MaleCNS-grounded premotor relay
+representation (``connectome_edges_verified``/``cell_identity_verified`` true,
+mapping/dynamics still false) is run with ``dataset_filename``/``study_name``.
 
 Two null-model comparisons establish what the decoder is actually using:
 
@@ -15,10 +20,8 @@ Two null-model comparisons establish what the decoder is actually using:
   this null ties the true decode; if channel-specific wiring matters, it
   degrades it.
 
-All results are recorded with ``mapping.verified=False``. Vocabulary guard: this
-is *proxy motor-signal decoding*; no validated-claim language is used. The API
-is source-agnostic so a verified MaleCNS premotor representation can replace the
-proxy later (see ``decoder/data.py``).
+Vocabulary guard: no validated-claim language is used regardless of source; the
+verbatim result table is "decoding study", not "validated motor decoding".
 """
 
 from __future__ import annotations
@@ -155,10 +158,12 @@ def run_study(
     seed: int = 7,
     leave_out: str = "loom",
     also_leave_out_flash: bool = True,
+    dataset_filename: str = "motor_gate_paired_v0.npz",
+    study_name: str = "proxy_motor_decoding",
 ) -> dict[str, Any]:
     """Run the study and write JSON + PNG results; returns the results dict."""
     run_dir = Path(run_dir)
-    ds = load_paired_dataset(run_dir)
+    ds = load_paired_dataset(run_dir, filename=dataset_filename)
     if ds.mapping_verified:
         raise ValueError(
             "study requires mapping.verified=False; refusing to label this as "
@@ -306,8 +311,8 @@ def run_study(
     X_channel = _build_matrix(ds, "channel", rng=None)
     n_features = {"profile": int(X_profile.shape[1]), "channel": int(X_channel.shape[1])}
     results: dict[str, Any] = {
-        "study": "proxy_motor_decoding",
-        "title": "Proxy motor-signal decoding",
+        "study": study_name,
+        "title": study_name.replace("_", " ").title(),
         "run_dir": run_dir.name,
         "mapping_verified": ds.mapping_verified,
         "mapping_summary": ds.metadata.get("perc", {}),
@@ -340,15 +345,23 @@ def run_study(
         ],
     }
 
-    (out_dir / "proxy_motor_decoding.json").write_text(
+    (out_dir / f"{study_name}.json").write_text(
         json.dumps(results, indent=2, default=str)
     )
-    _write_figure(out_dir, ids, y, yhat["profile"], reg["profile"], baselines["profile"])
+    _write_figure(
+        out_dir,
+        study_name=study_name,
+        ids=ids,
+        y=y,
+        yhat=yhat["profile"],
+        reg=reg["profile"],
+        baselines=baselines["profile"],
+    )
     return results
 
 
 def _write_figure(
-    out_dir: Path, ids, y, yhat, reg, baselines
+    out_dir: Path, study_name: str, ids, y, yhat, reg, baselines
 ) -> None:
     import matplotlib
 
@@ -376,7 +389,7 @@ def _write_figure(
     ax2.set_ylabel("R2")
     ax2.set_title("Regression R2 vs null models (profile rep)")
     fig.tight_layout()
-    path = out_dir / "proxy_motor_decoding.png"
+    path = out_dir / f"{study_name}.png"
     fig.savefig(path, dpi=110)
     plt.close(fig)
 
@@ -389,6 +402,10 @@ def main() -> int:
     parser.add_argument("--n-shuffles", type=int, default=50)
     parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--leave-out", type=str, default="loom")
+    parser.add_argument(
+        "--dataset", type=str, default="motor_gate_paired_v0.npz"
+    )
+    parser.add_argument("--study-name", type=str, default="proxy_motor_decoding")
     args = parser.parse_args()
     run_study(
         run_dir=args.run_dir,
@@ -397,6 +414,8 @@ def main() -> int:
         n_shuffles=args.n_shuffles,
         seed=args.seed,
         leave_out=args.leave_out,
+        dataset_filename=args.dataset,
+        study_name=args.study_name,
     )
     return 0
 

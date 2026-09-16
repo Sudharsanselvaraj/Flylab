@@ -116,6 +116,130 @@ def build_paired_dataset(run_dir: str | Path, out_dir: str | Path | None = None)
     return npz_path
 
 
+PAIRED_VERIFIED_NPZ = "motor_gate_verified_v0.npz"
+PAIRED_VERIFIED_TYPE_AGG_NPZ = "motor_gate_verified_v0_type_agg.npz"
+
+
+def build_verified_premotor_dataset(
+    run_dir: str | Path,
+    out_dir: str | Path | None = None,
+    *,
+    include_silent_relay: bool = False,
+    type_aggregated: bool = False,
+) -> Path:
+    """Materialize the MaleCNS-grounded premotor paired dataset.
+
+    VISIBLE = relay-neuron activity read off the full 3-layer graph, per-cell
+    (n_driven relay channels) or per-type (aggregate of driven relay cells).
+
+    GROUND TRUTH = DNp01 activity, unchanged.
+
+    Provenance is carried per the scientific naming decision: MaleCNS
+    connectivity and cell identity are verified from the live connectome, but
+    the flyvis -> MaleCNS input mapping and the rate-model dynamics remain
+    unverified (proxy / custom dynamics).
+    """
+    run_dir = Path(run_dir)
+    out_dir = Path(out_dir) if out_dir is not None else run_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    conn_dir = run_dir / CONNECTOME_DIR
+
+    if not conn_dir.is_dir():
+        raise FileNotFoundError(f"connectome leg missing in {run_dir}")
+    relay_meta_path = conn_dir / "relay_neurons.json"
+    if not relay_meta_path.is_file():
+        raise FileNotFoundError(
+            f"relay_neurons.json missing in {conn_dir} — run premotor propagation"
+        )
+    relay_meta = json.loads(relay_meta_path.read_text())
+    driven_mask = np.array([m["has_receptor_input"] for m in relay_meta], dtype=bool)
+    channel_mask = np.ones(len(relay_meta), dtype=bool) if include_silent_relay else driven_mask
+
+    # Type -> index mapping for aggregation (collect driven relay cells per type).
+    type_index: dict[str, int] = {}
+    for i, m in enumerate(relay_meta):
+        if channel_mask[i]:
+            t = m["type"]
+            type_index.setdefault(t, len(type_index))
+    n_types = len(type_index)
+
+    paired: dict[str, dict[str, np.ndarray]] = {}
+    for relay_path in sorted(conn_dir.glob("relay_*.npz")):
+        stim = relay_path.name.removeprefix("relay_").removesuffix(".npz")
+        trace_path = conn_dir / f"dnp01_{stim}.npz"
+        if not trace_path.exists():
+            raise FileNotFoundError(f"missing dnp01_{stim}.npz alongside {relay_path.name}")
+        relay = np.asarray(np.load(relay_path)["trace"]).astype(np.float32)
+        dn = np.asarray(np.load(trace_path)["trace"]).astype(np.float32)
+        if not np.any(channel_mask):
+            raise ValueError("no relay channels selected for VISIBLE")
+        if type_aggregated:
+            samples, frames, _ = relay.shape
+            visible = np.zeros((samples, frames, n_types), dtype=np.float32)
+            for j, m in enumerate(relay_meta):
+                if channel_mask[j]:
+                    visible[:, :, type_index[m["type"]]] += relay[:, :, j]
+        else:
+            visible = relay[:, :, channel_mask]
+        paired[stim] = {"visible": visible, "truth": dn}
+
+    npz_path = out_dir / (PAIRED_VERIFIED_TYPE_AGG_NPZ if type_aggregated else PAIRED_VERIFIED_NPZ)
+    arrays: dict[str, np.ndarray] = {}
+    for stim, v in paired.items():
+        arrays[f"visible_{stim}"] = v["visible"]
+        arrays[f"truth_{stim}"] = v["truth"]
+    np.savez(npz_path, **arrays)
+
+    inner_channels = list(type_index) if type_aggregated else [
+        m["type"] for i, m in enumerate(relay_meta) if channel_mask[i]
+    ]
+    manifest = {
+        "definition": {
+            "visible": (
+                "MaleCNS-grounded premotor relay activity (individual relay "
+                "neurons read off the full LC4/LPLC2 -> relay -> DNp01 graph)"
+                if not type_aggregated
+                else "MaleCNS-grounded premotor relay activity (type-aggregated)"
+            ),
+            "ground_truth": "DNp01 activity from the MaleCNS rate-model leg",
+            "alignment": "same integration run, matched per sample and frame",
+        },
+        "perc": {
+            "label": "MaleCNS-grounded premotor representation",
+            "connectome_edges_verified": True,
+            "cell_identity_verified": True,
+            "flyvis_to_malecns_mapping_verified": False,
+            "dynamics_validated": False,
+            "channel_source": "relay_neurons.json (bodyId) + relay_<stim>.npz (trace)",
+            "n_relay_channels": int(np.sum(channel_mask)),
+            "n_silent_excluded": int(np.sum(~channel_mask)),
+            "n_type_channels": n_types,
+            "channels": inner_channels,
+        },
+        "stimuli": {
+            stim: {
+                "visible_shape": list(v["visible"].shape),
+                "truth_shape": list(v["truth"].shape),
+                "n_samples": int(v["visible"].shape[0]),
+            }
+            for stim, v in paired.items()
+        },
+        "provenance": {
+            "run_dir": run_dir.name,
+            "built": datetime.now(timezone.utc).isoformat(),
+            "graph": "loom_escape_full_graph (3-layer, MaleCNS v1.0)",
+        },
+    }
+    if type_aggregated:
+        manifest_path = out_dir / "manifest_type_agg.json"
+    else:
+        manifest_path = out_dir / PAIRED_MANIFEST
+    manifest_path.write_text(json.dumps(manifest, indent=2, default=str))
+
+    assert npz_path.is_file() and manifest_path.is_file()
+    return npz_path
+
+
 def main() -> int:
     import argparse
 
