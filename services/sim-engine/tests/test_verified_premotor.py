@@ -14,7 +14,7 @@ import pytest
 
 SAMPLE_RUN = Path(
     "/Users/sudharsan/Downloads/The Hawking Fly"
-    "/experiments/loom_escape/20260916-214652"
+    "/experiments/loom_escape/20260916-223510"
 )
 
 
@@ -100,18 +100,28 @@ class TestProvenance:
         perc = m["perc"]
         assert perc["connectome_edges_verified"] is True
         assert perc["cell_identity_verified"] is True
-        assert perc["flyvis_to_malecns_mapping_verified"] is False
+        # connectome-grounded: flyvis classes are MaleCNS v1.0 presynaptic partners
+        # weighted by synapse count. verified=True means synapse-grounded, NOT
+        # that flyvis responses equal MaleCNS recordings.
+        assert perc["flyvis_to_malecns_mapping_verified"] is True
+        assert "mapping_verification_note" in perc
         assert perc["dynamics_validated"] is False
 
-    def test_mapping_verified_false_for_decoder(self):
+    def test_mapping_verified_true_for_gate_enabled(self):
         from hawking_fly.decoder.data import load_paired_dataset
         ds = load_paired_dataset(SAMPLE_RUN, filename="motor_gate_verified_v0.npz")
-        assert ds.mapping_verified is False
+        assert ds.mapping_verified is True
+
+    def test_study_refuses_grounded_without_opt_in(self):
+        from hawking_fly.decoder.data import load_paired_dataset
+        ds = load_paired_dataset(SAMPLE_RUN, filename="motor_gate_verified_v0.npz")
+        assert ds.mapping_verified is True  # guard trips unless opt-in is explicit
 
     def test_type_agg_manifest_flags(self):
         m = json.loads((SAMPLE_RUN / "manifest_type_agg.json").read_text())
         perc = m["perc"]
         assert perc["connectome_edges_verified"] is True
+        assert perc["flyvis_to_malecns_mapping_verified"] is True
         assert perc["dynamics_validated"] is False
 
 

@@ -92,8 +92,18 @@ def test_run_study_emits_artifacts_and_flags_proxy(tmp_path):
 
 def test_run_study_refuses_verified_true(tmp_path):
     _fake_run(tmp_path, verified=True)
-    with pytest.raises(ValueError, match="mapping.verified=False"):
+    with pytest.raises(ValueError, match="reviewer acknowledgment"):
         run_study(tmp_path, n_shuffles=5)
+
+
+def test_run_study_allows_grounded_with_opt_in(tmp_path):
+    _fake_run(tmp_path, verified=True)
+    results = run_study(
+        tmp_path, n_shuffles=5, allow_grounded_mapping=True
+    )
+    assert results["mapping_verified"] is True
+    # caveat switched to the grounded note, not the legacy "unverified" one
+    assert any("synapse" in c for c in results["caveats"])
 
 
 def test_generalization_includes_flash_and_loom(tmp_path):
