@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+.gate-hatch {
+  background: repeating-linear-gradient(
+    45deg,
+    #fecaca 0,
+    #fecaca 4px,
+    #ffffff 4px,
+    #ffffff 8px
+  );
+}
