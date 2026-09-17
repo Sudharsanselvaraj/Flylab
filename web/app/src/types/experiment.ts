@@ -4,6 +4,31 @@ export interface NeuralChannel {
   label: string;
   values: number[];
   note: string;
+  role?: "visible" | "ground_truth";
+  withheld?: boolean;
+  group?: string;
+}
+
+export interface NeuralGate {
+  gate_state: "blocked" | "active";
+  motor_output_withheld: boolean;
+  withheld_truth: string;
+  motor_record: boolean;
+  dynamics_validated: boolean;
+  label: string;
+  note: string;
+}
+
+export interface NeuralResponse {
+  run_id: string;
+  stimulus: string;
+  sample: number;
+  mode: "replay";
+  representation: "type_agg" | "per_neuron";
+  representation_label: string;
+  frame_dt_ms: number;
+  gate: NeuralGate;
+  channels: NeuralChannel[];
 }
 
 export interface ExperimentRun {
@@ -38,9 +63,10 @@ export interface ProvenanceLayer {
 }
 
 export interface ProvenanceFlags {
-  dynamics_validated: boolean;
-  connectome_edges_verified: boolean;
-  topology_validated: boolean;
+  dynamics_validated?: boolean;
+  connectome_edges_verified?: boolean;
+  cell_identity_verified?: boolean;
+  flyvis_to_malecns_mapping_verified?: boolean;
 }
 
 export interface ExperimentProvenance {

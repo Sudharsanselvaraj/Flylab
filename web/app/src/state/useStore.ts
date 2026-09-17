@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { ExperimentRun, DecoderResult, ExperimentProvenance, NeuralChannel, ChannelFilter, NeuronType, Dnp01Branch, SymbolSet, WheelchairState, CommunicationDecode, TestActionLog } from "../types/experiment";
+import type { ExperimentRun, DecoderResult, ExperimentProvenance, NeuralChannel, NeuralGate, ChannelFilter, NeuronType, Dnp01Branch, SymbolSet, WheelchairState, CommunicationDecode, TestActionLog } from "../types/experiment";
 import { fetchSymbols, fetchWheelchair, fetchCommunication, postTestAction } from "../api/client";
 
 type AppMode = "idle" | "selecting" | "running";
@@ -12,6 +12,8 @@ interface AppState {
   provenance: ExperimentProvenance | null;
   decoder: DecoderResult | null;
   neuralData: NeuralChannel[] | null;
+  neuralGate: NeuralGate | null;
+  neuralMode: "type_agg" | "per_neuron";
   symbolSet: SymbolSet | null;
   wheelchair: WheelchairState | null;
   communication: CommunicationDecode | null;
@@ -25,6 +27,8 @@ interface AppState {
   fetchRuns: () => Promise<void>;
   selectRun: (runId: string) => Promise<void>;
   selectStimulus: (stimulus: string) => Promise<void>;
+  fetchNeural: (stimulus: string, mode: "type_agg" | "per_neuron") => Promise<void>;
+  setNeuralMode: (mode: "type_agg" | "per_neuron") => Promise<void>;
   logTestAction: (symbol: string) => Promise<void>;
   setReplayFrame: (frame: number) => void;
   setIsPlaying: (playing: boolean) => void;
@@ -43,6 +47,8 @@ export const useStore = create<AppState>((set, get) => ({
   provenance: null,
   decoder: null,
   neuralData: null,
+  neuralGate: null,
+  neuralMode: "type_agg",
   symbolSet: null,
   wheelchair: null,
   communication: null,
@@ -82,19 +88,34 @@ export const useStore = create<AppState>((set, get) => ({
     const { currentRunId } = get();
     if (!currentRunId) return;
     set({ currentStimulus: stimulus, neuralData: null, error: null, replayFrame: 0, isPlaying: false, communication: null });
-    try {
-      const r = await fetch(`${API_BASE}/experiments/${currentRunId}/neural?stimulus=${encodeURIComponent(stimulus)}`);
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const data = await r.json();
-      set({ neuralData: data.channels });
-    } catch (e: unknown) {
-      set({ error: `Failed to load neural data: ${e instanceof Error ? e.message : e}` });
-    }
+    await get().fetchNeural(stimulus, get().neuralMode);
     try {
       const comms = await fetchCommunication(currentRunId, stimulus);
       set({ communication: comms });
     } catch (e: unknown) {
       set({ error: `Failed to load communication decode: ${e instanceof Error ? e.message : e}` });
+    }
+  },
+
+  setNeuralMode: async (mode: "type_agg" | "per_neuron") => {
+    const { currentStimulus } = get();
+    set({ neuralMode: mode });
+    if (!currentStimulus) return;
+    await get().fetchNeural(currentStimulus, mode);
+  },
+
+  fetchNeural: async (stimulus: string, mode: "type_agg" | "per_neuron") => {
+    const { currentRunId } = get();
+    if (!currentRunId) return;
+    try {
+      const r = await fetch(
+        `${API_BASE}/experiments/${currentRunId}/neural?stimulus=${encodeURIComponent(stimulus)}&mode=${mode}`,
+      );
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      set({ neuralData: data.channels, neuralGate: data.gate ?? null });
+    } catch (e: unknown) {
+      set({ error: `Failed to load neural data: ${e instanceof Error ? e.message : e}` });
     }
   },
 
