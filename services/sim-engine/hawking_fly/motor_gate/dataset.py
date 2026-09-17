@@ -265,9 +265,30 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, default=None)
+    parser.add_argument(
+        "--verified",
+        action="store_true",
+        help=(
+            "build the MaleCNS-grounded premotor pairing (relay neurons -> DNp01) "
+            "instead of the legacy receptor-drive proxy pairing"
+        ),
+    )
+    parser.add_argument(
+        "--type-agg",
+        action="store_true",
+        help="with --verified, emit the type-aggregated representation (implies --verified)",
+    )
     args = parser.parse_args()
-    out = build_paired_dataset(args.run_dir, args.out_dir)
-    print(f"paired dataset -> {out}")
+
+    if args.verified or args.type_agg:
+        out = build_verified_premotor_dataset(
+            args.run_dir, args.out_dir, type_aggregated=bool(args.type_agg)
+        )
+        kind = "type-aggregated" if args.type_agg else "per-neuron"
+        print(f"verified premotor pairing ({kind}) -> {out}")
+    else:
+        out = build_paired_dataset(args.run_dir, args.out_dir)
+        print(f"paired dataset -> {out}")
     return 0
 
 
