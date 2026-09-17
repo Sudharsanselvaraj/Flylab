@@ -123,4 +123,4 @@ not "a simulation of the fly brain".
 - Validation: `experiments/loom_escape/phase_0a_validation/{validation,cell_type_labels}.json`, `validation.png`.
 - Notebook: `notebooks/01_flyvis_validation.ipynb`.
 - Premotor representation (Phase 0A-hop continued): `docs/connectome/verified_premotor_representation.md`.
-- Next gate: Phase 0B/0C (decoder) — see `docs/decoder/proxy_motor_decoding.md`.
+- Next gate: Phase 0B (motor gate pairing, [`docs/phase_0b.md`](phase_0b.md)) then Phase 0C (decoder) — see `docs/decoder/proxy_motor_decoding.md`.

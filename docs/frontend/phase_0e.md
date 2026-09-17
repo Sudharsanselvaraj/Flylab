@@ -19,9 +19,10 @@ never claimed as discovered biology.
   channel R² from the leave-one-stimulus-out generalization fold of the real
   decoder study (loom 0.54, flash 0.90).
 - Wheelchair state is **tied to the recorded motor-gate data** (`motor_gate`/
-  `npz` files): when the recorded run withheld motor output, the avatar shows
-  `gate blocked`; presentation stays nil — no live motor record, no fabricated
-  gating. `dynamics_validated` remains `false`.
+  `npz` files, see [`docs/phase_0b.md`](../phase_0b.md)): when the recorded run
+  withheld motor output, the avatar shows `gate blocked`; presentation stays
+  nil — no live motor record, no fabricated gating. `dynamics_validated`
+  remains `false`.
 - The **DISCOVERY** console builds an **in-session correlation table** from the
   user's own TEST actions via `POST /test-action`. There are no pre-scripted
   reveals; a blank session is a blank table.

@@ -57,7 +57,7 @@ MOTOR GATE (Phase 0B)
 - [x] Repo scaffold, honesty policy, env/token plumbing
 - [x] **Phase 0A** — flyvis validation on synthetic stimuli ✅ (see [`docs/phase_0a.md`](docs/phase_0a.md))
 - [x] 0A-conn — MaleCNS grounded premotor subgraph (see `docs/connectome/verified_premotor_representation.md`)
-- [ ] Phase 0B — motor gate + paired visible/ground-truth traces
+- [x] Phase 0B — motor gate + paired visible/ground-truth traces ✅ (see [`docs/phase_0b.md`](docs/phase_0b.md))
 - [x] Phase 0C — intent decoder + connectome-grounded mapping ✅
 - [x] Phase 0D — minimal single-screen UI (replay, see [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md))
 - [x] Phase 0E — symbol mapping + wheelchair avatar (see [`docs/frontend/phase_0e.md`](docs/frontend/phase_0e.md)) ✅

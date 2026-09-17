@@ -3,6 +3,7 @@
 > **Status: EXPERIMENTAL.** This study decodes the DNp01 ground-truth response
 > from the current *proxy* upstream drive (flyvis receptor proxy, `mapping.verified
 > = False`, spec §8). It must not be reported as validated motor-signal decoding.
+> The pairing it trains on is defined in [`docs/phase_0b.md`](../phase_0b.md).
 > The verified MaleCNS premotor representation can later replace the proxy via
 > `hawking_fly/decoder/data.py` without changing the decoder API.
 
