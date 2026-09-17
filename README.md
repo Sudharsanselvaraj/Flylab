@@ -59,7 +59,7 @@ MOTOR GATE (Phase 0B)
 - [x] 0A-conn — MaleCNS grounded premotor subgraph (see `docs/connectome/verified_premotor_representation.md`)
 - [x] Phase 0B — motor gate + paired visible/ground-truth traces ✅ (see [`docs/phase_0b.md`](docs/phase_0b.md))
 - [x] Phase 0C — intent decoder + connectome-grounded mapping ✅
-- [x] Phase 0D — minimal single-screen UI (replay, see [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md))
+- [x] Phase 0D — replay frontend: real recorded traces, relay type-agg/per-neuron toggle, VISIBLE vs withheld GROUND TRUTH, motor-gate blocked boundary, provenance + vintage (see [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md))
 - [x] Phase 0E — symbol mapping + wheelchair avatar (see [`docs/frontend/phase_0e.md`](docs/frontend/phase_0e.md)) ✅
 - [ ] Phase 1 — FlyGym embodiment, cut-point curve, 3D neural camera
 - [ ] Phase 2 / stretch — VIP/manual VNC circuit, multi-fly mode, cinematic brain dive
