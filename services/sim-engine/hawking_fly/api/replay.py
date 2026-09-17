@@ -165,10 +165,26 @@ def relay_traces(run: AvailableRun, stimulus: str) -> tuple[np.ndarray, list[dic
 
 
 def overview_channels(
-    run: AvailableRun, stimulus: str, sample: int = 0
+    run: AvailableRun,
+    stimulus: str,
+    sample: int = 0,
+    mode: str = "type_agg",
 ) -> list[dict[str, Any]]:
-    """Assemble the small set of named overview channels the UI timelns chart
-    shows: LC4, LPLC2, per-relay-type means, DNp01."""
+    """Assemble the channels the UI neural view shows.
+
+    ``mode`` selects the relay representation:
+
+    - ``"type_agg"`` (default): LC4/LPLC2 population means, per-relay-type
+      means, DNp01 — the compact overview.
+    - ``"per_neuron"``: the same receptor/DNp01 channels plus every **driven**
+      MaleCNS relay neuron as its own recorded trace.
+
+    Every channel is marked with its pairing role (Phase 0B): ``"visible"`` =
+    upstream representation the decoder may see; ``"ground_truth"`` = DNp01,
+    withheld from the decoder (``withheld: True``). This lets the UI keep the
+    VISIBLE / GROUND-TRUTH story explicit without implying recorded premotor
+    activity is motor output.
+    """
     path = _run_dir(run)
     drive: np.ndarray | None = None
     if (path / "connectome" / f"receptor_drive_{stimulus}.npz").is_file():
@@ -190,6 +206,7 @@ def overview_channels(
                         "label": t,
                         "layer": "receptor",
                         "kind": "recorded_drive",
+                        "role": "visible",
                         "unit": "synapse-weighted drive",
                         "values": np.asarray(ov[t]).round(6).tolist(),
                         "note": "mean flyvis drive onto MaleCNS LC4/LPLC2 neurons "
@@ -199,26 +216,48 @@ def overview_channels(
 
     if relay_path.is_file():
         relay_trace, relay_meta = relay_traces(run, stimulus)
-        # type-aggregate driven relay neurons by their MaleCNS type
-        by_type: dict[str, list[int]] = {}
-        for i, m in enumerate(relay_meta):
-            if not m.get("has_receptor_input"):
-                continue
-            by_type.setdefault(m["type"], []).append(i)
-        for t, idx in by_type.items():
-            tr = relay_trace[sample][:, idx].mean(axis=-1)
-            channels.append(
-                {
-                    "key": f"relay.{t}",
-                    "label": t,
-                    "layer": "relay",
-                    "kind": "recorded_trace",
-                    "unit": "rate (a.u.)",
-                    "values": tr.round(6).tolist(),
-                    "note": f"mean over driven {t} relay neurons (MaleCNS-grounded premotor)",
-                    "n_neurons": int(len(idx)),
-                }
-            )
+        if mode == "per_neuron":
+            # every driven relay neuron as its own recorded trace
+            for i, m in enumerate(relay_meta):
+                if not m.get("has_receptor_input"):
+                    continue
+                tr = relay_trace[sample][:, i]
+                channels.append(
+                    {
+                        "key": f"relay.{m['type']}.{i}",
+                        "label": f"{m['type']} #{i}",
+                        "layer": "relay",
+                        "kind": "recorded_trace",
+                        "role": "visible",
+                        "group": str(m["type"]),
+                        "unit": "rate (a.u.)",
+                        "values": tr.round(6).tolist(),
+                        "note": f"driven {m['type']} relay neuron (MaleCNS-grounded premotor)",
+                    }
+                )
+        else:
+            # type-aggregate driven relay neurons by their MaleCNS type
+            by_type: dict[str, list[int]] = {}
+            for i, m in enumerate(relay_meta):
+                if not m.get("has_receptor_input"):
+                    continue
+                by_type.setdefault(m["type"], []).append(i)
+            for t, idx in by_type.items():
+                tr = relay_trace[sample][:, idx].mean(axis=-1)
+                channels.append(
+                    {
+                        "key": f"relay.{t}",
+                        "label": t,
+                        "layer": "relay",
+                        "kind": "recorded_trace",
+                        "role": "visible",
+                        "group": t,
+                        "unit": "rate (a.u.)",
+                        "values": tr.round(6).tolist(),
+                        "note": f"mean over driven {t} relay neurons (MaleCNS-grounded premotor)",
+                        "n_neurons": int(len(idx)),
+                    }
+                )
 
     if dnp01_path.is_file():
         dnp01 = np.asarray(np.load(dnp01_path)["trace"])
@@ -230,12 +269,52 @@ def overview_channels(
                     "label": f"DNp01 ({'R' if i == 0 else 'L'})",
                     "layer": "dnp01",
                     "kind": "recorded_trace",
+                    "role": "ground_truth",
+                    "withheld": True,
                     "unit": "rate (a.u.)",
                     "values": seg.round(6).tolist(),
-                    "note": "recorded DNp01 rate from the MaleCNS propagation leg",
+                    "note": "recorded DNp01 rate from the MaleCNS propagation leg — "
+                    "ground truth, withheld from the decoder (Phase 0B gate)",
                 }
             )
     return channels
+
+
+def gate_state_summary(run: AvailableRun) -> dict[str, Any]:
+    """Read the recorded motor-gate state from the run's manifest (Phase 0B).
+
+    The gate is a *recorded-pairing boundary*: motor output was withheld in the
+    recorded experiment, so the decoder sees only the upstream representation.
+    This reads whatever the harness actually wrote — never fabricated.
+    """
+    path = _run_dir(run)
+    manifest = _load_json(path / "manifest.json") or {}
+    metrics = _load_json(path / "metrics.json") or {}
+    perc = manifest.get("perc", {}) or metrics.get("connectome_provenance", {}) or {}
+
+    withheld = None
+    for key in ("withhold_motor", "gate_closed", "motor_withheld", "gate_blocked"):
+        if key in perc:
+            withheld = bool(perc[key])
+            break
+    if withheld is None:
+        withheld = True  # study design: decode upstream, gate motor output
+
+    return {
+        "gate_state": "blocked" if withheld else "active",
+        "motor_output_withheld": withheld,
+        "withheld_truth": "DNp01",
+        "motor_record": False,
+        "dynamics_validated": bool(perc.get("dynamics_validated", False)),
+        "label": (
+            "gate blocked — motor output withheld, decoder sees upstream only"
+            if withheld
+            else "gate active — motor output flows"
+        ),
+        "note": "Recorded motor-gate state from the canonical run's manifest. "
+        "Blocked means the recorded experiment withheld motor output; the "
+        "boundary is a pairing contract, not a validated motor model.",
+    }
 
 
 def decoder_results(run: AvailableRun) -> dict[str, Any] | None:

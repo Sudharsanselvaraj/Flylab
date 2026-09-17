@@ -217,3 +217,56 @@ def test_websocket_replays_frames(client):
         assert f0["event"] == "frame"
         assert "LC4" in f0["values"]
         assert len(f0["values"]) > 3
+
+
+def test_neural_per_neuron_and_type_agg_modes(client):
+    per = client.get(
+        f"/api/experiments/{RUN_ID}/neural",
+        params={"stimulus": "loom", "mode": "per_neuron"},
+    )
+    assert per.status_code == 200
+    per_body = per.json()
+    assert per_body["mode"] == "replay"
+    assert per_body["representation"] == "per_neuron"
+    per_keys = [c["key"] for c in per_body["channels"]]
+    per_cells = [k for k in per_keys if k.startswith("relay.")]
+    # per-neuron: more individual relay channels than the 5 type aggregates
+    assert len(per_cells) > 5
+    assert all("." in k.replace("relay.", "", 1) for k in per_cells), per_cells
+
+    agg = client.get(
+        f"/api/experiments/{RUN_ID}/neural",
+        params={"stimulus": "loom", "mode": "type_agg"},
+    )
+    assert agg.status_code == 200
+    agg_keys = [c["key"] for c in agg.json()["channels"]]
+    agg_types = [k for k in agg_keys if k.startswith("relay.")]
+    assert len(agg_types) == 5
+
+    bad = client.get(
+        f"/api/experiments/{RUN_ID}/neural",
+        params={"stimulus": "loom", "mode": "bogus"},
+    )
+    assert bad.status_code == 400
+
+
+def test_neural_roles_and_gate_honesty(client):
+    r = client.get(
+        f"/api/experiments/{RUN_ID}/neural",
+        params={"stimulus": "loom", "mode": "per_neuron"},
+    )
+    body = r.json()
+    # every channel is explicitly visible (upstream) or withheld ground truth
+    for c in body["channels"]:
+        assert c["role"] in {"visible", "ground_truth"}
+    dnp01 = [c for c in body["channels"] if c["role"] == "ground_truth"]
+    visible = [c for c in body["channels"] if c["role"] == "visible"]
+    assert dnp01, "DNp01 ground truth must be present"
+    assert visible, "upstream visible channels must be present"
+    assert all(c["withheld"] is True for c in dnp01)
+    # the gate is a recorded blocked boundary in the canonical run
+    gate = body["gate"]
+    assert gate["gate_state"] in {"blocked", "active"}
+    assert gate["motor_record"] is False
+    assert gate["withheld_truth"] == "DNp01"
+    assert gate["dynamics_validated"] is False

@@ -32,6 +32,7 @@ from hawking_fly.api.replay import (
     list_runs,
     log_test_action,
     overview_channels,
+    gate_state_summary,
     resolve_run,
     run_metadata,
     session_correlation,
@@ -170,7 +171,12 @@ def get_decoder(run_id: str) -> dict[str, Any]:
 
 
 @app.get("/api/experiments/{run_id}/neural")
-def get_neural(run_id: str, stimulus: str = "loom", sample: int = 0) -> dict[str, Any]:
+def get_neural(
+    run_id: str,
+    stimulus: str = "loom",
+    sample: int = 0,
+    mode: str = "type_agg",
+) -> dict[str, Any]:
     run = _resolve_or_default(run_id)
     if stimulus not in run.stimuli:
         raise HTTPException(
@@ -178,14 +184,23 @@ def get_neural(run_id: str, stimulus: str = "loom", sample: int = 0) -> dict[str
             detail=f"stimulus {stimulus!r} not in recorded run {run.run_id}; "
             f"available: {list(run.stimuli)}.",
         )
+    if mode not in ("type_agg", "per_neuron"):
+        raise HTTPException(status_code=400, detail="mode must be 'type_agg' or 'per_neuron'.")
     dt_ms = _stimulus_dt_ms(run, stimulus)
-    channels = overview_channels(run, stimulus, sample=sample)
+    channels = overview_channels(run, stimulus, sample=sample, mode=mode)
     return {
         "run_id": run.run_id,
         "stimulus": stimulus,
         "sample": sample,
         "mode": "replay",
+        "representation": mode,
+        "representation_label": (
+            "type_agg — relay shown as per-type means"
+            if mode == "type_agg"
+            else "per_neuron — each driven relay neuron recorded"
+        ),
         "frame_dt_ms": dt_ms,
+        "gate": gate_state_summary(run),
         "channels": channels,
     }
 
