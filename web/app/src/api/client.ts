@@ -40,6 +40,36 @@ export async function startRun(runId: string, stimulus: string) {
   return r.json() as Promise<{ run_id: string; mode: string; stimulus: string }>;
 }
 
+export async function fetchSymbols(runId: string) {
+  const r = await fetch(`${BASE}/experiments/${runId}/symbols`);
+  if (!r.ok) throw new Error(`GET /experiments/${runId}/symbols ${r.status}`);
+  return r.json();
+}
+
+export async function fetchWheelchair(runId: string) {
+  const r = await fetch(`${BASE}/experiments/${runId}/wheelchair`);
+  if (!r.ok) throw new Error(`GET /experiments/${runId}/wheelchair ${r.status}`);
+  return r.json();
+}
+
+export async function fetchCommunication(runId: string, stimulus: string) {
+  const r = await fetch(
+    `${BASE}/experiments/${runId}/communication?stimulus=${encodeURIComponent(stimulus)}`,
+  );
+  if (!r.ok) throw new Error(`GET /experiments/${runId}/communication ${r.status}`);
+  return r.json();
+}
+
+export async function postTestAction(runId: string, stimulus: string, chosenSymbol: string) {
+  const r = await fetch(`${BASE}/experiments/${runId}/test-action`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ stimulus, chosen_symbol: chosenSymbol }),
+  });
+  if (!r.ok) throw new Error(`POST /experiments/${runId}/test-action ${r.status}`);
+  return r.json();
+}
+
 export function openStream(runId: string): WebSocket {
   const proto = location.protocol === "https:" ? "wss:" : "ws:";
   const ws = new WebSocket(`${proto}//${location.host}/api/experiments/${runId}/stream`);

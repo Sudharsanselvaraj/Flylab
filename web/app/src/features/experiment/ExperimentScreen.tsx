@@ -8,6 +8,9 @@ import { ProvenancePanel } from "../../components/ProvenancePanel";
 import { ExperimentTimeline } from "../../components/ExperimentTimeline";
 import { SelectableNeuronPanel } from "../../components/SelectableNeuronPanel";
 import { ChannelFilterPanel } from "../../components/ChannelFilterPanel";
+import { SymbolMapPanel } from "../../components/SymbolMapPanel";
+import { CommunicationPanel } from "../../components/CommunicationPanel";
+import { DiscoveryConsole } from "../../components/DiscoveryConsole";
 import { ErrorBoundary } from "../../components/ErrorBoundary";
 import { useStore } from "../../state/useStore";
 
@@ -73,6 +76,9 @@ function DashboardView() {
           <ChannelFilterPanel />
           <SelectableNeuronPanel />
           <MotorGatePanel />
+          <CommunicationPanel />
+          <SymbolMapPanel />
+          <DiscoveryConsole />
         </div>
 
         {/* Center column: neural plot + timeline + 3D subgraph */}

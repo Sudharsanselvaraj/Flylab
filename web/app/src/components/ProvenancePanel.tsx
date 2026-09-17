@@ -6,23 +6,26 @@ export function ProvenancePanel() {
   if (!provenance) return <EmptyState />;
 
   const { layers, flags, dataset, mapping, topology } = provenance;
-  const mappingLabel = typeof mapping === "string" ? mapping : mapping.mode;
+  const safeFlags = flags ?? {};
+  const safeLayers = Array.isArray(layers) ? layers : [];
+  const mappingLabel =
+    typeof mapping === "string" ? mapping : mapping && "mode" in mapping ? mapping.mode : undefined;
 
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-4 space-y-3">
       <h3 className="text-sm font-medium text-slate-700">Provenance &amp; Honesty</h3>
       <div className="flex flex-wrap gap-2 text-xs">
         <Pill label="dataset" value={dataset} />
-        <Pill label="mapping" value={mappingLabel} />
+        <Pill label="mapping" value={mappingLabel ?? "n/a"} />
         <Pill label="topology" value={topology} />
       </div>
       <div className="grid grid-cols-3 gap-2 text-xs">
-        <FlagBadge label="dynamics_validated" value={flags.dynamics_validated} />
-        <FlagBadge label="connectome_edges_verified" value={flags.connectome_edges_verified} />
-        <FlagBadge label="topology_validated" value={flags.topology_validated} />
+        <FlagBadge label="dynamics_validated" value={safeFlags.dynamics_validated} />
+        <FlagBadge label="connectome_edges_verified" value={safeFlags.connectome_edges_verified} />
+        <FlagBadge label="topology_validated" value={safeFlags.topology_validated} />
       </div>
       <div className="space-y-1.5">
-        {layers.map((layer, i) => (
+        {safeLayers.map((layer, i) => (
           <div key={i} className="flex items-center justify-between text-xs px-2 py-1 rounded bg-slate-50">
             <span className="text-slate-600">{layer.label}</span>
             <div className="flex items-center gap-2">
@@ -35,7 +38,7 @@ export function ProvenancePanel() {
         ))}
       </div>
       <p className="text-xs text-slate-400 italic">
-        {flags.dynamics_validated ? "Dynamics validated" : "Dynamics NOT validated — wheel only, no motor recordable"}
+        {safeFlags.dynamics_validated ? "Dynamics validated" : "Dynamics NOT validated — wheel only, no motor recordable"}
       </p>
     </div>
   );

@@ -80,3 +80,55 @@ export interface ChannelFilter {
 export type NeuronType = "LC4" | "LPLC2" | "relay" | "DNp01" | null;
 
 export type Dnp01Branch = "0" | "1" | null;
+
+export interface SymbolClass {
+  class: string;
+  label: string;
+  symbol: string;
+  name: string;
+  decoder_class: number;
+  evidence: string;
+  baseline_accuracy?: number | null;
+}
+
+export interface SymbolSet {
+  run_id: string;
+  mode: string;
+  designed_ux: boolean;
+  reveal_policy: string;
+  label_rule: string;
+  classes: SymbolClass[];
+  note: string;
+}
+
+export interface WheelchairState {
+  run_id: string;
+  mode: string;
+  gate_state: "blocked" | "active";
+  motor_output_withheld: boolean;
+  dynamics_validated: boolean;
+  status: "blocked" | "active";
+  label: string;
+  note: string;
+}
+
+export interface CommunicationDecode {
+  run_id: string;
+  mode: string;
+  stimulus: string;
+  decoded_class: string;
+  decoded_label: string;
+  symbol: string;
+  confidence: number | null;
+  confidence_source: string;
+  framing: string;
+  note: string;
+}
+
+export interface TestActionLog {
+  run_id: string;
+  mode: string;
+  n_actions: number;
+  table: Record<string, { n_actions: number; symbols: Record<string, number> }>;
+  note: string;
+}

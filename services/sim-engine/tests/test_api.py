@@ -127,6 +127,85 @@ def test_missing_decoder_404(client):
     assert r.status_code in (200, 404)
 
 
+# ---------------------------------------------------------------------------
+# Phase 0E — designed-UX symbol layer, avatar state, communication decode,
+# in-session discovery log
+# ---------------------------------------------------------------------------
+
+
+def test_symbol_set_is_designed_ux_and_grounded(client):
+    r = client.get(f"/api/experiments/{RUN_ID}/symbols")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["designed_ux"] is True
+    classes = {c["class"]: c for c in body["classes"]}
+    assert set(classes) == {"escape", "no_escape"}
+    assert classes["escape"]["symbol"]
+    assert body["label_rule"]  # real decoder rule, not invented
+
+
+def test_symbol_set_never_claims_discovered_biology(client):
+    r = client.get(f"/api/experiments/{RUN_ID}/symbols")
+    body = r.json()
+    note = body["note"].lower()
+    assert "design" in note
+    assert "decoder" in note
+
+
+def test_wheelchair_state_tied_to_recorded_gate(client):
+    r = client.get(f"/api/experiments/{RUN_ID}/wheelchair")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["gate_state"] in {"blocked", "active"}
+    assert body["status"] in {"blocked", "active"}
+    # presentation may never be tagged validated
+    assert body["dynamics_validated"] is False
+    assert "withheld" in body["label"] or body["gate_state"] == "active"
+
+
+def test_communication_model_inferred_with_confidence(client):
+    r = client.get(
+        f"/api/experiments/{RUN_ID}/communication", params={"stimulus": "loom"}
+    )
+    assert r.status_code == 200
+    body = r.json()
+    assert body["mode"] == "replay"
+    assert body["decoded_class"] in {"escape", "no_escape"}
+    assert body["framing"] == "model-inferred"
+    assert body["confidence"] is None or 0 <= body["confidence"] <= 1
+    assert "intent" not in body["note"].lower() or "model-inferred" in body["note"].lower()
+
+
+def test_communication_unknown_stimulus_404(client):
+    r = client.get(
+        f"/api/experiments/{RUN_ID}/communication", params={"stimulus": "bogus"}
+    )
+    assert r.status_code == 404
+
+
+def test_test_action_builds_in_session_correlation(client):
+    r = client.post(
+        f"/api/experiments/{RUN_ID}/test-action",
+        json={"stimulus": "loom", "chosen_symbol": "\u26a1"},
+    )
+    assert r.status_code == 200
+    body = r.json()
+    assert body["mode"] == "replay"
+    assert body["n_actions"] >= 1
+    assert "loom" in body["table"]
+    assert body["note"]  # never a pre-scripted reveal claim
+    assert "pre-scripted" in body["note"] or "not" in body["note"]
+
+
+def test_test_actions_get_returns_session(client):
+    r = client.get(f"/api/experiments/{RUN_ID}/test-actions")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["run_id"] == RUN_ID
+    assert body["mode"] == "replay"
+    assert isinstance(body["table"], dict)
+
+
 def test_websocket_replays_frames(client):
     with client.websocket_connect(f"/api/experiments/{RUN_ID}/stream") as ws:
         ws.send_json({"stimulus": "flash"})

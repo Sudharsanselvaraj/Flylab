@@ -44,9 +44,58 @@ describe("ExperimentScreen bootstrap", () => {
     globalThis.fetch = vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
       if (url.includes("/neural")) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ channels: [] }) } as Response);
+      }
+      if (url.includes("/communication")) {
         return Promise.resolve({
           ok: true,
-          json: () => Promise.resolve({ channels: [] }),
+          json: () =>
+            Promise.resolve({
+              run_id: "20260916-223510",
+              mode: "replay",
+              stimulus: "loom",
+              decoded_class: "escape",
+              decoded_label: "Escape",
+              symbol: "\u26a1",
+              confidence: 0.54,
+              confidence_source: "held-out channel R\u00b2",
+              framing: "model-inferred",
+              note: "model-inferred decode",
+            }),
+        } as Response);
+      }
+      if (url.includes("/symbols")) {
+        return Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              run_id: "20260916-223510",
+              mode: "replay",
+              designed_ux: true,
+              reveal_policy: "learn by experiment",
+              label_rule: "truth norm above leave-one-out train median",
+              classes: [
+                { class: "escape", label: "Escape", symbol: "\u26a1", name: "escape", decoder_class: 1, evidence: "recorded dnp01 branch 1" },
+                { class: "no_escape", label: "No-escape", symbol: "\u00b7", name: "no_escape", decoder_class: 0, evidence: "recorded dnp01 branch 0" },
+              ],
+              note: "Design layer on top of real decoder output (spec \u00a74.6).",
+            }),
+        } as Response);
+      }
+      if (url.includes("/wheelchair")) {
+        return Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              run_id: "20260916-223510",
+              mode: "replay",
+              gate_state: "blocked",
+              motor_output_withheld: true,
+              dynamics_validated: false,
+              status: "blocked",
+              label: "gate closed \u2014 motor output withheld, decoder observing",
+              note: "tied to recorded motor-gate state",
+            }),
         } as Response);
       }
       return Promise.resolve({
@@ -60,6 +109,9 @@ describe("ExperimentScreen bootstrap", () => {
     await waitFor(() => {
       expect(useStore.getState().mode).toBe("running");
       expect(useStore.getState().neuralData).toEqual([]);
+      expect(useStore.getState().symbolSet?.classes.length).toBe(2);
+      expect(useStore.getState().wheelchair?.gate_state).toBe("blocked");
+      expect(useStore.getState().communication?.decoded_class).toBe("escape");
     });
   });
 });

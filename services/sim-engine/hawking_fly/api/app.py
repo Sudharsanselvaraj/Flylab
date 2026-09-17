@@ -26,12 +26,17 @@ from pydantic import BaseModel, Field
 from hawking_fly.api.replay import (
     RunNotFoundError,
     assemble_provenance,
+    communication_decode,
     decoder_results,
     latest_premotor_run,
     list_runs,
+    log_test_action,
     overview_channels,
     resolve_run,
     run_metadata,
+    session_correlation,
+    symbol_set,
+    wheelchair_state,
 )
 
 app = FastAPI(
@@ -66,6 +71,11 @@ class StreamConfig(BaseModel):
     stimulus: str = "loom"
     sample: int = 0
     run_id: str | None = None
+
+
+class TestActionRequest(BaseModel):
+    stimulus: str = "loom"
+    chosen_symbol: str = "\u00b7"
 
 
 # ---------------------------------------------------------------------------
@@ -178,6 +188,64 @@ def get_neural(run_id: str, stimulus: str = "loom", sample: int = 0) -> dict[str
         "frame_dt_ms": dt_ms,
         "channels": channels,
     }
+
+
+# ---------------------------------------------------------------------------
+# Phase 0E — designed-UX symbol layer, decoded communication, avatar state,
+# and in-session discovery log
+# ---------------------------------------------------------------------------
+
+@app.get("/api/experiments/{run_id}/symbols")
+def get_symbols(run_id: str) -> dict[str, Any]:
+    run = _resolve_or_default(run_id)
+    return symbol_set(run)
+
+
+@app.get("/api/experiments/{run_id}/wheelchair")
+def get_wheelchair(run_id: str) -> dict[str, Any]:
+    run = _resolve_or_default(run_id)
+    return wheelchair_state(run)
+
+
+@app.get("/api/experiments/{run_id}/communication")
+def get_communication(run_id: str, stimulus: str = "loom") -> dict[str, Any]:
+    run = _resolve_or_default(run_id)
+    if stimulus not in run.stimuli:
+        raise HTTPException(
+            status_code=404,
+            detail=f"stimulus {stimulus!r} not in recorded run {run.run_id}; "
+            f"available: {list(run.stimuli)}.",
+        )
+    return communication_decode(run, stimulus)
+
+
+@app.post("/api/experiments/{run_id}/test-action")
+def post_test_action(run_id: str, req: TestActionRequest) -> dict[str, Any]:
+    run = _resolve_or_default(run_id)
+    if req.stimulus not in run.stimuli:
+        raise HTTPException(
+            status_code=404,
+            detail=f"stimulus {req.stimulus!r} not in recorded run {run.run_id}; "
+            f"available: {list(run.stimuli)}.",
+        )
+    decoded = communication_decode(run, req.stimulus)
+    return log_test_action(
+        run_id=run.run_id,
+        stimulus=req.stimulus,
+        chosen_symbol=req.chosen_symbol,
+        chosen_class=decoded["decoded_class"],
+        observed={
+            "decoded_label": decoded["decoded_label"],
+            "symbol": decoded["symbol"],
+            "confidence": decoded["confidence"],
+        },
+    )
+
+
+@app.get("/api/experiments/{run_id}/test-actions")
+def get_test_actions(run_id: str) -> dict[str, Any]:
+    run = _resolve_or_default(run_id)
+    return session_correlation(run.run_id)
 
 
 # ---------------------------------------------------------------------------

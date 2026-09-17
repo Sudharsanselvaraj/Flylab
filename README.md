@@ -50,7 +50,7 @@ MOTOR GATE (Phase 0B)
 - [ ] Phase 0B — motor gate + paired visible/ground-truth traces
 - [x] Phase 0C — intent decoder + connectome-grounded mapping ✅
 - [x] Phase 0D — minimal single-screen UI (replay, see [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md))
-- [ ] Phase 0E — symbol mapping + wheelchair avatar
+- [x] Phase 0E — symbol mapping + wheelchair avatar (see [`docs/frontend/phase_0e.md`](docs/frontend/phase_0e.md)) ✅
 - [ ] Phase 1 — FlyGym embodiment, cut-point curve, 3D neural camera
 - [ ] Phase 2 / stretch — VIP/manual VNC circuit, multi-fly mode, cinematic brain dive
 
@@ -123,10 +123,10 @@ moving edge (~250× higher MSE than flash-vs-moving-edge).
 
 `flyvis` (PyTorch) · `neuprint-python` · `navis` · PyTorch · `networkx` /
 `scipy.sparse` · `scikit-learn` · FastAPI + WebSocket · React + TS +
-Tailwind + three.js (`web/app`, Phase 0D) · FlyGym / NeuroMechFly + MuJoCo
+Tailwind + three.js (`web/app`, Phase 0D/0E) · FlyGym / NeuroMechFly + MuJoCo
 (Phase 1) · SQLite · Docker.
 
-## Run the Phase 0D frontend
+## Run the Phase 0D/0E frontend
 
 ```bash
 # Terminal 1 — replay API (serves recorded runs, no live sim)
@@ -138,7 +138,7 @@ cd web/app && npm install && npm run dev
 # → http://localhost:5173  (Vite proxies /api to :8050)
 ```
 
-Docs: [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md).
+Docs: [`docs/frontend/phase_0d.md`](docs/frontend/phase_0d.md) · [`docs/frontend/phase_0e.md`](docs/frontend/phase_0e.md).
 
 ## Repo layout
 

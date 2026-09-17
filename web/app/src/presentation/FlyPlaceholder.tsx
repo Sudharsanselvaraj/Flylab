@@ -6,18 +6,30 @@ import { makeTextSprite } from "../features/three/textSprite";
 import type * as THREE from "three";
 
 export default function FlyPlaceholder() {
-  const { currentStimulus } = useStore();
+  const { currentStimulus, wheelchair } = useStore();
+  const gate = wheelchair?.gate_state ?? "blocked";
 
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-4 space-y-3">
-      <h3 className="text-sm font-medium text-slate-700">Fly + Wheelchair Presentation</h3>
-      <p className="text-xs text-slate-400">Labeled placeholder — fly/gym integration deferred to Phase 1</p>
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-medium text-slate-700">Fly + Wheelchair Presentation</h3>
+        <span
+          className={`text-xs rounded-full px-2.5 py-0.5 font-medium ${
+            gate === "active" ? "bg-emerald-100 text-emerald-800" : "bg-slate-200 text-slate-600"
+          }`}
+        >
+          gate {gate}
+        </span>
+      </div>
+      <p className="text-xs text-slate-400">
+        {wheelchair ? wheelchair.label : "motor gate state from recorded run"}
+      </p>
       <div className="h-64 rounded-lg overflow-hidden border border-slate-100">
         <Canvas camera={{ position: [0, 2, 5], fov: 45 }}>
           <ambientLight intensity={0.6} />
           <pointLight position={[3, 4, 3]} intensity={0.8} />
           <OrbitControls enablePan={false} maxDistance={10} />
-          <FlyModel />
+          <FlyModel active={gate === "active"} />
           <WheelchairModel />
           <Ground />
           <StimulusLabel stimulus={currentStimulus} />
@@ -25,43 +37,44 @@ export default function FlyPlaceholder() {
       </div>
       <div className="flex justify-between text-xs text-slate-400">
         <span>Not validated dynamics</span>
-        <span>Presentation only — no motor gating</span>
+        <span>Presentation layer — gate readout from recorded run</span>
       </div>
     </div>
   );
 }
 
-function FlyModel() {
+function FlyModel({ active }: { active: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.003;
+      groupRef.current.rotation.y = active ? 0.003 : 0;
     }
   });
   return (
     <group ref={groupRef} position={[0, 0.6, 0]}>
       <mesh>
         <capsuleGeometry args={[0.15, 0.4, 8, 16]} />
-        <meshStandardMaterial color="#1e293b" roughness={0.3} />
+        <meshStandardMaterial color={active ? "#065f46" : "#1e293b"} roughness={0.3} />
       </mesh>
       <mesh position={[0, 0.45, 0]}>
         <sphereGeometry args={[0.1, 16, 16]} />
         <meshStandardMaterial color="#1e293b" roughness={0.3} />
       </mesh>
-      <Wing position={[-0.2, 0.3, 0.1]} side="left" />
-      <Wing position={[0.2, 0.3, 0.1]} side="right" />
+      <Wing position={[-0.2, 0.3, 0.1]} side="left" active={active} />
+      <Wing position={[0.2, 0.3, 0.1]} side="right" active={active} />
     </group>
   );
 }
 
-function Wing({ position, side }: { position: [number, number, number]; side: string }) {
+function Wing({ position, side, active }: { position: [number, number, number]; side: string; active: boolean }) {
   const ref = useRef<THREE.Mesh>(null);
   useFrame(() => {
-    if (ref.current) {
-      ref.current.rotation.z = side === "left"
-        ? 0.2 + Math.sin(Date.now() * 0.02) * 0.3
-        : -0.2 - Math.sin(Date.now() * 0.02) * 0.3;
-    }
+    if (!ref.current) return;
+    ref.current.rotation.z = active
+      ? (side === "left" ? 0.2 : -0.2) + (side === "left" ? 1 : -1) * (Math.sin(Date.now() * 0.02) * 0.3)
+      : side === "left"
+        ? 0.2
+        : -0.2;
   });
   return (
     <mesh ref={ref} position={position} rotation={[0, 0, side === "left" ? 0.2 : -0.2]}>
