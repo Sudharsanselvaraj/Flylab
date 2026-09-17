@@ -1,0 +1,146 @@
+{
+  "run_dir": "experiments/loom_escape/20260916-223510",
+  "stage": "Phase 0A \u2014 flyvis forward inference on synthetic stimuli",
+  "no_decoder_claims": "Phase 0A validates sanity only; nothing here is a decodability claim. Loom read-out weights come from MaleCNS v1.0 synapse counts (connectome-grounded plan); flyvis responses do not equal MaleCNS recordings (dynamics_validated=false).",
+  "cell_type_columns": 65,
+  "sanity": {
+    "flash": {
+      "finite": true,
+      "shape": [
+        1,
+        4,
+        600,
+        65
+      ],
+      "mean_abs_response": 0.676277,
+      "std_response": 0.90111,
+      "max_abs_response": 6.558081
+    },
+    "moving_edge": {
+      "finite": true,
+      "shape": [
+        1,
+        2,
+        465,
+        65
+      ],
+      "mean_abs_response": 0.691495,
+      "std_response": 0.91481,
+      "max_abs_response": 5.441638
+    },
+    "loom": {
+      "finite": true,
+      "shape": [
+        1,
+        2,
+        700,
+        65
+      ],
+      "mean_abs_response": 0.681084,
+      "std_response": 0.910414,
+      "max_abs_response": 5.674519
+    },
+    "pairwise_trace_mse": {
+      "flash_vs_moving_edge_mse": 5.432e-05,
+      "flash_vs_loom_mse": 4.54e-05,
+      "moving_edge_vs_loom_mse": 2.932e-05
+    }
+  },
+  "readout": {
+    "n_classes": 17,
+    "classes": [
+      "T2",
+      "T4a",
+      "T4b",
+      "T4c",
+      "T4d",
+      "T5a",
+      "T5b",
+      "T5c",
+      "T5d",
+      "Tm2",
+      "Tm20",
+      "Tm3",
+      "Tm4",
+      "Tm5Y",
+      "TmY18",
+      "TmY3",
+      "TmY5a"
+    ],
+    "weighted_drive_per_stimulus": {
+      "flash": 1.009613,
+      "moving_edge": 1.041089,
+      "loom": 1.012084
+    },
+    "drive_ordering": [
+      "moving_edge",
+      "loom",
+      "flash"
+    ],
+    "loom_maximal": false,
+    "raw_per_class": {
+      "flash": {
+        "T2": 3.448765,
+        "TmY3": 0.371879,
+        "Tm4": 0.02742,
+        "Tm5Y": 0.411827,
+        "T5d": 0.068511,
+        "T5b": 0.070041,
+        "Tm2": 0.133092,
+        "T5c": 0.058438,
+        "T4c": 0.060099,
+        "Tm3": 1.225709,
+        "Tm20": 0.495559,
+        "T4b": 0.046979,
+        "T5a": 0.059984,
+        "T4a": 0.075576,
+        "TmY5a": 0.690878,
+        "T4d": 0.067959,
+        "TmY18": 1.564907
+      },
+      "moving_edge": {
+        "T2": 3.510618,
+        "TmY3": 0.418725,
+        "Tm4": 0.046575,
+        "Tm5Y": 0.422498,
+        "T5d": 0.057703,
+        "T5b": 0.090064,
+        "Tm2": 0.134924,
+        "T5c": 0.05342,
+        "T4c": 0.154918,
+        "Tm3": 1.220559,
+        "Tm20": 0.502346,
+        "T4b": 0.12337,
+        "T5a": 0.057611,
+        "T4a": 0.055286,
+        "TmY5a": 0.70999,
+        "T4d": 0.108929,
+        "TmY18": 1.521512
+      },
+      "loom": {
+        "T2": 3.435309,
+        "TmY3": 0.397096,
+        "Tm4": 0.028941,
+        "Tm5Y": 0.41562,
+        "T5d": 0.062218,
+        "T5b": 0.072427,
+        "Tm2": 0.145334,
+        "T5c": 0.056483,
+        "T4c": 0.063101,
+        "Tm3": 1.225723,
+        "Tm20": 0.49632,
+        "T4b": 0.042457,
+        "T5a": 0.066228,
+        "T4a": 0.067611,
+        "TmY5a": 0.692485,
+        "T4d": 0.079891,
+        "TmY18": 1.568937
+      }
+    }
+  },
+  "limitations": [
+    "flyvis models 65 optic-lobe cell types and contains no LC4/LPLC2; the read-out is the union of flyvis classes that MaleCNS v1.0 shows synapsing onto LC4/LPLC2 (~60% of non-self input weight; the rest is non-flyvis and dropped).",
+    "per-column cell_type labels are recovered from a fresh minimal run and aligned to stored responses by static neuron ordering; a network change invalidates both.",
+    "single-eye flyvis activity is applied bilaterally in the MaleCNS leg; not re-verified in this stage."
+  ]
+}

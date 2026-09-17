@@ -22,6 +22,16 @@ custom rate dynamics + FlyGym body are different modeling layers (different
 specimens/data sources). The combined system is a **hybrid simulation**, and
 all UI copy must reflect that (§8 honesty policy).
 
+**Layer attribution** (which components are real/validated vs custom):
+
+| Pipeline stage | Component | Status |
+|---|---|---|
+| Optic lobe (65 columnar types, ~45.7k cells) | `flyvis` pretrained (Lappalainen et al. 2024) | ✅ real + validated |
+| Synthetic stimuli (flash / moving edge / loom) | `hawking_fly/sensory` | ⚠️ synthetic, labeled |
+| LC4/LPLC2 correspondence | MaleCNS v1.0 synapse-grounded classes + weights | ✅ connectome-verified |
+| Receptor→relay→DNp01 propagation | custom rate model (`hawking_fly/propagation`) | ⚠️ custom, `dynamics_validated=false` |
+| Motor gate + decoder (replay) | recorded artifacts (Phase 0B/0C) | ⚠️ model-inferred |
+
 Read the full spec: [`docs/spec.md`](docs/spec.md).
 
 ---
@@ -45,7 +55,7 @@ MOTOR GATE (Phase 0B)
 ## Status
 
 - [x] Repo scaffold, honesty policy, env/token plumbing
-- [ ] **Phase 0A** — flyvis validation on synthetic stimuli (in progress, flyvis-first)
+- [x] **Phase 0A** — flyvis validation on synthetic stimuli ✅ (see [`docs/phase_0a.md`](docs/phase_0a.md))
 - [x] 0A-conn — MaleCNS grounded premotor subgraph (see `docs/connectome/verified_premotor_representation.md`)
 - [ ] Phase 0B — motor gate + paired visible/ground-truth traces
 - [x] Phase 0C — intent decoder + connectome-grounded mapping ✅
@@ -96,6 +106,15 @@ Success bar (Phase 0A): `flyvis` produces finite, distinguishable activity
 traces for loom / flash / moving-edge stimuli, with the loom stimulus
 activating its known responsive read-out cells. Nothing is claimed about
 decodability at this stage.
+
+Report + reproducibility: [`docs/phase_0a.md`](docs/phase_0a.md). Re-run the
+Phase 0A validation against an existing run:
+
+```bash
+python -m hawking_fly.sensory.validation \
+  --run-dir experiments/loom_escape/20260916-223510 \
+  --out experiments/loom_escape/phase_0a_validation
+```
 
 **Phase 0A completed (Sept 16 2026).** Results in `experiments/loom_escape/`:
 
