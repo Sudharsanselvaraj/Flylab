@@ -8,26 +8,24 @@ export function StimulusControls() {
   if (runs.length === 0) return null;
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-4 space-y-3">
-      <h3 className="text-sm font-medium text-slate-700">Stimulus</h3>
-      {stimuli.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {stimuli.map((s) => (
-            <button
-              key={s}
-              onClick={() => selectStimulus(s)}
-              className={`text-sm rounded-lg px-3 py-1.5 border transition-colors ${
-                currentStimulus === s
-                  ? "bg-slate-900 text-white border-slate-900"
-                  : "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
-              }`}
-            >
-              {s.replace("_", " ")}
-            </button>
-          ))}
-        </div>
-      )}
-      {stimuli.length === 0 && <p className="text-sm text-slate-400">No stimuli available for this run</p>}
+    <div className="space-y-1.5">
+      <p className="text-[11px] font-medium tracking-wide text-slate-400 uppercase">Stimulus</p>
+      <div className="flex rounded-lg border border-slate-200 overflow-hidden text-sm">
+        {stimuli.map((s) => (
+          <button
+            key={s}
+            onClick={() => selectStimulus(s)}
+            className={`flex-1 px-3 py-1.5 transition-colors ${
+              currentStimulus === s
+                ? "bg-slate-900 text-white"
+                : "bg-white text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            {s.replace("_", " ")}
+          </button>
+        ))}
+      </div>
+      {stimuli.length === 0 && <p className="text-xs text-slate-400">No stimuli available for this run</p>}
     </div>
   );
 }

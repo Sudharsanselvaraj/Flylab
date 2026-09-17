@@ -50,4 +50,27 @@ describe("ProvenancePanel", () => {
     render(<ProvenancePanel />);
     expect(screen.getByText("Select a run to view provenance")).toBeInTheDocument();
   });
+
+  it("exposes the MaleCNS mapping-verified flag when the backend sends it", () => {
+    useStore.setState({
+      provenance: {
+        ...PROVENANCE,
+        flags: { ...PROVENANCE.flags, flyvis_to_malecns_mapping_verified: true },
+      } as never,
+      decoder: null,
+    });
+    render(<ProvenancePanel />);
+    expect(screen.getByText(/flyvis→malecns mapping_verified: yes/)).toBeInTheDocument();
+  });
+
+  it("tags the dataset vintage as grounded premotor when the decoder mapping is verified", () => {
+    useStore.setState({
+      provenance: PROVENANCE as never,
+      decoder: { mapping_verified: true } as never,
+      currentRunId: PROVENANCE.run_id,
+      currentStimulus: "loom",
+    });
+    render(<ProvenancePanel />);
+    expect(screen.getByText("grounded premotor")).toBeInTheDocument();
+  });
 });
