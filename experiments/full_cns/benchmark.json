@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "dataset": "male-cns:v1.0",
+    "neurons": 176422,
+    "edges": 25862574,
+    "synapses": 125024863,
+    "source_segment_edges": 151856684,
+    "excluded_segment_edges": 125994110,
+    "source": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/connectome-weights-male-cns-v1.0-minconf-0.5.feather",
+    "source_sha256": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1",
+    "ids_sha256": "a21dcf2576c352eda0f4d455683b648ec28272fd7f4918fdfbf2c97aff9df465",
+    "csr_sha256": "a007034f4c9288bf311fc5830539c63df0eaa77ae8adb218b2a550a8ee85dc62",
+    "sparse_bytes": 207606284,
+    "build_wall_seconds": 36.094310416985536,
+    "scope": "All cached neuPrint Neuron records, including incomplete/untyped. Every positive edge between those records retained. Non-neuron segment fragments excluded. Incoming weights normalized; all-positive rate dynamics are an engineered model, not validated biophysical dynamics."
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "cpu": "arm",
+  "peak_rss_bytes": 979058688,
+  "benchmarks": [
+    {
+      "engine": "scipy CSR CPU",
+      "dtype": "float32",
+      "ticks": 100,
+      "dt_ms": 2,
+      "wall_seconds": 1.66323329199804,
+      "real_time_factor": 0.12024771327162426,
+      "finite": true
+    },
+    {
+      "engine": "scipy CSR CPU",
+      "dtype": "float64",
+      "ticks": 100,
+      "dt_ms": 2,
+      "wall_seconds": 1.738461290980922,
+      "real_time_factor": 0.11504426416486419,
+      "finite": true
+    }
+  ],
+  "gpu_sparse_probe": "Could not run 'new_compressed_tensor' from the 'mps:0' device.)",
+  "event_driven": "Not equivalent to this continuous rate model: all nonzero rates contribute each tick. No events-only speedup claimed."
+}
