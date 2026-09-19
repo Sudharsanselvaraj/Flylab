@@ -1,0 +1,29 @@
+{
+  "validation": "Actual browser loop + saved-observation reexecution",
+  "sources": {
+    "services/sim-engine/hawking_fly/coding/core.py": "2ec9929f45e1434552551ff873676645fa9785f8cf929d05444fe68c16f7e63c",
+    "services/sim-engine/hawking_fly/coding/training.py": "1d71e966483a3fa9f5b0eaf3400337d5649921e8c9f577eaeeb90948d0030323",
+    "web/app/src/features/coding/computer.ts": "ba1c215fa1941fc829a11786e085002139c916ad68c0efb609948333941c90d3",
+    "experiments/coding_fly/metrics/browser_evaluation.json": "568dafe0e532301fab06ea3456a43db5b954be7bbb4123c2d6387eb5e4bfbb76"
+  },
+  "success_rate": 0.8,
+  "held_out_episodes": 5,
+  "exact_replay": true,
+  "checkpoint_sha256": "ce28f1b8003d0071ec82b3c146eec18545c4ee4f6be5a343c6213afcbf0dc435",
+  "graph_sha256": "3414b117d2a9ff7900196cf3f338df30475a9e890c906c1df44c94a4e80f2884",
+  "browser_tests": [
+    "sandbox JavaScript changed the actual DOM",
+    "intentional JavaScript exception surfaced in UI",
+    "CSS corrections rendered back into pixel observations"
+  ],
+  "scope": "Fixed layout and token vocabulary. One held-out target fails. No general programming claim.",
+  "checks": {
+    "backend": "113 tests passed; all 9 coding tests rerun after final neural event correction",
+    "frontend": "49 tests passed",
+    "typescript_vite": "passed",
+    "oxlint": "passed",
+    "resume": "900\u2192901 epochs in isolated temporary directory; original checkpoint preserved",
+    "video": "Actual MediaRecorder WebM, compositor includes desk and synchronized SWC inset"
+  },
+  "recording": "../recordings/b8c95912204d814fbfee6031cec78a5738701bcf428bcf01bb09249a021368f3.webm"
+}
