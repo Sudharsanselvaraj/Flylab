@@ -1,0 +1,310 @@
+{
+  "version": "physical-heading-v1",
+  "seed": 37,
+  "graph_sha256": "3414b117d2a9ff7900196cf3f338df30475a9e890c906c1df44c94a4e80f2884",
+  "checkpoint_sha256": "9c87d83460bc2b8f3728482cb5bcbd0aa2fd4559990ce2a11e294cfea8bf00ac",
+  "trainable_parameters": 108684,
+  "curriculum": "Chromium glyph fixtures; all heading lengths 1\u201320; generic editing-state combinations",
+  "scope": "Single-line heading only. Fixed monospace retinal windows. No general code synthesis. Word recombination is the held-out test.",
+  "history": [
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 1,
+      "loss": 4.602504730224609,
+      "offline_accuracy": 0.0035475792828947306
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 101,
+      "loss": 0.0005058030365034938,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 201,
+      "loss": 0.00020356097957119346,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 301,
+      "loss": 0.00011550717317732051,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 401,
+      "loss": 7.5730167736765e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 501,
+      "loss": 5.382665040087886e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 600,
+      "loss": 4.0491791878594086e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 601,
+      "loss": 4.038410042994656e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "neural_glyph_readout",
+      "epoch": 700,
+      "loss": 3.1536281312583014e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1,
+      "loss": 4.7872443199157715,
+      "offline_accuracy": 0.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 101,
+      "loss": 0.20886819064617157,
+      "offline_accuracy": 0.9750000238418579
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 201,
+      "loss": 0.02042088843882084,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 301,
+      "loss": 0.006559423170983791,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 401,
+      "loss": 0.0033715541940182447,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 501,
+      "loss": 0.002072767121717334,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 601,
+      "loss": 0.0014162617735564709,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 701,
+      "loss": 0.0010335816768929362,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 801,
+      "loss": 0.0007881405763328075,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 901,
+      "loss": 0.0006215833709575236,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1001,
+      "loss": 0.0005026211147196591,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1101,
+      "loss": 0.00041426936513744295,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1201,
+      "loss": 0.0003465538320597261,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1301,
+      "loss": 0.00029384385561570525,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1401,
+      "loss": 0.00025207753060385585,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1501,
+      "loss": 0.00021833484061062336,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1600,
+      "loss": 0.00019083081861026585,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1601,
+      "loss": 0.00019057672761846334,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "heading_transducer",
+      "epoch": 1700,
+      "loss": 0.0001677997352089733,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 1,
+      "loss": 1.561652660369873,
+      "offline_accuracy": 0.34375
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 101,
+      "loss": 0.08339269459247589,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 201,
+      "loss": 0.015483085997402668,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 301,
+      "loss": 0.006677103694528341,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 401,
+      "loss": 0.0037684147246181965,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 500,
+      "loss": 0.0024478042032569647,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 501,
+      "loss": 0.0024383701384067535,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "generic_edit_gate",
+      "epoch": 600,
+      "loss": 0.0017174460226669908,
+      "offline_accuracy": 1.0
+    }
+  ],
+  "training_episodes": [
+    {
+      "session": "f6b820e4db3742018a62e7d19200d4e5",
+      "pixel_mae": 0.0,
+      "visual_success": true,
+      "reward": 1.0,
+      "success": true,
+      "status": "finished",
+      "decisions": 22,
+      "keystrokes": 26,
+      "corrections": 0,
+      "revision": 19,
+      "ticks": 33115,
+      "wall_seconds": 4.807064541004365,
+      "fault_injected": false,
+      "all_inputs_trusted": true,
+      "source": "<h1>Learn Keys</h1>",
+      "checkpoint_sha256": "3b62563e458d7e690caea7b9d393e084ee5cd5201c553acc29dcb5a47a674700",
+      "graph_sha256": "3414b117d2a9ff7900196cf3f338df30475a9e890c906c1df44c94a4e80f2884",
+      "target": "Learn Keys",
+      "silenced": []
+    },
+    {
+      "session": "e3c196b6612f48d3bf4880687decf225",
+      "pixel_mae": 0.0,
+      "visual_success": true,
+      "reward": 1.0,
+      "success": true,
+      "status": "finished",
+      "decisions": 22,
+      "keystrokes": 26,
+      "corrections": 0,
+      "revision": 19,
+      "ticks": 33115,
+      "wall_seconds": 4.71579266700428,
+      "fault_injected": false,
+      "all_inputs_trusted": true,
+      "source": "<h1>Neural Lab</h1>",
+      "checkpoint_sha256": "3b62563e458d7e690caea7b9d393e084ee5cd5201c553acc29dcb5a47a674700",
+      "graph_sha256": "3414b117d2a9ff7900196cf3f338df30475a9e890c906c1df44c94a4e80f2884",
+      "target": "Neural Lab",
+      "silenced": []
+    },
+    {
+      "session": "78be621a898040e7b7e8f6d643f88816",
+      "pixel_mae": 0.0,
+      "visual_success": true,
+      "reward": 1.0,
+      "success": true,
+      "status": "finished",
+      "decisions": 22,
+      "keystrokes": 27,
+      "corrections": 1,
+      "revision": 19,
+      "ticks": 33280,
+      "wall_seconds": 4.7018238339805976,
+      "fault_injected": true,
+      "all_inputs_trusted": true,
+      "source": "<h1>Blue Sky</h1>",
+      "checkpoint_sha256": "3b62563e458d7e690caea7b9d393e084ee5cd5201c553acc29dcb5a47a674700",
+      "graph_sha256": "3414b117d2a9ff7900196cf3f338df30475a9e890c906c1df44c94a4e80f2884",
+      "target": "Blue Sky",
+      "silenced": []
+    }
+  ],
+  "split": {
+    "train": [
+      "Learn Keys",
+      "Neural Lab",
+      "Blue Sky"
+    ],
+    "validation": [
+      "Green Lab"
+    ],
+    "test": [
+      "Hello Fly",
+      "Fly World"
+    ],
+    "acceptance": [
+      "Hello World"
+    ]
+  },
+  "live_episode_results": null
+}
