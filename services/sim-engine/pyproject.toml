@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hawking-fly"
 version = "0.1.0"
-description = "The Hawking Fly — connectome-constrained neural simulation of a fly whose motor output is blocked"
+description = "FlyLab — physical coding and modeled MaleCNS dynamics"
 readme = "readme.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -21,9 +21,15 @@ dependencies = [
     "neuprint-python",
     "fastapi",
     "uvicorn",
+    "websockets>=13,<17",
+    "playwright==1.58.0",
+    "Pillow",
 ]
 
 [project.optional-dependencies]
+live = [
+    "flyvis",
+]
 validation = [
     "flyvis",
     "matplotlib",
