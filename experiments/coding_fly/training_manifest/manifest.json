@@ -1,0 +1,168 @@
+{
+  "version": "coding-colour-v1",
+  "run_id": "coding-colour-v1-37-63a0e5d34077",
+  "seed": 37,
+  "epochs": 900,
+  "method": "Supervised imitation; privileged offline correction oracle. No RL claim.",
+  "optimizer": "Adam lr=.005 weight_decay=.00001",
+  "hidden_units": 48,
+  "trainable_parameters": 28333,
+  "graph_sha256": "3414b117d2a9ff7900196cf3f338df30475a9e890c906c1df44c94a4e80f2884",
+  "capture_sha256": "63a0e5d340770a6ecd5d202e055835dd7c5ab3ac2eb5511f42c6f5d742d2e57c",
+  "checkpoint_sha256": "ce28f1b8003d0071ec82b3c146eec18545c4ee4f6be5a343c6213afcbf0dc435",
+  "selection": "Lowest validation cross entropy among evaluated epochs",
+  "split": {
+    "train": [
+      [
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        4
+      ],
+      [
+        2,
+        3,
+        2
+      ],
+      [
+        2,
+        3,
+        3
+      ],
+      [
+        2,
+        4,
+        3
+      ],
+      [
+        2,
+        4,
+        4
+      ],
+      [
+        3,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        4
+      ],
+      [
+        3,
+        3,
+        3
+      ],
+      [
+        3,
+        4,
+        2
+      ],
+      [
+        3,
+        4,
+        4
+      ],
+      [
+        4,
+        2,
+        2
+      ],
+      [
+        4,
+        2,
+        3
+      ],
+      [
+        4,
+        3,
+        3
+      ],
+      [
+        4,
+        3,
+        4
+      ],
+      [
+        4,
+        4,
+        2
+      ],
+      [
+        4,
+        4,
+        4
+      ]
+    ],
+    "validation": [
+      [
+        2,
+        4,
+        2
+      ],
+      [
+        3,
+        2,
+        3
+      ],
+      [
+        3,
+        3,
+        4
+      ],
+      [
+        4,
+        3,
+        2
+      ],
+      [
+        4,
+        4,
+        3
+      ]
+    ],
+    "test": [
+      [
+        2,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        3,
+        2
+      ],
+      [
+        3,
+        4,
+        3
+      ],
+      [
+        4,
+        2,
+        4
+      ]
+    ]
+  },
+  "offline_action_accuracy": {
+    "train": 1.0,
+    "validation": 0.944,
+    "test": 0.9664
+  },
+  "browser_rollout_verified": false,
+  "scope": "Fixed layout, three elements, three colours. Held-out target palette compositions; not unseen syntax or layouts.",
+  "dynamics_validated": false,
+  "flyvis_to_malecns_mapping_verified": false,
+  "capture_renderer": "Chromium iframe execution + browser SVG foreignObject DOM snapshot; 240\u00d7180 \u2192 16\u00d724 RGB",
+  "created_unix": 1789811738.529571
+}
