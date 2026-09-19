@@ -1,0 +1,23 @@
+{
+  "pixel_mae": 0.0,
+  "visual_success": true,
+  "reward": 1.0,
+  "success": true,
+  "status": "finished",
+  "decisions": 21,
+  "keystrokes": 25,
+  "corrections": 0,
+  "revision": 18,
+  "ticks": 31778,
+  "wall_seconds": 481.43806841701735,
+  "fault_injected": false,
+  "all_inputs_trusted": true,
+  "source": "<h1>Hello Fly</h1>",
+  "engine": "Parallel GCD CSR CPU",
+  "mode": "full-fast",
+  "checkpoint_sha256": "40fb0c2862c0764614edf0441cdbe28b3276f4bad7789210ac47e8fa9478ed5f",
+  "graph_sha256": "a007034f4c9288bf311fc5830539c63df0eaa77ae8adb218b2a550a8ee85dc62",
+  "target": "Hello Fly",
+  "silenced": [],
+  "session": "89be0379fe174413919b5c6f0432e2ee"
+}
