@@ -54,6 +54,10 @@ npm --prefix web/app run demo
 
 Open <http://localhost:5173>. Start runs the heading benchmark. **Brain** opens the whole-CNS viewer; **Evidence & source** exposes recorded sessions and their provenance. `npm --prefix web/app run dev` is the development server; `demo` serves the production build.
 
+## GitHub Pages
+
+The static showcase is published at [sudharsanselvaraj.github.io/The-Hawking-Fly](https://sudharsanselvaraj.github.io/The-Hawking-Fly/). GitHub Pages cannot host the local Python, Chromium, WebSocket, and neural-data services required for a live experiment, so use the Quick Start instructions above for the interactive lab.
+
 ## Architecture
 
 ```mermaid

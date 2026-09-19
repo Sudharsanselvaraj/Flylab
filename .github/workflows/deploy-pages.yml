@@ -1,0 +1,48 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        id: pages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/app/package-lock.json
+      - run: npm ci
+        working-directory: web/app
+      - run: npm run build:pages
+        working-directory: web/app
+        env:
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          VITE_STATIC_DEPLOYMENT: 'true'
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/app/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

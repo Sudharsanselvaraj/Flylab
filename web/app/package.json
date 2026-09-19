@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:pages": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "demo": "npm run build && vite preview --port 5173 --strictPort"
