@@ -1,0 +1,12 @@
+{
+  "source_sha256": "c98f454f89c56082805b2fc06ed82480e3cd5fd52f900b754c5a3562359d9365",
+  "compiler": "clang -O3 -ffp-contract=fast",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "verified": true,
+  "trajectory_ticks": 256,
+  "bitwise_rates": true,
+  "bitwise_threshold_events": true,
+  "verification_wall_seconds": 12.379671458998928,
+  "scipy_matvec_seconds_per_tick": 0.03601771666988498,
+  "gcd_matvec_seconds_per_tick": 0.00832345125003485
+}
