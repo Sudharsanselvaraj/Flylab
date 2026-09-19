@@ -1,32 +1,32 @@
-# React + TypeScript + Vite
+# FlyLab web client
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+FlyLab is the only app view. The 3D desk contains a seated fly, a physical
+keyboard and a monitor showing actual Chromium screenshots. A live MaleCNS
+instrument displays neural activity on the same simulation clock.
 
-Currently, two official plugins are available:
+Start the Python API on port 8050, then run:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run demo
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+The production demo opens on port 5173 and proxies API and WebSocket traffic.
+Use `npm run dev` for editing; production avoids development profiling overhead
+on full-network neural buffers. Stop either server before starting the other.
+
+Start begins from an empty editor. Choose full-CNS float32, full-CNS float64 or
+the 677-neuron subgraph. Wrong-key trial injects one physical key substitution;
+subsequent repair comes from the learned controller. Pause freezes the shared
+clock. Brain opens anatomy and recorded neuron traces. Evidence & source shows
+training losses, measured trials, saved replays and source-to-contact traces.
+
+The controller supports a narrow single-heading curriculum. Its rate dynamics
+and kinematic body are engineered models, not validated insect physiology.
+See [the physical coding protocol](../../docs/physical-coding.md).
+
+```sh
+npm run build
+npm run lint
+npx vitest run
+```
