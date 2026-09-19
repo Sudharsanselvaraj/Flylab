@@ -1,0 +1,108 @@
+import {useEffect,useRef,useState} from 'react';
+import {DeskWorld} from './DeskWorld';
+import type {View} from './DeskWorld';
+import {CodingBrain,CodingInset} from './CodingBrain';
+import {Computer,Preview,pagePixels,observation,reward} from './computer';
+import type {MotorEvent} from './computer';
+import type {Catalog,Decision,Task} from './types';
+import './coding.css';
+const delay=(ms:number)=>new Promise(r=>setTimeout(r,ms));
+const json=async(url:string,options?:RequestInit)=>{const r=await fetch(url,options);if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json();};
+function download(name:string,content:BlobPart,type='application/json'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+interface Episode{task:number;split:string;silenced:string[];checkpoint:string;graph:string;seed:number;decisions:Decision[];events:MotorEvent[];source:string;observations:number[][];result:ReturnType<typeof reward>;ticks:number;corrections:number;wall_seconds:number;errors:string[]}
+export function CodingLab(){
+ const [catalog,setCatalog]=useState<Catalog|null>(null),[issue,setIssue]=useState(''),[status,setStatus]=useState('Loading experiment'),[running,setRunning]=useState(false),[view,setView]=useState<View>('desk'),[brain,setBrain]=useState(false),[drawer,setDrawer]=useState('');
+ const [taskId,setTaskId]=useState(0),[version,setVersion]=useState(0),[event,setEvent]=useState<MotorEvent|null>(null),[tick,setTick]=useState(0),[rates,setRates]=useState<number[]>([]),[spikes,setSpikes]=useState<{tick:number;neuron:number}[]>([]),[silenced,setSilenced]=useState<string[]>([]),[episodes,setEpisodes]=useState<Episode[]>([]),[training,setTraining]=useState(''),[recording,setRecording]=useState(false),[clipURL,setClipURL]=useState('');
+ const [screen]=useState(()=>{const c=document.createElement('canvas');c.width=1200;c.height=720;return c;});
+ const editor=useRef<HTMLTextAreaElement>(null),runButton=useRef<HTMLButtonElement>(null),iframe=useRef<HTMLIFrameElement>(null),targetFrame=useRef<HTMLIFrameElement>(null);
+ const computer=useRef<Computer|null>(null),preview=useRef<Preview|null>(null),targetPreview=useRef<Preview|null>(null),currentImage=useRef<HTMLCanvasElement|null>(null),targetImage=useRef<HTMLCanvasElement|null>(null),pendingPaint=useRef<Promise<HTMLCanvasElement>|null>(null),stop=useRef(false),trainingActive=useRef(false),ws=useRef<WebSocket|null>(null),recorder=useRef<MediaRecorder|null>(null);
+ const latest=useRef({label:'Ready',tick:0,event:null as MotorEvent|null,cursor:null as {x:number;y:number}|null});
+ const paint=()=>{
+   const ctx=screen.getContext('2d')!;ctx.fillStyle='#18211e';ctx.fillRect(0,0,1200,720);ctx.fillStyle='#a8b5ac';ctx.font='16px monospace';ctx.fillText('index.html',25,35);ctx.fillText('RUN ▶',400,35);ctx.fillText(`t ${(latest.current.tick*.02).toFixed(2)} s · ${latest.current.label}`,25,704);
+   ctx.strokeStyle='#3a4840';ctx.beginPath();ctx.moveTo(766,0);ctx.lineTo(766,720);ctx.stroke();
+   const lines=(editor.current?.value??'').split('\n').flatMap(line=>line.match(/.{1,72}/g)??['']);const start=Math.max(0,lines.length-29);ctx.font='16px monospace';lines.slice(start).forEach((line,i)=>{ctx.fillStyle='#718476';ctx.fillText(String(start+i+1),16,72+i*21);ctx.fillStyle='#e0e6db';ctx.fillText(line,56,72+i*21);});
+   ctx.font='15px monospace';ctx.fillStyle='#b8c4b9';ctx.fillText('VISUAL TARGET',800,45);ctx.fillText('BROWSER · ACTUAL OUTPUT',800,386);
+   if(targetImage.current)ctx.drawImage(targetImage.current,795,65,384,288);if(currentImage.current)ctx.drawImage(currentImage.current,795,408,384,288);
+   const e=latest.current.cursor;if(e?.x!==undefined){ctx.fillStyle='#e5ba6c';ctx.beginPath();ctx.moveTo(e.x,e.y!);ctx.lineTo(e.x+14,e.y!+8);ctx.lineTo(e.x+5,e.y!+14);ctx.closePath();ctx.fill();}
+   setVersion(v=>v+1);
+ };
+ useEffect(()=>{
+   if(!editor.current||!runButton.current||!iframe.current||!targetFrame.current)return;
+   let mounted=true;
+   const c=new Computer(editor.current,runButton.current);computer.current=c;preview.current=new Preview(iframe.current);targetPreview.current=new Preview(targetFrame.current);
+   c.onEvent=e=>{if(e.x!==undefined)latest.current.cursor={x:e.x,y:e.y!};if(e.type==='input'||e.type.startsWith('pointer')){latest.current.event=e;setEvent(e);}latest.current.tick=e.tick;setTick(e.tick);paint();};
+   runButton.current.onclick=()=>{const rendered=preview.current!.render(editor.current!.value);pendingPaint.current=rendered;rendered.then(canvas=>{currentImage.current=canvas;paint();}).catch(e=>setIssue(String(e)));};
+   json('/api/coding/catalog').then(async(data:Catalog)=>{if(!mounted)return;setCatalog(data);const task=data.tasks.find(t=>t.split==='test')!;setTaskId(task.id);editor.current!.value=data.base;targetImage.current=await targetPreview.current!.render(task.source);currentImage.current=await preview.current!.render(data.base);setStatus(data.manifest?'Trained checkpoint · ready':'Training required');paint();json('/api/coding/evaluation').then(e=>{if(e.available)setTraining(`Saved browser evaluation: ${Math.round(e.success_rate*e.episodes)}/${e.episodes} passed · exact replay ${e.exact_replay?'passed':'failed'} · silenced-input ${e.perturbed_success?'passed':'failed'}`);}).catch(()=>{});}).catch(e=>setIssue(String(e)));
+   return()=>{mounted=false;c.dispose();stop.current=true;ws.current?.close();};
+   // The virtual computer is intentionally session-scoped, outside React's controlled inputs.
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+ },[]);
+ const selectTask=async(id:number)=>{if(!catalog)return;setTaskId(id);targetImage.current=await targetPreview.current!.render(catalog.tasks[id].source);paint();};
+ const runEpisode=async(task:Task,pace=true,blocked=silenced):Promise<Episode>=>{
+   if(!catalog||!computer.current)throw new Error('Computer unavailable');
+   stop.current=false;const c=computer.current;c.tick=0;c.revision=0;editor.current!.value=catalog.base;
+   targetImage.current=await targetPreview.current!.render(task.source);currentImage.current=await preview.current!.render(editor.current!.value);latest.current={tick:0,label:'Observe',event:null,cursor:null};setTick(0);setEvent(null);paint();
+   const socket=new WebSocket(`${location.protocol==='https:'?'wss':'ws'}://${location.host}/api/coding/stream`);ws.current=socket;
+   const queue:unknown[]=[];let wake:((v:unknown)=>void)|null=null;
+   socket.onmessage=e=>{const data=JSON.parse(e.data);if(wake){const f=wake;wake=null;f(data);}else queue.push(data);};
+   socket.onclose=()=>{if(wake){wake({kind:'error',detail:stop.current?'Session stopped':'Neural connection closed'});wake=null;}};
+   const receive=async():Promise<Record<string,unknown>>=>{const value=queue.length?queue.shift():await new Promise(r=>{wake=r;});const m=value as Record<string,unknown>;if(m.kind==='error')throw new Error(String(m.detail));return m;};
+   await new Promise<void>((resolve,reject)=>{socket.onopen=()=>resolve();socket.onerror=()=>reject(new Error('Cannot connect to neural backend'));});socket.send(JSON.stringify({seed:37,silenced:blocked}));
+   const ready=await receive();const start=performance.now();
+   const episode:Episode={task:task.id,split:task.split,silenced:blocked.slice(),checkpoint:String(ready.checkpoint),graph:String(ready.graph),seed:37,decisions:[],events:[],source:'',observations:[],result:reward(targetImage.current,currentImage.current,0),ticks:0,corrections:0,wall_seconds:0,errors:[]};
+   try{
+    for(let step=0;step<15;step++){
+      if(stop.current)throw new Error('Session stopped');setStatus(`Observe · edit ${step+1}`);
+      const pixels=observation(targetImage.current!,currentImage.current!);episode.observations.push(pixels);
+      socket.send(JSON.stringify({kind:'observe',tick:c.tick,pixels}));const decision=await receive() as unknown as Decision;episode.decisions.push(decision);setSpikes(decision.neural.spikes);
+      latest.current.label=(pace?'CHECKPOINT · ':'UNPACED EVALUATION · ')+decision.label;setStatus(latest.current.label);
+      if(pace)for(const state of decision.neural.trajectory){setTick(state.tick);setRates(state.rates);latest.current.tick=state.tick;paint();await delay(20);}
+      else setRates(decision.neural.rates);
+      const events=await c.perform(catalog.actions[decision.action].token,decision.tick,pace,()=>stop.current);episode.events.push(...events);
+      if(catalog.actions[decision.action].token!==null){if(!pendingPaint.current)throw new Error('Run did not produce an execution event');currentImage.current=await pendingPaint.current;pendingPaint.current=null;}
+      const result=reward(targetImage.current!,currentImage.current!,episode.decisions.length);
+      if(decision.action>=3&&decision.action<12&&result.pixel_mae<episode.result.pixel_mae-.0001)episode.corrections++;
+      episode.result=result;episode.source=editor.current!.value;episode.ticks=c.tick;latest.current.tick=c.tick;setTick(c.tick);paint();
+      socket.send(JSON.stringify({kind:'ack',tick:c.tick,revision:c.revision,events}));await receive();
+      if(decision.action===12)break;
+    }
+    episode.wall_seconds=(performance.now()-start)/1000;
+    setStatus(episode.result.success?`Task passed · ${episode.corrections} visual corrections`:'Task failed · inspect episode');return episode;
+   }finally{socket.close();}
+ };
+ const start=async()=>{if(!catalog)return;setDrawer('');setIssue('');setRunning(true);try{const ep=await runEpisode(catalog.tasks[taskId]);setEpisodes(old=>[...old,ep]);}catch(e){setIssue(String(e));setStatus('Stopped');}finally{setRunning(false);}};
+ const captureTrain=async()=>{
+   if(!catalog)return;trainingActive.current=true;setRunning(true);setIssue('');stop.current=false;
+   try{const pages=[];for(const [i,page] of catalog.curriculum.entries()){if(stop.current)throw new Error('Capture stopped');setTraining(`Rendering curriculum ${i+1} / ${catalog.curriculum.length}`);const canvas=await preview.current!.render(page.source);pages.push({state:page.state,pixels:pagePixels(canvas)});currentImage.current=canvas;paint();}
+    await json('/api/coding/training',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({renderer:'Chromium iframe execution + browser SVG foreignObject DOM snapshot; 240×180 → 16×24 RGB',pages})});
+    for(;;){await delay(1500);const progress=await json('/api/coding/training');setTraining(`${progress.state}${progress.epoch?` · epoch ${progress.epoch} · loss ${progress.train_loss.toFixed(4)}`:progress.progress?` · ${Math.round(progress.progress*100)}%`:''}`);if(progress.state==='error')throw new Error(progress.detail);if(progress.state==='trained'){setCatalog(await json('/api/coding/catalog'));setStatus('Trained checkpoint · ready');break;}}
+   }catch(e){setIssue(String(e));}finally{trainingActive.current=false;setRunning(false);}
+ };
+ const evaluate=async()=>{if(!catalog)return;setRunning(true);setIssue('');const results:Episode[]=[];
+   try{const tasks=catalog.tasks.filter(t=>t.split==='test');for(const task of tasks){setTraining(`Held-out browser episode ${results.length+1}/${tasks.length}`);results.push(await runEpisode(task,false,[]));if(stop.current)break;}
+    // Matched computational perturbation and deterministic replay use the same task/checkpoint.
+    const replay=await runEpisode(tasks[0],false,[]),perturb=await runEpisode(tasks[0],false,catalog.graph.nodes.filter(n=>n.input).map(n=>n.body_id));
+    const original=results[0];const exact=JSON.stringify(replay.events)===JSON.stringify(original.events)&&replay.source===original.source&&JSON.stringify(replay.decisions)===JSON.stringify(original.decisions);
+    const report={scope:'Fixed-layout held-out palette compositions only',episodes:results,replay:{exact,episode:replay},perturbation:perturb,success_rate:results.filter(e=>e.result.success).length/results.length};
+    await json('/api/coding/evaluation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(report)});setEpisodes(old=>[...old,...results,replay,perturb]);setTraining(`Held-out: ${results.filter(e=>e.result.success).length}/${results.length} passed · exact replay ${exact?'passed':'FAILED'} · silenced-input ${perturb.result.success?'passed':'failed'}`);setStatus('Evaluation complete');
+   }catch(e){setIssue(String(e));}finally{setRunning(false);}
+ };
+ const replay=async()=>{const previous=episodes.at(-1);if(!previous||!catalog)return;setRunning(true);try{const result=await runEpisode(catalog.tasks[previous.task],true,previous.silenced);const exact=result.source===previous.source&&JSON.stringify(result.decisions)===JSON.stringify(previous.decisions)&&JSON.stringify(result.events)===JSON.stringify(previous.events);setEpisodes(old=>[...old,result]);setStatus(exact?'Deterministic replay passed':'Replay mismatch');}catch(e){setIssue(String(e));}finally{setRunning(false);}};
+ const toggleRecord=()=>{setDrawer('');if(recording){recorder.current?.stop();setRecording(false);return;}const canvas=document.querySelector('.coding-world canvas') as HTMLCanvasElement|null;if(!canvas)return;try{const chunks:BlobPart[]=[];const composite=document.createElement('canvas');composite.width=canvas.width;composite.height=canvas.height;const ctx=composite.getContext('2d')!;let raf=0;
+    const draw=()=>{ctx.drawImage(canvas,0,0,composite.width,composite.height);const inset=document.querySelector('.coding-inset canvas') as HTMLCanvasElement|null;const width=Math.round(composite.width*.25);if(inset){ctx.fillStyle='#14231d';ctx.fillRect(composite.width-width-16,70,width,width+24);ctx.drawImage(inset,composite.width-width-16,70,width,width);ctx.fillStyle='#d5e5d3';ctx.font=`${Math.max(10,Math.round(composite.width/90))}px monospace`;ctx.fillText('MaleCNS · modeled activity',composite.width-width-10,70+width+17);}ctx.fillStyle='#263c30';ctx.font=`${Math.max(13,Math.round(composite.width/65))}px monospace`;ctx.fillText('FlyLab · learned token benchmark',22,30);ctx.font=`${Math.max(10,Math.round(composite.width/90))}px monospace`;ctx.fillText(`${(latest.current.tick*.02).toFixed(2)} s virtual · ${latest.current.label}`,22,51);raf=requestAnimationFrame(draw);};draw();
+    const stream=composite.captureStream(30),media=new MediaRecorder(stream);recorder.current=media;media.ondataavailable=e=>chunks.push(e.data);media.onstop=()=>{cancelAnimationFrame(raf);stream.getTracks().forEach(t=>t.stop());const blob=new Blob(chunks,{type:media.mimeType});json('/api/coding/recording',{method:'POST',headers:{'Content-Type':'video/webm'},body:blob}).then(saved=>setClipURL(saved.url)).catch(e=>setIssue(`Recording save failed: ${String(e)}`));};media.start();setRecording(true);}catch(e){setIssue(`Recording unavailable: ${String(e)}`);}};
+ const last=episodes.at(-1);
+ return <main className="coding-lab"><div className="coding-world"><DeskWorld screen={screen} version={version} event={event} view={view}/></div>
+ <header className="coding-chrome"><div><h1>FlyLab <span>/ coding lab</span></h1><p>Connectome-constrained coding agent · a small, engineered benchmark</p></div><nav><button onClick={()=>setDrawer(drawer==='provenance'?'':'provenance')}>Protocol</button></nav></header>
+ <div className="coding-status"><span>{status}</span><small>{(tick*.02).toFixed(2)} s simulation · {catalog?.graph.nodes.length??'—'} modeled neurons · {running?'live execution':'paused'}{last?` · ${(last.ticks*.02/Math.max(last.wall_seconds,.001)).toFixed(2)}× last-run realtime`:''}</small></div>
+ {issue&&<div role="alert" className="coding-error">{issue}<button onClick={()=>setIssue('')}>Dismiss</button></div>}
+ <footer className="coding-controls"><button className="coding-start" disabled={running||!catalog?.manifest} onClick={start}>Start</button>{running&&<button onClick={()=>{stop.current=true;ws.current?.close();if(trainingActive.current)json('/api/coding/training/cancel',{method:'POST'}).catch(e=>setIssue(String(e)));}}>Stop</button>}<select aria-label="Coding visual target" value={taskId} disabled={running} onChange={e=>selectTask(Number(e.target.value)).catch(e=>setIssue(String(e)))}>{catalog?.tasks.map(t=><option key={t.id} value={t.id}>Target {t.id+1} · {t.split}</option>)}</select><select aria-label="Coding camera" value={view} onChange={e=>setView(e.target.value as View)}><option value="room">Room</option><option value="desk">Desk close-up</option><option value="fly">Fly view</option></select><button onClick={()=>setBrain(true)}>Watch brain</button><button onClick={()=>setDrawer(drawer==='training'?'':'training')}>Training & results</button><button onClick={toggleRecord}>{recording?'Stop recording':'Record'}</button>{clipURL&&<a href={clipURL} target="_blank" rel="noreferrer">View recording ↗</a>}</footer>
+ <div className="coding-caption">The monitor is the workspace. Every autonomous edit passes through the keyboard.<br/><span>Fixed HTML/CSS vocabulary · no runtime LLM · no claim of biological programming</span></div>
+ {recording&&catalog&&<CodingInset graph={catalog.graph} rates={rates} tick={tick} spikes={spikes}/>}{brain&&catalog&&<CodingBrain graph={catalog.graph} rates={rates} tick={tick} spikes={spikes} silenced={silenced} setSilenced={setSilenced} onClose={()=>setBrain(false)}/>}
+ {drawer&&<aside className="coding-drawer"><header><h2>{drawer==='training'?'Training & evidence':drawer==='source'?'Actual source':'Experimental protocol'}</h2><button onClick={()=>setDrawer('')}>Close</button></header>
+ {drawer==='provenance'&&<><p>This benchmark constructs a heading, button and three cards, then corrects their colours from a visual target. It does not learn arbitrary code, layouts or JavaScript.</p><dl><dt>Real</dt><dd>MaleCNS v1.0 · {catalog?.graph.nodes.length} IDs · {catalog?.graph.edges.length.toLocaleString()} directed connections. Published coordinates and SWC morphology.</dd><dt>Modeled</dt><dd>16 × 20 ms stimulus-locked rate updates. Positive, normalized connectivity. Spike markers are deterministic threshold integrals of modeled rates.</dd><dt>Trained</dt><dd>48-unit tanh imitation readout · {catalog?.manifest?.trainable_parameters.toLocaleString()??'not trained'} parameters. Offline teacher labels only. Checkpoint inference does not update weights.</dd><dt>Engineered</dt><dd>Fixed RGB spatial pooling and seeded sensory projection into MeTu cells. HTML/CSS token vocabulary, event actuator, reward and room. FlyVis is not used: this RGB static-screen adapter is separate from its existing motion pathway.</dd><dt>Capture boundary</dt><dd>Executed iframe DOM is rasterized by the browser into a monitor image. Only downsampled target and preview pixels enter inference. This is a DOM snapshot renderer, not a full browser screenshot API; external assets are blocked.</dd><dt>Provenance</dt><dd>dynamics_validated: false<br/>flyvis_to_malecns_mapping_verified: false</dd><dt>Limitations</dt><dd>Fixed layout and words. Tokens contain engineered syntax. Held-out colour combinations test recombination, not general coding. Signed biological dynamics and synapse locations are not modeled. Recording composites the live desk canvas and a synchronized anatomy inset; HTML controls are excluded.</dd></dl><a href="https://male-cns.janelia.org/download/">MaleCNS source & attribution ↗</a></>}
+ {drawer==='training'&&<><p>{catalog?.manifest?`TRAINED CHECKPOINT · ${catalog.manifest.run_id}`:'No trained checkpoint. Capture the curriculum, then optimize the small readout.'}</p><button disabled={running} onClick={captureTrain}>Capture & train</button><button disabled={running||!catalog?.manifest} onClick={evaluate}>Evaluate held-out tasks + perturbation</button><p aria-live="polite">{training}</p><a href="/api/coding/evaluation?full=true" target="_blank" rel="noreferrer">Open saved browser evidence ↗</a>{catalog?.manifest&&<p>Offline action classification: {Object.entries(catalog.manifest.offline_action_accuracy).map(([k,v])=>`${k} ${(100*v).toFixed(1)}%`).join(' · ')}. Browser episode results below are the end-to-end test.</p>}<button disabled={running||!last} onClick={replay}>Replay coding session</button><button disabled={!last} onClick={()=>last&&download('coding-episode.json',JSON.stringify(last,null,2))}>Save episode</button><button disabled={!last} onClick={()=>last&&download('index.html',last.source,'text/html')}>Export website</button><button onClick={()=>setDrawer('source')}>Inspect source</button>{episodes.map((ep,i)=><article key={i}><b>Target {ep.task+1} · {ep.split} · {ep.result.success?'PASS':'FAIL'}{ep.silenced.length?' · perturbed':''}</b><p>{ep.decisions.length} decisions · {ep.events.length} primitive events · {ep.corrections} corrective edits · {(ep.ticks*.02).toFixed(2)} s<br/>Pixel MAE {ep.result.pixel_mae.toFixed(5)} · reward {ep.result.reward.toFixed(4)}</p><details><summary>Neural → motor timeline</summary>{ep.decisions.map((d,j)=><button key={j} onClick={()=>{setTick(d.tick);setRates(d.neural.rates);setSpikes(d.neural.spikes);setBrain(true);}}>{d.time.toFixed(2)} s · {d.label} · {d.neural.spikes.length} modeled spikes</button>)}</details></article>)}</>}
+ </aside>}
+ <div className={`coding-computer ${drawer==='source'?'show-source':''}`}><textarea aria-label="Actual coding source" ref={editor} spellCheck={false} readOnly={running} onInput={()=>paint()}/><button ref={runButton}>Run actual source</button><iframe title="Isolated executing coding preview" ref={iframe} sandbox="allow-scripts"/><iframe title="Privileged visual target renderer" ref={targetFrame} sandbox="allow-scripts"/></div>
+ </main>;
+}
