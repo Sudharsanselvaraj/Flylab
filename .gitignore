@@ -32,3 +32,13 @@ build/
 
 # OS
 .DS_Store
+# Downloaded public anatomy; reproduce with scripts/prepare_live_anatomy.py
+data/anatomy/
+
+# User-generated video takes; code, weights and measured JSON stay versionable.
+experiments/coding_fly/recordings/
+# Published full segment graph and reproducible sparse arrays
+data/full_cns/
+# Lossless full-CNS activity archives (large); manifests and decisions stay versioned.
+experiments/physical_coding/sessions/*/activity-*.bin
+experiments/physical_coding/sessions/*/spikes.bin
