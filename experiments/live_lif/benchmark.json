@@ -1,0 +1,31 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.11.7",
+  "setup_seconds": 10.191710290993797,
+  "simulation_seconds": 10.0,
+  "wall_seconds": 34.456932542001596,
+  "realtime_factor": 0.29021736011499016,
+  "component_wall_seconds": {
+    "sensory": 32.24949293863028,
+    "neural": 0.7715575025649741,
+    "decoder": 0.13234659499721602,
+    "actuator": 0.04413436184404418
+  },
+  "lif_units": 365,
+  "shadow_units": 2,
+  "flyvis_rate_units": 45669,
+  "edges": 2175,
+  "spikes": 128209,
+  "final_pose": {
+    "x": 1.2968044729717816,
+    "z": -0.4385055485511629,
+    "yaw": 0.8923723064109632,
+    "speed": 0.6245310969954375,
+    "yaw_rate": 0.0,
+    "wheel_angle": 10.754158102558199
+  },
+  "graph_sha256": "0e8e7ef1efb21c1bb9ec1ea77dc2da484889bdf2811191a670afac5129fcd34b",
+  "runtime_sha256": "a6c508dc9962930d586f33db6d8661ed493f21337919ab07044cae79924a88b4",
+  "decoder_sha256": "1488b0ef47355357dee2e84b4f821db2010dd8760ba169cebe882a747006d7ec",
+  "note": "Headless, excluding setup and WebSocket/browser overhead; other concurrent workloads affect results."
+}
