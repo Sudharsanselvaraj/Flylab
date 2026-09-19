@@ -1,0 +1,17 @@
+{
+  "transport": "actual uvicorn WebSocket",
+  "tick": 768,
+  "seconds": 3.84,
+  "spikes": 42006,
+  "gate": "BLOCKED",
+  "final_pose": {
+    "x": 0.09100796406473315,
+    "z": 1.3250527572359345,
+    "yaw": 0.7488402553050295,
+    "speed": 0.0,
+    "yaw_rate": 0.5823130072548051,
+    "wheel_angle": 2.4386796741794026
+  },
+  "save_reload_replay_exact": true,
+  "decoder_sha256": "1488b0ef47355357dee2e84b4f821db2010dd8760ba169cebe882a747006d7ec"
+}
