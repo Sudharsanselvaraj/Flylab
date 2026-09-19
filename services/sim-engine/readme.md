@@ -1,24 +1,16 @@
-# hawking-fly (sim-engine)
+# FlyLab simulation service
 
-Python package backing The Hawking Fly project. See the repo root README.
+Physical keyboard interaction, Chromium workspace, modeled MaleCNS dynamics,
+real anatomy, training, recording and replay. See the root README and
+`docs/physical-coding.md` for setup and model limitations.
 
-Install order matters — flyvis pins its own torch build:
-
-```bash
-python3.11 -m venv .venv            # from repo root
-source .venv/bin/activate
-pip install flyvis                  # pulls pinned torch
-pip install -e "services/sim-engine[dev]"
+```sh
+python3.11 -m venv .venv
+.venv/bin/pip install -e "services/sim-engine[dev]"
+.venv/bin/python -m playwright install chromium
+PYTHONPATH=services/sim-engine .venv/bin/python -m hawking_fly.api.app
 ```
 
-When the environment is successfully built, freeze exact versions:
-
-```bash
-pip freeze > services/sim-engine/requirements-lock.txt
-```
-
-**Working versions as of Phase 0A validation (Sept 16 2026):**
-- flyvis: 1.2.0
-- torch: 2.14.0 (pulled by flyvis, macOS arm64 CPU — MPS not used by flyvis by default)
-- scipy: 1.17.1, numpy: 2.4.6, networkx: 3.6.1, scikit-learn: 1.9.1
-- neuprint-python: 0.6.3, pydantic: 2.13.5
+The internal `hawking_fly` package name remains for compatibility with existing
+scripts, environments and recorded provenance. It now serves only FlyLab routes.
+Cached anatomy, connectome data, trained checkpoints and saved sessions are preserved.
