@@ -1,0 +1,38 @@
+[
+  {
+    "tasks": 1,
+    "seconds_per_tick": 0.03536899861646816,
+    "max_abs_error": 1.1920928955078125e-07,
+    "bitwise_equal": false
+  },
+  {
+    "tasks": 4,
+    "seconds_per_tick": 0.019734147916703176,
+    "max_abs_error": 1.1920928955078125e-07,
+    "bitwise_equal": false
+  },
+  {
+    "tasks": 8,
+    "seconds_per_tick": 0.015853604849932406,
+    "max_abs_error": 1.1920928955078125e-07,
+    "bitwise_equal": false
+  },
+  {
+    "tasks": 16,
+    "seconds_per_tick": 0.012495543750022382,
+    "max_abs_error": 1.1920928955078125e-07,
+    "bitwise_equal": false
+  },
+  {
+    "tasks": 64,
+    "seconds_per_tick": 0.012314327083489236,
+    "max_abs_error": 1.1920928955078125e-07,
+    "bitwise_equal": false
+  },
+  {
+    "tasks": 256,
+    "seconds_per_tick": 0.010547504167091878,
+    "max_abs_error": 1.1920928955078125e-07,
+    "bitwise_equal": false
+  }
+]
