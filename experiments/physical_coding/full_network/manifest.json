@@ -1,0 +1,102 @@
+{
+  "version": "full-cns-heading-v1",
+  "scope": "Full positive-weight recurrent graph; 101 engineered visual inputs and 576 learned readout sites. Same narrow heading grammar. No biophysical validity claim.",
+  "graph_sha256": "a007034f4c9288bf311fc5830539c63df0eaa77ae8adb218b2a550a8ee85dc62",
+  "checkpoint_sha256": "40fb0c2862c0764614edf0441cdbe28b3276f4bad7789210ac47e8fa9478ed5f",
+  "inherited_transducer_gate_checkpoint": "9c87d83460bc2b8f3728482cb5bcbd0aa2fd4559990ce2a11e294cfea8bf00ac",
+  "neurons": 176422,
+  "training_ticks": 12160,
+  "training_wall_seconds": 253.94645041701733,
+  "history": [
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 1,
+      "loss": 4.5549092292785645,
+      "offline_accuracy": 0.00657894741743803
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 101,
+      "loss": 0.002207762561738491,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 201,
+      "loss": 0.0007882246281951666,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 301,
+      "loss": 0.00043199441279284656,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 401,
+      "loss": 0.00027654835139401257,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 501,
+      "loss": 0.00019336986588314176,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 601,
+      "loss": 0.00014314032159745693,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 701,
+      "loss": 0.00011030044697690755,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 801,
+      "loss": 8.76282065291889e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 901,
+      "loss": 7.133858161978424e-05,
+      "offline_accuracy": 1.0
+    },
+    {
+      "component": "full_cns_glyph_readout",
+      "epoch": 1000,
+      "loss": 5.9299189160810784e-05,
+      "offline_accuracy": 1.0
+    }
+  ],
+  "trainable_parameters": 86111,
+  "live_evaluation": {
+    "pixel_mae": 0.0,
+    "visual_success": true,
+    "reward": 1.0,
+    "success": true,
+    "status": "finished",
+    "decisions": 25,
+    "keystrokes": 29,
+    "corrections": 1,
+    "revision": 22,
+    "ticks": 37638,
+    "wall_seconds": 695.3865703750052,
+    "fault_injected": true,
+    "all_inputs_trusted": true,
+    "source": "<h1>Hello World</h1>",
+    "engine": "Parallel GCD CSR CPU",
+    "mode": "full-fast",
+    "checkpoint_sha256": "40fb0c2862c0764614edf0441cdbe28b3276f4bad7789210ac47e8fa9478ed5f",
+    "graph_sha256": "a007034f4c9288bf311fc5830539c63df0eaa77ae8adb218b2a550a8ee85dc62",
+    "target": "Hello World",
+    "silenced": [],
+    "session": "80459902543e4b6b8b53d622060ed651"
+  }
+}
