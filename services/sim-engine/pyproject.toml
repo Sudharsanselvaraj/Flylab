@@ -3,19 +3,30 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hawking-fly"
+name = "flylab"
 version = "0.1.0"
 description = "FlyLab — physical coding and modeled MaleCNS dynamics"
 readme = "readme.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "S Sudharsan" }]
+keywords = ["connectome", "neuroscience", "computer-use", "male-cns", "research"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
 dependencies = [
-    # NOTE ON PINNING: flyvis pins a specific torch build. Do NOT force a
-    # conflicting torch version here. Install flyvis first (it pulls its own
-    # torch), then this package; pip resolves the rest around that pin.
     "numpy",
     "scipy",
     "networkx",
     "scikit-learn",
+    "pandas",
+    "pyarrow",
+    "xarray",
+    "torch",
     "python-dotenv",
     "pydantic>=2",
     "neuprint-python",
@@ -39,6 +50,11 @@ dev = [
     "jupyter",
     "nbconvert",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Sudharsanselvaraj/The-Hawking-Fly"
+Repository = "https://github.com/Sudharsanselvaraj/The-Hawking-Fly"
+Issues = "https://github.com/Sudharsanselvaraj/The-Hawking-Fly/issues"
 
 # Adjusted once the environment is successfully built — record exact working
 # versions in services/sim-engine/requirements.lock (see install script).

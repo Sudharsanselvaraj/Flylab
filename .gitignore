@@ -42,3 +42,7 @@ data/full_cns/
 # Lossless full-CNS activity archives (large); manifests and decisions stay versioned.
 experiments/physical_coding/sessions/*/activity-*.bin
 experiments/physical_coding/sessions/*/spikes.bin
+# New local session captures can contain large screenshots and browser artifacts.
+# Curated evidence already tracked in Git remains available; explicitly force-add a
+# new session only when it is needed to support a documented result.
+experiments/physical_coding/sessions/*/
