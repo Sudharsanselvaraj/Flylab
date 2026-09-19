@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages serves this project from /The-Hawking-Fly/ rather than the
+  // GitHub Pages serves this project from /Flylab/ rather than the
   // domain root. Local development keeps the root path.
   base: process.env.VITE_BASE_PATH ?? '/',
   plugins: [react(), tailwindcss()],

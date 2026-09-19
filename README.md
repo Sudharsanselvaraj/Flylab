@@ -1,6 +1,6 @@
 # FlyLab
 
-[![Validate](https://github.com/Sudharsanselvaraj/The-Hawking-Fly/actions/workflows/verify.yml/badge.svg)](https://github.com/Sudharsanselvaraj/The-Hawking-Fly/actions/workflows/verify.yml)
+[![Validate](https://github.com/Sudharsanselvaraj/Flylab/actions/workflows/verify.yml/badge.svg)](https://github.com/Sudharsanselvaraj/Flylab/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 FlyLab is an open-source research prototype for a bounded physical-coding experiment. A learned controller receives real Chromium screenshots, drives a kinematic fly foreleg to a physical keyboard, and records the resulting native browser input alongside a synchronized MaleCNS-inspired simulation and anatomy viewer.
@@ -34,7 +34,7 @@ The active benchmark is intentionally narrow: single-line HTML headings, a fixed
 - Cached FlyLab artifacts and data prepared as described in [Data and reproducibility](#data-and-reproducibility)
 
 ```sh
-git clone https://github.com/Sudharsanselvaraj/The-Hawking-Fly.git flylab
+git clone https://github.com/Sudharsanselvaraj/Flylab.git flylab
 cd flylab
 
 python3.11 -m venv .venv
@@ -56,7 +56,7 @@ Open <http://localhost:5173>. Start runs the heading benchmark. **Brain** opens 
 
 ## GitHub Pages
 
-The static showcase is published at [sudharsanselvaraj.github.io/The-Hawking-Fly](https://sudharsanselvaraj.github.io/The-Hawking-Fly/). GitHub Pages cannot host the local Python, Chromium, WebSocket, and neural-data services required for a live experiment, so use the Quick Start instructions above for the interactive lab.
+The static showcase is published at [sudharsanselvaraj.github.io/Flylab](https://sudharsanselvaraj.github.io/Flylab/). GitHub Pages cannot host the local Python, Chromium, WebSocket, and neural-data services required for a live experiment, so use the Quick Start instructions above for the interactive lab.
 
 ## Architecture
 

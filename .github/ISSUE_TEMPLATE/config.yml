@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security vulnerability
-    url: https://github.com/Sudharsanselvaraj/The-Hawking-Fly/security/advisories/new
+    url: https://github.com/Sudharsanselvaraj/Flylab/security/advisories/new
     about: Report vulnerabilities privately; do not create a public issue.
   - name: Documentation and setup
-    url: https://github.com/Sudharsanselvaraj/The-Hawking-Fly/blob/main/README.md
+    url: https://github.com/Sudharsanselvaraj/Flylab/blob/main/README.md
     about: Review setup, data, and research-scope documentation before opening an issue.

@@ -52,9 +52,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Sudharsanselvaraj/The-Hawking-Fly"
-Repository = "https://github.com/Sudharsanselvaraj/The-Hawking-Fly"
-Issues = "https://github.com/Sudharsanselvaraj/The-Hawking-Fly/issues"
+Homepage = "https://github.com/Sudharsanselvaraj/Flylab"
+Repository = "https://github.com/Sudharsanselvaraj/Flylab"
+Issues = "https://github.com/Sudharsanselvaraj/Flylab/issues"
 
 # Adjusted once the environment is successfully built — record exact working
 # versions in services/sim-engine/requirements.lock (see install script).
