@@ -1,0 +1,31 @@
+{
+  "scope": "Contact-driven heading benchmark; held-out word recombination only",
+  "interactive_session": "4cd2ef453a95479fb08afebf5ae18aa8",
+  "render_acknowledged_motor_frames": 605,
+  "native_keydown_events": 29,
+  "wrong_source": "<h1>Hellox",
+  "wrong_screenshot": "experiments/physical_coding/sessions/4cd2ef453a95479fb08afebf5ae18aa8/022-16690.png",
+  "recording": "experiments/coding_fly/recordings/a8c0e678677b87cb86b1a78fbb94a91055d608411fb2f5d02f9a3876b1a2effc.webm",
+  "original_motor_gate_runtime_sha256": "ffa3621dd18a2773444731491b28e2968258444a600429b224e39c5fbc4acb6f",
+  "checks": {
+    "backend_tests": 120,
+    "frontend_tests": 49,
+    "build": "passed",
+    "lint": "passed",
+    "real_browser_contact_tests": "passed",
+    "interactive_wrong_key_recovery": "passed",
+    "full_timeline_replay": "visually verified",
+    "retired_synthetic_inference_endpoint": "not mounted"
+  },
+  "sha256": {
+    "services/sim-engine/hawking_fly/physical_coding/browser.py": "070b4ce468e0f9659ecebc9bfc28c22ab5eb7aa7ad06ffa86021442453023cc7",
+    "services/sim-engine/hawking_fly/physical_coding/motor.py": "f963a93c10408e6d9d6e2e56aa2ffc00703f5450b6c4b41d488f62ea905d2797",
+    "services/sim-engine/hawking_fly/physical_coding/policy.py": "d86231ef243d14725a519dd6c8cd7ba2271d2d664f085e85cf854bb188e5da54",
+    "services/sim-engine/hawking_fly/physical_coding/session.py": "c64229a5fd8aa5c6dd311631e004059e980883f59b42031c71ad6abdc0be06bd",
+    "web/app/src/features/coding/PhysicalWorld.tsx": "8bb60a58c923be9564029ba8acda4e02f870a6d19de3de3a669d580043996929",
+    "web/app/src/features/coding/PhysicalCodingLab.tsx": "6b6917267278e82fa2b47db4dd9cbd4ce9eb8ecf49c7444820c2969cfb0c60d2",
+    "experiments/physical_coding/policy.npz": "9c87d83460bc2b8f3728482cb5bcbd0aa2fd4559990ce2a11e294cfea8bf00ac",
+    "experiments/physical_coding/evaluation.json": "0e0911d4d12a538c3e975f823a7367b2d56c8e820b03f2b3c994b8df0d226e8c",
+    "experiments/coding_fly/recordings/a8c0e678677b87cb86b1a78fbb94a91055d608411fb2f5d02f9a3876b1a2effc.webm": "a8c0e678677b87cb86b1a78fbb94a91055d608411fb2f5d02f9a3876b1a2effc"
+  }
+}
