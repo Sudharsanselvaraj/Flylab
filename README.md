@@ -3,6 +3,16 @@
 A connectome-constrained coding agent at a 3D desk, with physical keyboard
 interaction and a synchronized MaleCNS instrument.
 
+<p align="center">
+  <a href="docs/assets/flylab-demo.mp4">
+    <img src="docs/assets/flylab-coding.gif" alt="FlyLab typing an HTML heading through physical key contact, with synchronized MaleCNS activity and actual Chromium output" width="1000" />
+  </a>
+</p>
+<p align="center">
+  <a href="docs/assets/flylab-demo.mp4"><strong>▶ Watch the full-quality demo (.mp4)</strong></a><br />
+  <sub>Actual full-CNS coding run · GIF at 2× playback · modeled neural activity</sub>
+</p>
+
 The learned controller reads actual Chromium screenshots, selects individual
 characters and moves a kinematic foreleg to a physical key. Contact gates native
 browser key events. The browser's resulting screenshots return as visual input.
