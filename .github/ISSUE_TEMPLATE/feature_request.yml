@@ -1,0 +1,31 @@
+name: Research or feature proposal
+description: Propose an improvement with a clear scope and validation plan.
+title: "proposal: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or research question
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: State the tests, sessions, metrics, or ablations that would support the claim.
+    validations:
+      required: true
+  - type: checkboxes
+    id: distinction
+    attributes:
+      label: Model-layer distinction
+      options:
+        - label: I identified whether this change is real data, modeled dynamics, trained behavior, or presentation.
+          required: true

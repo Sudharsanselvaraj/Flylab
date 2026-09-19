@@ -1,0 +1,40 @@
+name: Bug report
+description: Report behavior that differs from FlyLab's documented contract.
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please remove tokens, private captures, and local paths before submitting.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include expected and observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Give the smallest command sequence or UI steps.
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python, Node.js, browser, execution mode, and relevant checkpoint/data hashes.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I removed secrets and private data.
+          required: true
+        - label: I checked that this is not an expected limitation in the documentation.
+          required: true
