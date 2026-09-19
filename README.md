@@ -1,7 +1,9 @@
 # FlyLab
 
-A connectome-constrained coding agent at a 3D desk, with physical keyboard
-interaction and a synchronized MaleCNS instrument.
+[![Validate](https://github.com/Sudharsanselvaraj/The-Hawking-Fly/actions/workflows/verify.yml/badge.svg)](https://github.com/Sudharsanselvaraj/The-Hawking-Fly/actions/workflows/verify.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+FlyLab is an open-source research prototype for a bounded physical-coding experiment. A learned controller receives real Chromium screenshots, drives a kinematic fly foreleg to a physical keyboard, and records the resulting native browser input alongside a synchronized MaleCNS-inspired simulation and anatomy viewer.
 
 <p align="center">
   <a href="docs/assets/flylab-demo.mp4">
@@ -9,65 +11,106 @@ interaction and a synchronized MaleCNS instrument.
   </a>
 </p>
 <p align="center">
-  <a href="docs/assets/flylab-demo.mp4"><strong>▶ Watch the full-quality demo (.mp4)</strong></a><br />
-  <sub>Actual full-CNS coding run · GIF at 2× playback · modeled neural activity</sub>
+  <a href="docs/assets/flylab-demo.mp4"><strong>Watch the full-quality demo (MP4)</strong></a><br />
+  <sub>Actual full-CNS coding run · GIF plays at 2× speed · modeled neural activity</sub>
 </p>
 
-The learned controller reads actual Chromium screenshots, selects individual
-characters and moves a kinematic foreleg to a physical key. Contact gates native
-browser key events. The browser's resulting screenshots return as visual input.
+## What FlyLab demonstrates
 
-The full network contains **176,422 cached MaleCNS neuron records** and
-**25,862,574 directed connections**. Its instrument distinguishes anatomy,
-simulated neurons and current activity. Full float32, full float64 and a
-677-neuron subgraph are explicit execution modes. Pause, neuron inspection,
-source-to-contact traces and complete-session replay share one simulation clock.
+- A contact-gated path from screenshot → learned controller → foreleg motion → native Chromium key event → new screenshot.
+- A 3D workroom with a seated fly, physical keyboard, actual Chromium monitor pixels, and a live MaleCNS instrument.
+- Whole-CNS anatomy and activity views using **176,422 cached MaleCNS neuron records** and **25,862,574 directed connections** in the full runtime.
+- Recorded sessions with source-to-contact timing, screenshots, decisions, neural packets, and replay artifacts.
 
-The current curriculum is single-line HTML headings. Wrong-key correction and
-held-out “Hello Fly” trials passed. All-positive rate dynamics, the sensory
-adapter and the kinematic body are engineered and unvalidated; this is not a
-biological fly brain or a general programming agent. Full simulation is slower
-than real time on the tested Mac.
+The active benchmark is intentionally narrow: single-line HTML headings, a fixed visual layout, and a learned controller evaluated on word recombination. It is not a general coding agent, a claim of biological programming ability, or a validated electrophysiological reconstruction. See [research status](#research-status) before citing or extending the results.
 
-## Run locally
+## Quick start
 
-With the project's Python environment and cached data prepared:
+### Prerequisites
+
+- Python 3.11+
+- Node.js 22+
+- Chromium installed through Playwright
+- Cached FlyLab artifacts and data prepared as described in [Data and reproducibility](#data-and-reproducibility)
 
 ```sh
+git clone https://github.com/Sudharsanselvaraj/The-Hawking-Fly.git flylab
+cd flylab
+
+python3.11 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install -e 'services/sim-engine[dev]'
 .venv/bin/python -m playwright install chromium
-PYTHONPATH=services/sim-engine .venv/bin/python -m hawking_fly.api.app
+
+npm --prefix web/app ci
+PYTHONPATH=services/sim-engine .venv/bin/python -m uvicorn hawking_fly.api.app:app --host 127.0.0.1 --port 8050
 ```
 
-In another terminal:
+In a second terminal:
 
 ```sh
-cd web/app
-npm install
-npm run demo
+npm --prefix web/app run demo
 ```
 
-Open [FlyLab](http://localhost:5173/). Start begins with an empty editor.
-Use **Brain** for anatomy and activity inspection, and **Evidence & source** for
-training, measured results, recorded source and saved replays.
+Open <http://localhost:5173>. Start runs the heading benchmark. **Brain** opens the whole-CNS viewer; **Evidence & source** exposes recorded sessions and their provenance. `npm --prefix web/app run dev` is the development server; `demo` serves the production build.
 
-The production demo avoids React development profiling overhead on large neural
-buffers. Use `npm run dev` for editing instead; both use port 5173.
+## Architecture
 
-## Protocol and evidence
+```mermaid
+flowchart LR
+  screen[Chromium screenshot] --> retina[Engineered retinal windows]
+  retina --> controller[Learned glyph, heading, and edit models]
+  controller --> neural[Modeled MaleCNS dynamics]
+  neural --> motor[Kinematic foreleg and contact gate]
+  motor --> key[Trusted Chromium key event]
+  key --> screen
+  neural --> evidence[Activity packets, events, and replay archive]
+  screen --> evidence
+```
 
-The home/workroom, dark instruments, continuous typing and measured-baseline CNS
-view are described in [the 2.0 implementation state](docs/coding-v2.md). The
-multi-element webpage controller is not implemented; the active checkpoint still
-supports the heading benchmark.
+The [architecture guide](docs/architecture.md) maps those stages to the source tree and describes the API boundary. The full experimental method, data model, and limitations are in the [physical coding protocol](docs/physical-coding.md).
 
-- [Physical coding protocol, data preparation and training](docs/physical-coding.md)
-- [Full-network validation evidence](experiments/full_cns/evidence_index.json)
-- [Web client instructions](web/app/README.md)
+## Data and reproducibility
+
+The repository includes code, learned checkpoints, manifests, and measured evidence. Large public anatomy and connectome caches are intentionally ignored: they are reproducible downloads, not silently substituted with synthetic data.
+
+1. Configure a neuPrint token in a local `.env` file when regenerating anatomy. Do not commit it.
+2. Run `PYTHONPATH=services/sim-engine .venv/bin/python scripts/prepare_live_anatomy.py` to build `data/anatomy/` from MaleCNS records and published skeletons.
+3. Run `.venv/bin/python scripts/prepare_full_cns.py` to fetch and build the full sparse connection matrices under `data/full_cns/`.
+4. On macOS, `.venv/bin/python scripts/build_full_cns_native.py` optionally builds and verifies the parallel CPU kernel. The portable SciPy path remains available when that kernel is absent.
+
+The [MaleCNS download portal](https://male-cns.janelia.org/download/) is the source for the public anatomy/connectome data. FlyLab preserves its attribution and licensing metadata in generated manifests. See the protocol for exact hashes, evaluation commands, and the distinction between full-CNS and 677-neuron modes.
+
+## Research status
+
+| Layer | Status |
+| --- | --- |
+| Anatomy and connectivity | Real cached MaleCNS records and public morphology where available |
+| Dynamics | Engineered all-positive, normalized rate model; not dynamics-validated |
+| Visual input and embodiment | Engineered retinal windows and kinematic contact model |
+| Controller | Trained only for the disclosed single-heading curriculum |
+| Browser interaction | Native Chromium keyboard events after recorded contact |
+
+The checked-in evidence records a full-network wrong-key trial with 29 trusted key-down events, one Backspace correction, and zero final pixel error. That is evidence for this benchmark only. It does not establish broad code synthesis, unseen-layout success, biological causality, or consciousness.
+
+## Development
+
+Run the checks before opening a pull request:
 
 ```sh
 PYTHONPATH=services/sim-engine .venv/bin/python -m pytest services/sim-engine/tests -q
-cd web/app
-npm run build
-npm run lint
-npx vitest run
+npm --prefix web/app run build
+npm --prefix web/app run lint
+(cd web/app && npx vitest run)
 ```
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and the [Code of Conduct](CODE_OF_CONDUCT.md). The project is released under the [MIT License](LICENSE).
+
+## Documentation
+
+- [Physical coding protocol and evidence](docs/physical-coding.md)
+- [Current implementation state](docs/coding-v2.md)
+- [Architecture guide](docs/architecture.md)
+- [Historical token prototype](docs/coding-fly.md)
+- [Legacy cleanup record](docs/legacy-cleanup.md)
+- [Citation metadata](CITATION.cff)

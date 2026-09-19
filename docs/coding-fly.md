@@ -1,15 +1,15 @@
 > Historical token prototype, superseded by [physical coding](physical-coding.md).
-> Its synthetic DOM events and source mutations do **not** meet the real typing
-> acceptance criteria. Metrics below are retained only for reproducibility.
+> It is retained as an archived reproducibility artifact and is not mounted in
+> the FlyLab application. Its synthetic DOM events and source mutations do
+> **not** meet the real typing acceptance criteria.
 
 # Coding Fly — first bounded learning experiment
 
 The coding task is an engineered benchmark for a connectome-constrained agent.
 It is **not evidence that a real fly understands programming**.
 
-The default app now opens the coding desk. `?view=live` retains the blocked
-motor-gate experiment; `?view=recorded` retains the recorded studies. Their
-scientific runtime, decoder, dataset roles and provenance have not been changed.
+The default and only FlyLab application opens the physical coding desk. This
+historical prototype remains documented for reproducibility only.
 
 ## Implemented scope and measured outcome
 
