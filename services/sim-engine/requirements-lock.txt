@@ -162,5 +162,11 @@ wcwidth==0.8.3
 webcolors==25.10.0
 webencodings==0.6.1
 websocket-client==1.9.2
+websockets==16.1.1
 widgetsnbextension==4.0.16
 xarray==2026.7.0
+
+# Native Chromium keyboard bridge (physical coding benchmark)
+playwright==1.58.0
+pyee==13.0.1
+greenlet==3.5.6
